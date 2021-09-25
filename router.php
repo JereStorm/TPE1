@@ -3,9 +3,6 @@
 require_once ('controller/ProductsController.php');
 
 // defino la base url para la construccion de links con urls semánticas
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
-
-//probando II merge desarrollo1
 
 if (!empty($_GET['action'])){
     $action = $_GET['action'];
