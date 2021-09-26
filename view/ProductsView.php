@@ -15,4 +15,11 @@ class ProductsView{
     function renderHome(){
         $this -> smarty -> display('templates/home.tpl');
     }
+
+    function renderProducts($products){
+    
+        $this -> smarty -> assign('productos', $products);
+
+        $this -> smarty -> display('templates/tabla.tpl');
+    }
 }

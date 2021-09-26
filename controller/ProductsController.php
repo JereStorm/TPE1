@@ -16,4 +16,9 @@ class ProductsController{
     function showHome(){
         $this -> view -> renderHome();
     }
+
+    function showProducts(){
+        $products = $this -> model -> getAllProducts();
+        $this -> view -> renderProducts($products);
+    }
 }
