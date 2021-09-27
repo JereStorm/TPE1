@@ -1,6 +1,6 @@
 {include file="html/header.tpl"}
 
-<div class="alert alert-success mt-5" role="alert">
+<div class="alert alert-danger mt-5" role="alert">
     <h4 class="alert-heading">Algo salio mal! :/</h4>
     <p>{$texto}</p>
     <hr>
