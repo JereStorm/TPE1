@@ -30,4 +30,10 @@ switch($params[0]){
     case 'delProduct':
         $controller -> delProduct($params[1]);
     break;
+    case 'typeProd':
+        $controller -> showTypeProd();
+    break;
+    case 'addType':
+        $controller -> addTypeProd();
+    break;
 }

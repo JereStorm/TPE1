@@ -12,7 +12,7 @@ class ProductsModel{
         $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`');
         $query->execute();
 
-        return $materias = $query->fetchAll(PDO::FETCH_OBJ); 
+        return $items = $query->fetchAll(PDO::FETCH_OBJ); 
     }
 
     function getAllTypes(){
@@ -42,5 +42,18 @@ class ProductsModel{
         return $query->execute([$id]);
     }
     
-    
+    function getAllTypesII(){
+        $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto');
+        $query->execute();
+
+        return $tipos = $query->fetchAll(PDO::FETCH_OBJ); 
+    }
+
+    function insertTypeProd($nombre, $descrip){
+        $query = $this->db->prepare('INSERT INTO `tipo_producto` (`tipo`, `descripcion`) VALUES ( ?, ?)');
+        $query -> execute([$nombre, $descrip]);
+
+        // 3. Obtengo y devuelo el ID nuevo
+        return $this->db->lastInsertId();
+    }
 }

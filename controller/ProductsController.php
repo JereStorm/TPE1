@@ -30,7 +30,7 @@ class ProductsController{
             (!isset($_REQUEST['precio']) || empty($_REQUEST['precio'])) || 
             (!isset($_REQUEST['tipo']) || $_REQUEST['tipo'] == 'false') )
         {
-            $this -> view -> renderError('No se pudo agregar la materia por falta de parametros');
+            $this -> view -> renderError('No se pudo agregar el producto por falta de parametros');
             die();
         }
         
@@ -59,4 +59,30 @@ class ProductsController{
 
        header('Location:'. BASE_URL .'productos');
     }
+
+    function showtypeProd(){
+        $types = $this -> model -> getAllTypesII();
+
+        $this -> view -> renderTypesProd($types);
+    }
+    function addTypeProd(){
+
+        // VALIDACION
+        if( (!isset($_REQUEST['tipo']) || empty($_REQUEST['descripcion'])) )
+        {
+            $this -> view -> renderError('No se pudo agregar el producto por falta de parametros');
+            die();
+        }
+        
+        //SETEO DE DATOS
+        $tipo = $_REQUEST['tipo'];
+        $descrip = $_REQUEST['descripcion'];
+
+        //INSERCION
+        $this -> model -> insertTypeProd($tipo, $descrip);
+
+        //RENDERIZADO
+        header('Location:'. BASE_URL .'typeProd');
+    }
+
 }

@@ -29,4 +29,10 @@ class ProductsView{
 
         $this -> smarty -> display('templates/error.tpl');
     }
+
+    function renderTypesProd($types){
+        $this -> smarty -> assign ('productos', $types);
+
+        $this -> smarty -> display('templates/homeTypeProd.tpl');
+    }
 }
