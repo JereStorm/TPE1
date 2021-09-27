@@ -43,7 +43,7 @@ class ProductsController{
         $this -> model -> insertProduct($nombre, $precio, $tipo);
 
         //RENDERIZADO
-        header('Location:'. BASE_URL .'/productos');
+        header('Location:'. BASE_URL .'productos');
     }
 
     function delProduct($id){
@@ -57,6 +57,6 @@ class ProductsController{
 
        $execute = $this -> model -> delProduct($id);
 
-       header('Location:'. BASE_URL .'/productos');
+       header('Location:'. BASE_URL .'productos');
     }
 }
