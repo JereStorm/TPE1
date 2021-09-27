@@ -26,7 +26,7 @@ class ProductsController{
     function addProduct(){
         if( (!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) || 
             (!isset($_REQUEST['precio']) || empty($_REQUEST['precio'])) || 
-            (!isset($_REQUEST['tipo']) || empty($_REQUEST['tipo'])) )
+            (!isset($_REQUEST['tipo']) || $_REQUEST['tipo'] == 'false') )
         {
             $this -> view -> renderError('No se pudo agregar la materia por falta de parametros');
             die();
