@@ -1,24 +1,26 @@
 {include file="html/header.tpl"}
 
-<table class="table table-dark table-hover">
+<table class="table table-dark table-hover mt-5">
       <thead>
-        <tr>
-
-
+      <tr>
+        <th>#</th>
+        {foreach from=$productos[0] item=item key=indice }
+            
+            <th>{$indice}</th>
+            
+        {/foreach}
         </tr>
     </thead>
-      {foreach from=$productos item=item key=key2}
-
-        <tr>
-        {foreach from=$item item=value key=key name=name}
-        <td scope="col">key = {$key}</td>
-        <td scope="col">value = {$value}</td>
-
+    <tbody>
+        {foreach from=$productos item=item key=indice }
+            <tr>
+                <th>{$indice}</th>
+                {foreach from=$item item=value key=key}
+                <td scope="col">{$value}</td>
+                {/foreach}
+            </tr>
         {/foreach}
-
-        </tr>
-    {/foreach}
-
+    </tbody>
 
   </table>
 
