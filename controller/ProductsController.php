@@ -18,7 +18,8 @@ class ProductsController{
     }
 
     function showProducts(){
+        $types = $this -> model -> getAllTypes();
         $products = $this -> model -> getAllProducts();
-        $this -> view -> renderProducts($products);
+        $this -> view -> renderProducts($products, $types);
     }
 }
