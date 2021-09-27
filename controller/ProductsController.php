@@ -22,4 +22,22 @@ class ProductsController{
         $products = $this -> model -> getAllProducts();
         $this -> view -> renderProducts($products, $types);
     }
+
+    function addProduct(){
+        if( (!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) || 
+            (!isset($_REQUEST['precio']) || empty($_REQUEST['precio'])) || 
+            (!isset($_REQUEST['tipo']) || empty($_REQUEST['tipo'])) )
+        {
+            $this -> view -> renderError('No se pudo agregar la materia por falta de parametros');
+            die();
+        }
+        
+        $nombre = $_REQUEST['producto'];
+        $precio = $_REQUEST['precio'];
+        $tipo = $_REQUEST['tipo'];
+
+        $this -> model -> insertProduct($nombre, $precio, $tipo);
+
+        header('Location:'. BASE_URL);
+    }
 }

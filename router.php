@@ -24,4 +24,7 @@ switch($params[0]){
     case 'productos':
         $controller -> showProducts();
     break;
+    case 'addProduct':
+        $controller -> addProduct();
+    break;
 }

@@ -25,6 +25,15 @@ class ProductsModel{
         return $tipos = $query->fetchAll(PDO::FETCH_OBJ); 
         // obtengo un arreglo con TODAS los Pagos
     }
+
+    function insertProduct($nombre, $precio, $tipo){
+        $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`) VALUES ( ?, ?, ?)');
+        $query -> execute([$nombre, $tipo, $precio]);
+
+        // 3. Obtengo y devuelo el ID de la materia nueva
+        return $this->db->lastInsertId();
+    
+    }
     
     
 }

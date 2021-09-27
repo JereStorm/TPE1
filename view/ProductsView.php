@@ -23,4 +23,10 @@ class ProductsView{
 
         $this -> smarty -> display('templates/homeProducts.tpl');
     }
+
+    function renderError($texto){
+        $this -> smarty -> assign('texto', $texto);
+
+        $this -> smarty -> display('templates/error.tpl');
+    }
 }
