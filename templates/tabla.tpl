@@ -23,7 +23,11 @@
 
                 {foreach from=$item item=value key=key}
                     {if $key == 'id'}
-                        <td scope="col">id: {$value}</td>
+                        <td scope="col">
+                            <div class="botonera">
+                                <a class="btn btn-danger btn-js"  href="delProduct/{$value}">Borrar</a>
+                            </div>
+                        </td>
                     {else}
                         <td scope="col">{$value}</td>
                     {/if}

@@ -24,6 +24,8 @@ class ProductsController{
     }
 
     function addProduct(){
+
+        // VALIDACION
         if( (!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) || 
             (!isset($_REQUEST['precio']) || empty($_REQUEST['precio'])) || 
             (!isset($_REQUEST['tipo']) || $_REQUEST['tipo'] == 'false') )
@@ -32,12 +34,29 @@ class ProductsController{
             die();
         }
         
+        //SETEO DE DATOS
         $nombre = $_REQUEST['producto'];
         $precio = $_REQUEST['precio'];
         $tipo = $_REQUEST['tipo'];
 
+        //INSERCION
         $this -> model -> insertProduct($nombre, $precio, $tipo);
 
-        header('Location:'. BASE_URL);
+        //RENDERIZADO
+        header('Location:'. BASE_URL .'/productos');
+    }
+
+    function delProduct($id){
+
+        $verificar = $this -> model -> visarId($id);
+
+        if(empty($verificar->val)){
+            $this -> view -> renderError('identificador erroneo');
+            die();
+        }
+
+       $execute = $this -> model -> delProduct($id);
+
+       header('Location:'. BASE_URL .'/productos');
     }
 }

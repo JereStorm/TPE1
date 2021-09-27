@@ -29,6 +29,18 @@ class ProductsModel{
         // 3. Obtengo y devuelo el ID nuevo
         return $this->db->lastInsertId();
     }
+
+    function visarid($id){
+        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `producto` WHERE producto.`id_prod` = ?');
+        $query->execute([$id]);
+
+        return $value = $query->fetch(PDO::FETCH_OBJ); 
+    }
+
+    function delProduct($id){
+        $query = $this->db->prepare('DELETE FROM `producto` WHERE producto.`id_prod` = ?');
+        return $query->execute([$id]);
+    }
     
     
 }
