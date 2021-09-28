@@ -132,7 +132,9 @@ class ProductsController{
             die();
         }
 
-        echo 'Esperar hasta hablar* para terminar';
+        $conteo = $this -> model -> contarReferencia($id);
+
+        var_dump($conteo);
     // AUN EN PROCESO
 
     //    $execute = $this -> model -> delTypeProduct($id);

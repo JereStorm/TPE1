@@ -101,4 +101,13 @@ class ProductsModel{
 
         return $value = $query->fetch(PDO::FETCH_OBJ); 
     }
+
+    // ----------- CONTAR PRODUCTOS PERTENECIENTES A UNA TIPO
+
+    function contarReferencia($id){
+        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `producto` WHERE producto.`tipo_prod_fk` = ?');
+        $query->execute([$id]);
+
+        return $value = $query->fetch(PDO::FETCH_OBJ); 
+    }
 }
