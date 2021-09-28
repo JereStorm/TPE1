@@ -7,10 +7,10 @@
         </div>
     </div>
 </div>
+
 <div class="row mt-3 mb-3">
     <div class="col-9">
         <div class="form-group">
-
             <select name="tipo" class="form-select" aria-label="Default select example" required>
                     <option value="false">Seleccione tipo</option>
                     {* ACA PODEMOS CREAR UN SELECT DINAMICO CON LA TABLA TIPO *}

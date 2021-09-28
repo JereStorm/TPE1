@@ -8,6 +8,8 @@ class ProductsModel{
         $this -> db = new PDO('mysql:host=localhost;'.'dbname=tpe_jt;charset=utf8', 'root', '');
     }
 
+    //----------- GETS
+
     function getAllProducts(){
         $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`');
         $query->execute();
@@ -21,6 +23,24 @@ class ProductsModel{
 
         return $tipos = $query->fetchAll(PDO::FETCH_OBJ); 
     }
+
+    // ---------- GET ONE
+
+    function getOneProduct($id){
+        $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
+        $query->execute([$id]);
+
+        return $product = $query->fetch(PDO::FETCH_OBJ); 
+    }
+    function getOneTypeProduct($id){
+        $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto WHERE id_tipo_prod = ?');
+        $query->execute([$id]);
+
+        return $tipo = $query->fetch(PDO::FETCH_OBJ); 
+    }
+
+
+    // --------- INSERTS
 
     function insertProduct($nombre, $precio, $tipo){
         $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`) VALUES ( ?, ?, ?)');
@@ -38,6 +58,8 @@ class ProductsModel{
         return $this->db->lastInsertId();
     }
 
+    // -------- DELETES
+
     function delProduct($id){
         $query = $this->db->prepare('DELETE FROM `producto` WHERE producto.`id_prod` = ?');
         return $query->execute([$id]);
@@ -45,6 +67,32 @@ class ProductsModel{
     
     //ACA DEBERIA ESTAR LA DELETE TYPES
 
+    
+    // -------- UPDATES
+
+    function updateProduct($nombre, $precio, $tipo, $id){
+        $query = $this->db->prepare('UPDATE producto a
+        INNER JOIN tipo_producto b 
+        ON `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`
+        SET `a`.`nombre` = ?, `a`.`precio_kg` =?, `a`.`tipo_prod_fk` =?
+        WHERE `a`.`id_prod` = ?');
+        return $query->execute([$nombre, $precio, $tipo, $id]);
+    }
+
+    function updateTypeProd($tipo, $descripcion, $id){
+        echo 'Ya casi esta lista la modificacion';
+        die();
+        // $query = $this->db->prepare('UPDATE producto a
+        // INNER JOIN tipo_producto b 
+        // ON `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`
+        // SET `a`.`nombre` = ?, `a`.`precio_kg` =?, `a`.`tipo_prod_fk` =?
+        // WHERE `a`.`id_prod` = ?');
+        // return $query->execute([$nombre, $precio, $tipo, $id]);
+    }
+
+    
+    // ----------- VISADOS (SIEMPRE AL ULTIMO)
+    
     function visarIdProd($id){
         $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `producto` WHERE producto.`id_prod` = ?');
         $query->execute([$id]);
@@ -57,12 +105,5 @@ class ProductsModel{
         $query->execute([$id]);
 
         return $value = $query->fetch(PDO::FETCH_OBJ); 
-    }
-
-    function getOneProduct($id){
-        $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
-        $query->execute([$id]);
-
-        return $product = $query->fetch(PDO::FETCH_OBJ); 
     }
 }

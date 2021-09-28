@@ -45,13 +45,13 @@ switch($params[0]){
             $controller -> showEditTypeProd($params[2]);
         }
     break;
-    // case 'edit':
-    //     if($params[1] == 'Producto'){
-    //         $controller -> editProduct($params[2]);
-    //     }else if($params[1] == 'TipoProducto'){
-    //         $controller -> editTypeProd($params[2]);
-    //     }
-    // break;
+    case 'edit':
+        if($params[1] == 'Producto'){
+            $controller -> editProduct();
+        }else if($params[1] == 'TipoProducto'){
+            $controller -> editTypeProd();
+        }
+    break;
     case 'typeProd':
         $controller -> showTypeProd();
     break;

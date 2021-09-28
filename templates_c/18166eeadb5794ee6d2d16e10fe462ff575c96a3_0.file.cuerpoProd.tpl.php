@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-28 07:28:32
+/* Smarty version 3.1.39, created on 2021-09-28 18:26:09
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\forms\cuerpoProd.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6152a800d53069_81682732',
+  'unifunc' => 'content_615342219699e7_48577418',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18166eeadb5794ee6d2d16e10fe462ff575c96a3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\forms\\cuerpoProd.tpl',
-      1 => 1632801253,
+      1 => 1632846343,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6152a800d53069_81682732 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615342219699e7_48577418 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
     <div class="col-9">
         <div class="form-group">
@@ -31,10 +31,10 @@ function content_6152a800d53069_81682732 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </div>
 </div>
+
 <div class="row mt-3 mb-3">
     <div class="col-9">
         <div class="form-group">
-
             <select name="tipo" class="form-select" aria-label="Default select example" required>
                     <option value="false">Seleccione tipo</option>
                                         <?php
