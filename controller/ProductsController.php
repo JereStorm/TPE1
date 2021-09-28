@@ -109,7 +109,7 @@ class ProductsController{
     //    header('Location:'. BASE_URL .'productos');
     }
 
-    function editProduct($id){
+    function showEditProduct($id){
         $verificado = $this -> model -> visarIdProd($id);
 
         if(!empty($verificar->val)){
@@ -121,7 +121,7 @@ class ProductsController{
         $types = $this -> model -> getAllTypes();
         $this -> view -> renderEditProduct($product, $types);
     }
-    function editTypeProd($id){
+    function showEditTypeProd($id){
 
     }
 
