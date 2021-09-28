@@ -4,7 +4,7 @@
     <h4 class="alert-heading">Algo salio mal! :/</h4>
     <p>{$texto}</p>
     <hr>
-    <a class="mb-0" href="home">Volver</a>
+    <a class="mb-0" href="Home">Volver</a>
 </div>
 
 {include file="html/footer.tpl"}

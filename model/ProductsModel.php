@@ -65,8 +65,10 @@ class ProductsModel{
         return $query->execute([$id]);
     }
     
-    //ACA DEBERIA ESTAR LA DELETE TYPES
-
+    function delTypeProd($id){
+        $query = $this->db->prepare('DELETE FROM `tipo_producto` WHERE tipo_producto.`id_tipo_prod` = ?');
+        return $query->execute([$id]);
+    }
     
     // -------- UPDATES
 

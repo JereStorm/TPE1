@@ -134,12 +134,17 @@ class ProductsController{
 
         $conteo = $this -> model -> contarReferencia($id);
 
-        var_dump($conteo);
+        if(empty($conteo->val)){
+            $this -> model -> delTypeProd($id);
+            header('Location:'. BASE_URL .'Home/TipoProducto');
+        }else{
+            $this -> view -> renderError('No se puede borrar dado que hay ('.$conteo->val.') elementos asociados a este item');
+        }
     // AUN EN PROCESO
 
     //    $execute = $this -> model -> delTypeProduct($id);
 
-    //    header('Location:'. BASE_URL .'productos');
+
     }
 
     // ---------- EDIT
