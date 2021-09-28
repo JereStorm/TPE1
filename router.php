@@ -18,11 +18,16 @@ $params = explode('/', $action);
 $controller = new ProductsController();
 
 switch($params[0]){
-    case 'home':
-        $controller -> showHome();
-    break;
-    case 'productos':
-        $controller -> showProducts();
+    case 'Home':
+        if(!isset($params[1])){
+            $controller -> showHome();
+        }else{
+            if($params[1] == 'Producto'){
+            $controller -> showProducts();
+            }else if($params[1] == 'TipoProducto'){
+                $controller -> showTypeProd();
+            }
+        }
     break;
     case 'add':
         if($params[1] == 'Producto'){
@@ -51,8 +56,5 @@ switch($params[0]){
         }else if($params[1] == 'TipoProducto'){
             $controller -> editTypeProd();
         }
-    break;
-    case 'typeProd':
-        $controller -> showTypeProd();
     break;
 }
