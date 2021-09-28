@@ -1,5 +1,5 @@
 <!-- formulario de alta de tarea -->
-<form action="addProduct" method="POST" class="my-4">
+<form action="add/Producto" method="POST" class="my-4">
     <div class="row">
         <div class="col-9">
             <div class="form-group">
@@ -17,7 +17,7 @@
                     <option value="false" selected>Seleccione tipo</option>
                     {* ACA PODEMOS CREAR UN SELECT DINAMICO CON LA TABLA TIPO *}
                     {foreach from=$types item=item}
-                        <option value="{$item->valor}">{$item->nombre}</option>
+                        <option value="{$item->id}">{$item->Tipo}</option>
                     {/foreach}
             </select>
     

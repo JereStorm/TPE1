@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-27 05:00:50
+/* Smarty version 3.1.39, created on 2021-09-28 04:04:31
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\forms\formAlta.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615133e21fc987_78377260',
+  'unifunc' => 'content_6152782fb3baf2_45354904',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6f9907161ecb3fa579ba3f7430016777f7bb2dc9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\forms\\formAlta.tpl',
-      1 => 1632710541,
+      1 => 1632794593,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615133e21fc987_78377260 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6152782fb3baf2_45354904 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- formulario de alta de tarea -->
-<form action="addProduct" method="POST" class="my-4">
+<form action="add/Producto" method="POST" class="my-4">
     <div class="row">
         <div class="col-9">
             <div class="form-group">
@@ -44,8 +44,8 @@ $_smarty_tpl->tpl_vars['item']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->tpl_vars['item']->do_else = false;
 ?>
-                        <option value="<?php echo $_smarty_tpl->tpl_vars['item']->value->valor;?>
-"><?php echo $_smarty_tpl->tpl_vars['item']->value->nombre;?>
+                        <option value="<?php echo $_smarty_tpl->tpl_vars['item']->value->id;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value->Tipo;?>
 </option>
                     <?php
 }

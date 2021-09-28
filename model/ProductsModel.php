@@ -15,13 +15,6 @@ class ProductsModel{
         return $items = $query->fetchAll(PDO::FETCH_OBJ); 
     }
 
-    function getAllTypes(){
-        $query = $this->db->prepare('SELECT id_tipo_prod AS valor, tipo AS nombre FROM tipo_producto');
-        $query->execute();
-
-        return $tipos = $query->fetchAll(PDO::FETCH_OBJ); 
-    }
-
     function insertProduct($nombre, $precio, $tipo){
         $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`) VALUES ( ?, ?, ?)');
         $query -> execute([$nombre, $tipo, $precio]);
@@ -48,7 +41,7 @@ class ProductsModel{
         return $query->execute([$id]);
     }
     
-    function getAllTypesII(){
+    function getAllTypes(){
         $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto');
         $query->execute();
 
