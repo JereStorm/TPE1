@@ -83,7 +83,7 @@ class ProductsController{
         $this -> model -> insertProduct($nombre, $precio, $tipo);
 
         //RENDERIZADO
-        header('Location:'. BASE_URL .'productos');
+        header('Location:'. BASE_URL .'Home/Producto');
     }
 
     function addTypeProd(){
@@ -104,7 +104,7 @@ class ProductsController{
         $this -> model -> insertTypeProd($tipo, $descrip);
 
         //RENDERIZADO
-        header('Location:'. BASE_URL .'typeProd');
+        header('Location:'. BASE_URL .'Home/TipoProducto');
     }
 
     //------------- DEL
@@ -120,7 +120,7 @@ class ProductsController{
 
        $execute = $this -> model -> delProduct($id);
 
-       header('Location:'. BASE_URL .'productos');
+       header('Location:'. BASE_URL .'Home/Producto');
     }
     function delTypeProd($id){
 
@@ -169,7 +169,7 @@ class ProductsController{
         $this -> model -> updateProduct($nombre, $precio, $tipo, $id);
 
         //RENDERIZADO
-        header('Location:'. BASE_URL .'productos');
+        header('Location:'. BASE_URL .'Home/Producto');
     }
 
     function editTypeProd(){
@@ -193,10 +193,10 @@ class ProductsController{
         $tipo = $_REQUEST['tipo'];
         $descrip = $_REQUEST['descripcion'];
 
-        //INSERCION
+        //UPDATE
         $this -> model -> updateTypeProd($tipo, $descrip, $id);
 
         //RENDERIZADO
-        header('Location:'. BASE_URL .'typeProd');
+        header('Location:'. BASE_URL .'Home/TipoProducto');
     }
 }
