@@ -199,10 +199,4 @@ class ProductsController{
         //RENDERIZADO
         header('Location:'. BASE_URL .'typeProd');
     }
-
-    
-
-    
-    
-
 }
