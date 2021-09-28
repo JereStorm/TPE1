@@ -80,16 +80,11 @@ class ProductsModel{
     }
 
     function updateTypeProd($tipo, $descripcion, $id){
-        echo 'Ya casi esta lista la modificacion';
-        die();
-        // $query = $this->db->prepare('UPDATE producto a
-        // INNER JOIN tipo_producto b 
-        // ON `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`
-        // SET `a`.`nombre` = ?, `a`.`precio_kg` =?, `a`.`tipo_prod_fk` =?
-        // WHERE `a`.`id_prod` = ?');
-        // return $query->execute([$nombre, $precio, $tipo, $id]);
+        $query = $this->db->prepare('UPDATE tipo_producto a
+        SET `a`.`tipo` = ?, `a`.`descripcion` =?
+        WHERE `a`.`id_tipo_prod` = ?');
+        return $query->execute([$tipo, $descripcion, $id]);
     }
-
     
     // ----------- VISADOS (SIEMPRE AL ULTIMO)
     
