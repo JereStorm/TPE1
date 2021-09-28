@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-27 22:31:20
+/* Smarty version 3.1.39, created on 2021-09-28 20:11:42
   from '/opt/lampp/htdocs/Web2/TPE1/templates/tabla.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61522a187e59e7_40307798',
+  'unifunc' => 'content_61535ade935916_84213440',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8221da266ca9c54c6f84d2844a202fc072941af' => 
     array (
       0 => '/opt/lampp/htdocs/Web2/TPE1/templates/tabla.tpl',
-      1 => 1632774669,
+      1 => 1632852613,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_61522a187e59e7_40307798 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61535ade935916_84213440 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <table class="table table-dark table-hover mt-5">
       <thead>
@@ -67,8 +67,12 @@ $_smarty_tpl->tpl_vars['value']->do_else = false;
                     <?php if ($_smarty_tpl->tpl_vars['key']->value == 'id') {?>
                         <td scope="col">
                             <div class="botonera">
-                                <a class="btn btn-danger btn-js"  href="delProduct/<?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+                                <a class="btn btn-danger btn-js"  href="del/<?php echo $_smarty_tpl->tpl_vars['URL']->value;?>
+/<?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 ">Borrar</a>
+                                <a class="btn btn-warning btn-js"  href="HomeEdit/<?php echo $_smarty_tpl->tpl_vars['URL']->value;?>
+/<?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+">Editar</a>
                             </div>
                         </td>
                     <?php } else { ?>

@@ -10,7 +10,7 @@ if (!empty($_GET['action'])){
     $action = $_GET['action'];
 }
 else {
-    $action = 'home';
+    $action = 'Home';
 }
 
 $params = explode('/', $action);
