@@ -26,6 +26,7 @@
                         <td scope="col">
                             <div class="botonera">
                                 <a class="btn btn-danger btn-js"  href="del/{$URL}/{$value}">Borrar</a>
+                                <a class="btn btn-warning btn-js"  href="edit/{$URL}/{$value}">Editar</a>
                             </div>
                         </td>
                     {else}

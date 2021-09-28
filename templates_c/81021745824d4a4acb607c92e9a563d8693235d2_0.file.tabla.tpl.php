@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-28 02:22:18
+/* Smarty version 3.1.39, created on 2021-09-28 16:10:49
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\tabla.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6152603ac47f42_88348580',
+  'unifunc' => 'content_61532269562858_87936195',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '81021745824d4a4acb607c92e9a563d8693235d2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\tabla.tpl',
-      1 => 1632788516,
+      1 => 1632838244,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6152603ac47f42_88348580 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61532269562858_87936195 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <table class="table table-dark table-hover mt-5">
       <thead>
@@ -70,6 +70,9 @@ $_smarty_tpl->tpl_vars['value']->do_else = false;
                                 <a class="btn btn-danger btn-js"  href="del/<?php echo $_smarty_tpl->tpl_vars['URL']->value;?>
 /<?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 ">Borrar</a>
+                                <a class="btn btn-warning btn-js"  href="edit/<?php echo $_smarty_tpl->tpl_vars['URL']->value;?>
+/<?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+">Editar</a>
                             </div>
                         </td>
                     <?php } else { ?>
