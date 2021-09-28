@@ -27,8 +27,12 @@ switch($params[0]){
     case 'addProduct':
         $controller -> addProduct();
     break;
-    case 'delProduct':
-        $controller -> delProduct($params[1]);
+    case 'del':
+        if($params[1] == 'Producto'){
+            $controller -> delProduct($params[2]);
+        }else if($params[1] == 'TipoProducto'){
+            $controller -> delTypeProd($params[2]);
+        }
     break;
     case 'typeProd':
         $controller -> showTypeProd();

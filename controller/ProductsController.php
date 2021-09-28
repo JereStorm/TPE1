@@ -13,6 +13,8 @@ class ProductsController{
         $this -> view = new ProductsView();
     }
 
+    //---------- SHOW
+
     function showHome(){
         $this -> view -> renderHome();
     }
@@ -20,9 +22,17 @@ class ProductsController{
     function showProducts(){
         $types = $this -> model -> getAllTypes();
         $products = $this -> model -> getAllProducts();
+
         $this -> view -> renderProducts($products, $types);
     }
 
+    function showTypeProd(){
+        $types = $this -> model -> getAllTypesII();
+
+        $this -> view -> renderTypesProd($types);
+    }
+
+    //-------- ADD
     function addProduct(){
 
         // VALIDACION
@@ -46,25 +56,6 @@ class ProductsController{
         header('Location:'. BASE_URL .'productos');
     }
 
-    function delProduct($id){
-
-        $verificar = $this -> model -> visarId($id);
-
-        if(empty($verificar->val)){
-            $this -> view -> renderError('identificador erroneo');
-            die();
-        }
-
-       $execute = $this -> model -> delProduct($id);
-
-       header('Location:'. BASE_URL .'productos');
-    }
-
-    function showtypeProd(){
-        $types = $this -> model -> getAllTypesII();
-
-        $this -> view -> renderTypesProd($types);
-    }
     function addTypeProd(){
 
         // VALIDACION
@@ -84,5 +75,41 @@ class ProductsController{
         //RENDERIZADO
         header('Location:'. BASE_URL .'typeProd');
     }
+
+    //------------- DEL
+    function delProduct($id){
+
+        //VALIDACION
+        $verificar = $this -> model -> visarIdProd($id);
+
+        if(empty($verificar->val)){
+            $this -> view -> renderError('identificador erroneo');
+            die();
+        }
+
+       $execute = $this -> model -> delProduct($id);
+
+       header('Location:'. BASE_URL .'productos');
+    }
+    function delTypeProd($id){
+
+        //VALIDACION
+        $verificar = $this -> model -> visarIdTypeProd($id);
+
+        if(empty($verificar->val)){
+            $this -> view -> renderError('identificador erroneo');
+            die();
+        }
+
+        echo 'Esperar hasta ahbalr para terminar';
+    // AUN EN PROCESO
+
+    //    $execute = $this -> model -> delTypeProduct($id);
+
+    //    header('Location:'. BASE_URL .'productos');
+    }
+
+    
+    
 
 }

@@ -30,8 +30,14 @@ class ProductsModel{
         return $this->db->lastInsertId();
     }
 
-    function visarid($id){
+    function visarIdProd($id){
         $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `producto` WHERE producto.`id_prod` = ?');
+        $query->execute([$id]);
+
+        return $value = $query->fetch(PDO::FETCH_OBJ); 
+    }
+    function visarIdTypeProd($id){
+        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `tipo_producto` AS a WHERE a.`id_tipo_prod` = ?');
         $query->execute([$id]);
 
         return $value = $query->fetch(PDO::FETCH_OBJ); 

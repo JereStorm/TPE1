@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-26 23:21:37
+/* Smarty version 3.1.39, created on 2021-09-27 23:49:16
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\html\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6150e461db6bb7_38416134',
+  'unifunc' => 'content_61523c5cc62e09_84154110',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f650608e43ba37925667ba6ac2617973fbd18cb7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\html\\header.tpl',
-      1 => 1632691256,
+      1 => 1632779179,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6150e461db6bb7_38416134 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61523c5cc62e09_84154110 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -50,7 +50,7 @@ function content_6150e461db6bb7_38416134 (Smarty_Internal_Template $_smarty_tpl)
           <li><a href="home" class="nav-link px-2 text-secondary">Home</a></li>
           <li><a href="productos" class="nav-link px-2 text-white">Productos</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Stock</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Tipo Productos</a></li>
+          <li><a href="typeProd" class="nav-link px-2 text-white">Tipo Productos</a></li>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">

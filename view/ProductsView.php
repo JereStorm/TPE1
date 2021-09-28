@@ -21,6 +21,8 @@ class ProductsView{
     
         $this -> smarty -> assign('productos', $products);
 
+        $this -> smarty -> assign('URL', 'Producto');
+
         $this -> smarty -> display('templates/homeProducts.tpl');
     }
 
@@ -32,6 +34,8 @@ class ProductsView{
 
     function renderTypesProd($types){
         $this -> smarty -> assign ('productos', $types);
+
+        $this -> smarty -> assign('URL', 'TipoProducto');
 
         $this -> smarty -> display('templates/homeTypeProd.tpl');
     }

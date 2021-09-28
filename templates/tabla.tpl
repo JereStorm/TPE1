@@ -25,7 +25,7 @@
                     {if $key == 'id'}
                         <td scope="col">
                             <div class="botonera">
-                                <a class="btn btn-danger btn-js"  href="delProduct/{$value}">Borrar</a>
+                                <a class="btn btn-danger btn-js"  href="del/{$URL}/{$value}">Borrar</a>
                             </div>
                         </td>
                     {else}
