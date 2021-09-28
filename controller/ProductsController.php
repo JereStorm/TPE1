@@ -80,9 +80,9 @@ class ProductsController{
     function delProduct($id){
 
         //VALIDACION
-        $verificar = $this -> model -> visarIdProd($id);
+        $verificado = $this -> model -> visarIdProd($id);
 
-        if(empty($verificar->val)){
+        if(empty($verificado->val)){
             $this -> view -> renderError('identificador erroneo');
             die();
         }
@@ -107,6 +107,22 @@ class ProductsController{
     //    $execute = $this -> model -> delTypeProduct($id);
 
     //    header('Location:'. BASE_URL .'productos');
+    }
+
+    function editProduct($id){
+        $verificado = $this -> model -> visarIdProd($id);
+
+        if(!empty($verificar->val)){
+            $this -> view -> renderError('identificador erroneo');
+            die();
+        }
+
+        $product = $this -> model -> getOneProduct($id);
+        $types = $this -> model -> getAllTypes();
+        $this -> view -> renderEditProduct($product, $types);
+    }
+    function editTypeProd($id){
+
     }
 
     

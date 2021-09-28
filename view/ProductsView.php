@@ -18,12 +18,16 @@ class ProductsView{
 
     function renderProducts($products, $types){
         $this -> smarty -> assign('types', $types);
+
+        $this -> smarty -> assign('value_nombre', '');
+        $this -> smarty -> assign('value_tipo', '');
+        $this -> smarty -> assign('value_precio', '');
     
         $this -> smarty -> assign('productos', $products);
 
         $this -> smarty -> assign('URL', 'Producto');
 
-        $this -> smarty -> display('templates/homeProducts.tpl');
+        $this -> smarty -> display('templates/homeTable.tpl');
     }
 
     function renderError($texto){
@@ -37,6 +41,18 @@ class ProductsView{
 
         $this -> smarty -> assign('URL', 'TipoProducto');
 
-        $this -> smarty -> display('templates/homeTypeProd.tpl');
+        $this -> smarty -> display('templates/homeTable.tpl');
+    }
+
+    function renderEditProduct($product, $types){
+        $this -> smarty -> assign('types', $types);
+
+        $this -> smarty -> assign('value_nombre', $product->nombre);
+        $this -> smarty -> assign('value_tipo', $product->tipo);
+        $this -> smarty -> assign('value_precio', $product->precio);
+
+        $this -> smarty -> assign('URL', 'Producto');
+
+        $this -> smarty -> display('templates/homeEdit.tpl');
     }
 }

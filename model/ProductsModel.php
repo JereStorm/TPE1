@@ -14,6 +14,13 @@ class ProductsModel{
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ); 
     }
+    
+    function getAllTypes(){
+        $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto');
+        $query->execute();
+
+        return $tipos = $query->fetchAll(PDO::FETCH_OBJ); 
+    }
 
     function insertProduct($nombre, $precio, $tipo){
         $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`) VALUES ( ?, ?, ?)');
@@ -23,17 +30,12 @@ class ProductsModel{
         return $this->db->lastInsertId();
     }
 
-    function visarIdProd($id){
-        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `producto` WHERE producto.`id_prod` = ?');
-        $query->execute([$id]);
+    function insertTypeProd($nombre, $descrip){
+        $query = $this->db->prepare('INSERT INTO `tipo_producto` (`tipo`, `descripcion`) VALUES ( ?, ?)');
+        $query -> execute([$nombre, $descrip]);
 
-        return $value = $query->fetch(PDO::FETCH_OBJ); 
-    }
-    function visarIdTypeProd($id){
-        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `tipo_producto` AS a WHERE a.`id_tipo_prod` = ?');
-        $query->execute([$id]);
-
-        return $value = $query->fetch(PDO::FETCH_OBJ); 
+        // 3. Obtengo y devuelo el ID nuevo
+        return $this->db->lastInsertId();
     }
 
     function delProduct($id){
@@ -41,18 +43,26 @@ class ProductsModel{
         return $query->execute([$id]);
     }
     
-    function getAllTypes(){
-        $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto');
-        $query->execute();
+    //ACA DEBERIA ESTAR LA DELETE TYPES
 
-        return $tipos = $query->fetchAll(PDO::FETCH_OBJ); 
+    function visarIdProd($id){
+        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `producto` WHERE producto.`id_prod` = ?');
+        $query->execute([$id]);
+
+        return $value = $query->fetch(PDO::FETCH_OBJ); 
     }
 
-    function insertTypeProd($nombre, $descrip){
-        $query = $this->db->prepare('INSERT INTO `tipo_producto` (`tipo`, `descripcion`) VALUES ( ?, ?)');
-        $query -> execute([$nombre, $descrip]);
+    function visarIdTypeProd($id){
+        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `tipo_producto` AS a WHERE a.`id_tipo_prod` = ?');
+        $query->execute([$id]);
 
-        // 3. Obtengo y devuelo el ID nuevo
-        return $this->db->lastInsertId();
+        return $value = $query->fetch(PDO::FETCH_OBJ); 
+    }
+
+    function getOneProduct($id){
+        $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
+        $query->execute([$id]);
+
+        return $product = $query->fetch(PDO::FETCH_OBJ); 
     }
 }
