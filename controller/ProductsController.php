@@ -122,7 +122,7 @@ class ProductsController{
         $this -> view -> renderEditProduct($product, $types);
     }
     function showEditTypeProd($id){
-
+        //para completar
     }
 
     
