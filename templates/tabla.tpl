@@ -1,7 +1,7 @@
 
 <table class="table table-dark table-hover mt-5">
       <thead>
-        <tr>
+        <tr class="text-center">
             <th>#</th>
 
             {foreach from=$productos[0] item=item key=indice }
@@ -18,12 +18,12 @@
     </thead>
     <tbody>
         {foreach from=$productos item=item key=indice }
-            <tr>
+            <tr class="text-center">
                 <th>{$indice}</th>
 
                 {foreach from=$item item=value key=key}
                     {if $key == 'id'}
-                        <td scope="col">
+                        <td scope="col" >
                             <div class="botonera">
                                 <a class="btn btn-danger btn-js"  href="del/{$URL}/{$value}">Borrar</a>
                                 <a class="btn btn-warning btn-js"  href="HomeEdit/{$URL}/{$value}">Editar</a>
