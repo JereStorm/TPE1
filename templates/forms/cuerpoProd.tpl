@@ -33,7 +33,7 @@
     <div class="col-9">
         <div class="form-group">
             <label>Precio</label>
-            <input name="precio" value="{$value_precio}" type="text" class="form-control" required>
+            <input name="precio" value="{$value_precio}" type="number" min="0" class="form-control" required>
         </div>
     </div>
 </div>
