@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-29 23:55:31
+/* Smarty version 3.1.39, created on 2021-09-30 00:02:02
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\forms\selectDinamico.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6154e0d394ec80_73877508',
+  'unifunc' => 'content_6154e25a344b49_22223730',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe3bd1ccfc7f00eb546ab03884cbe1e39e0e6d6a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\forms\\selectDinamico.tpl',
-      1 => 1632951078,
+      1 => 1632952797,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6154e0d394ec80_73877508 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6154e25a344b49_22223730 (Smarty_Internal_Template $_smarty_tpl) {
 ?><select name="tipo" class="form-select" aria-label="Default select example" required>
     <option value="false" disabled selected>Seleccione tipo</option>
     
@@ -44,5 +44,6 @@ $_smarty_tpl->tpl_vars['item']->do_else = false;
     <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+    
 </select><?php }
 }
