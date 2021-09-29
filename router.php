@@ -35,9 +35,9 @@ switch($params[0]){
     break;
     case 'add':
         if($params[1] == 'Producto'){
-            $ProductsController -> addProduct($params[2]);
+            $ProductsController -> addProduct();
         }else if($params[1] == 'TipoProducto'){
-            $TypeProdController -> addTypeProd($params[2]);
+            $TypeProdController -> addTypeProd();
         }
     break;
     case 'del':
