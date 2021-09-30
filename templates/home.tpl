@@ -3,5 +3,6 @@
 
 <h1>Preparado para el exito?</h1>
 
+{include file="card.tpl"}
 
 {include file="html/footer.tpl"}

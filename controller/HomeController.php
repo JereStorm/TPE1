@@ -1,7 +1,6 @@
 <?php
 
-require_once 'model/ProductsModel.php';
-require_once 'model/TypeProdModel.php';
+require_once 'model/HomeModel.php';
 require_once 'view/HomeView.php';
 
 
@@ -16,20 +15,16 @@ class HomeController{
     private $view;
 
     function __construct(){
-        $this -> ProductsModel = new ProductsModel();
-        $this -> TypeProdModel = new TypeProdModel();
-        //ACA IRIA EL STOCK
-
+       
         $this -> view = new HomeView();
+        $this -> model = new HomeModel();
     }
 
     function showHome(){
 
-        $products = $this -> ProductsModel -> getAllProducts();
+        $products = $this -> model -> getAll();
 
-        $typeProd = $this -> TypeProdModel -> getAllTypes();
-
-        $this -> view -> renderHome($products, $typeProd);
+        $this -> view -> renderHome($products);
     }
 
 }
