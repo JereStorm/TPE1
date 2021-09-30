@@ -6,6 +6,8 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 require_once ('controller/ProductsController.php');
 // -----TIPOS PRODUCTOS
 require_once ('controller/TypeProdController.php');
+// -----TIPOS PRODUCTOS
+require_once ('controller/StockController.php');
 
 // defino la base url para la construccion de links con urls semánticas
 
@@ -20,6 +22,7 @@ $params = explode('/', $action);
 
 $ProductsController = new ProductsController();
 $TypeProdController = new TypeProdController();
+$StockController = new StockController();
 
 switch($params[0]){
     case 'Home':
@@ -30,6 +33,8 @@ switch($params[0]){
                 $ProductsController -> showProducts();
             }else if($params[1] == 'TipoProducto'){
                 $TypeProdController -> showTypeProd();
+            }else if($params[1] == 'Stock'){
+                $StockController -> showStock();
             }
         }
     break;
