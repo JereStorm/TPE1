@@ -1,0 +1,7 @@
+1) Logica seccionadas, seccionar el home
+
+2) Armas las vistas del home
+
+3) Crear la base de datos del Stock
+
+n) Filtrado por categoria

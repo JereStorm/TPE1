@@ -12,10 +12,6 @@ class ProductsView{
         $this -> smarty -> assign('title', 'TPETomiJere');
     }
 
-    function renderHome(){
-        $this -> smarty -> display('templates/home.tpl');
-    }
-
     function renderProducts($products, $types){
         $this -> smarty -> assign('types', $types);
 
