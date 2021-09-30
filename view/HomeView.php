@@ -10,13 +10,22 @@ class HomeView{
         $this -> smarty -> assign('base', BASE_URL);
         $this -> smarty -> assign('title', 'TPETomiJere');
     }
-    function renderHome($products){
+    function renderHome($products, $types){
 
         // $this -> smarty -> assign('productos', $products);
-        // $this -> smarty -> assign('types', $types);
+        $this -> smarty -> assign('types', $types);
         
         $this -> smarty -> assign('productos', $products);
 
         $this -> smarty -> display('templates/home.tpl');
+    }
+    function renderError($texto){
+
+        // $this -> smarty -> assign('productos', $products);
+        // $this -> smarty -> assign('types', $types);
+        
+        $this -> smarty -> assign('texto', $texto);
+
+        $this -> smarty -> display('templates/error.tpl');
     }
 }

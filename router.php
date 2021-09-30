@@ -19,14 +19,12 @@ else {
 }
 
 $params = explode('/', $action);
+
 $HomeController = new HomeController();
 $ProductsController = new ProductsController();
 $TypeProdController = new TypeProdController();
 
 switch($params[0]){
-    case 'prueba':
-        $HomeController -> showHola();
-        break;
     case 'Home':
         if(!isset($params[1])){
             $HomeController -> showHome();
@@ -46,10 +44,14 @@ switch($params[0]){
         }
     break;
     case 'del':
-        if($params[1] == 'Producto'){
+        if(!isset($params[1]) || !isset($params[2])){
+            $HomeController -> showError('No existen parametros');
+        }else if($params[1] == 'Producto'){
             $ProductsController -> delProduct($params[2]);
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> delTypeProd($params[2]);
+        }else{
+            header('Location:'. BASE_URL);
         }
     break;
     case 'HomeEdit':
@@ -66,7 +68,10 @@ switch($params[0]){
             $TypeProdController -> editTypeProd();
         }
     break;
-    case 'view':
-        $HomeController -> showProduct($params[1]);
+    case 'View':
+        $HomeController -> showDetail($params[1]);
+    break;
+    case 'Filter':
+        $HomeController -> showFiltrado();
     break;
 }

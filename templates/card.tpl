@@ -1,5 +1,5 @@
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
     {foreach from=$productos item=item key=key name=name}
         <div class="col">
             <div class="card shadow-sm">
@@ -20,8 +20,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class="card-text">{*STOCK*}Stock: 15</h6>
                         <div class="btn-group">
-                            <a href="view/{$item->id}" class="btn btn-sm btn-secondary">View</a>
-                            <button type="button" class="btn btn-sm btn-secondary">Edit</button>
+                            <a href="View/{$item->id}" class="btn btn-sm btn-secondary">View</a>
                         </div>
                     </div>
                     {*<small class="text-muted">9 mins PODRIA PINTAR DATA-TIME</small>*}

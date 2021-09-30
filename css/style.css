@@ -1,0 +1,22 @@
+.lista__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.botonera {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.card-title {
+  text-align: center;
+}
+.contenedor {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card {
+  width: 350px;
+}
