@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-9">
         <div class="form-group">
-            <label>Producto
+            <label>Tipo Producto
                 <input name="tipo" type="text" value="{$value_tipo}" class="form-control" required>
             </label>
         </div>

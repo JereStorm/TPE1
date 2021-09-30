@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-28 19:13:45
+/* Smarty version 3.1.39, created on 2021-09-30 16:37:12
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\forms\cuerpoType.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61534d4920f5c8_79822460',
+  'unifunc' => 'content_6155cb9891a305_62103744',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b01bcd904eaa064f98ebbaf9c456c4f27d9cf74a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\forms\\cuerpoType.tpl',
-      1 => 1632849223,
+      1 => 1633012629,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_61534d4920f5c8_79822460 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6155cb9891a305_62103744 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
     <div class="col-9">
         <div class="form-group">
-            <label>Producto
+            <label>Tipo Producto
                 <input name="tipo" type="text" value="<?php echo $_smarty_tpl->tpl_vars['value_tipo']->value;?>
 " class="form-control" required>
             </label>

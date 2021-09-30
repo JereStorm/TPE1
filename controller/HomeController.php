@@ -18,6 +18,7 @@ class HomeController{
        
         $this -> view = new HomeView();
         $this -> model = new HomeModel();
+
     }
 
     function showHome(){
@@ -25,6 +26,10 @@ class HomeController{
         $products = $this -> model -> getAll();
 
         $this -> view -> renderHome($products);
+    }
+
+    function showProduct($id){
+        
     }
 
 }

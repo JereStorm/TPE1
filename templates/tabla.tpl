@@ -3,16 +3,23 @@
       <thead>
         <tr class="text-center">
             <th>#</th>
-
-            {foreach from=$productos[0] item=item key=indice }
+        {if $productos}
+                {foreach from=$productos[0] item=item key=indice }
+                                
+                    {if $indice == 'id'}
+                        <th>Acciones</td>
+                    {else}
+                        <th>{$indice}</th>
+                    {/if}
+                    
+                {/foreach}
+            {else}
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Tipo</th>
                 
-                {if $indice == 'id'}
-                    <th>Acciones</td>
-                {else}
-                    <th>{$indice}</th>
-                {/if}
-                
-            {/foreach}
+        {/if}
+            
         
         </tr>
     </thead>

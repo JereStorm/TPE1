@@ -66,4 +66,7 @@ switch($params[0]){
             $TypeProdController -> editTypeProd();
         }
     break;
+    case 'view':
+        $HomeController -> showProduct($params[1]);
+    break;
 }
