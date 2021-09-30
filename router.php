@@ -55,21 +55,33 @@ switch($params[0]){
         }
     break;
     case 'HomeEdit':
-        if($params[1] == 'Producto'){
+        if(!isset($params[1])){
+            $HomeController -> showError('No existen parametros');
+        }else if($params[1] == 'Producto'){
             $ProductsController -> showEditProduct($params[2]);
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> showEditTypeProd($params[2]);
+        }else{
+            header('Location:'. BASE_URL);
         }
     break;
     case 'edit':
-        if($params[1] == 'Producto'){
+        if(!isset($params[1])){
+            $HomeController -> showError('No existen parametros');
+        }else if($params[1] == 'Producto'){
             $ProductsController -> editProduct();
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> editTypeProd();
+        }else{
+            header('Location:'. BASE_URL);
         }
     break;
     case 'View':
-        $HomeController -> showDetail($params[1]);
+        if(!isset($params[1])){
+            $HomeController -> showError('No existen parametros');
+        }else{
+            $HomeController -> showDetail($params[1]);
+        }
     break;
     case 'Filter':
         $HomeController -> showFiltrado();

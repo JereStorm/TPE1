@@ -41,7 +41,7 @@ class HomeController{
 
     function showFiltrado(){
         echo 'filtrado en proceso por:'. $_REQUEST['tipo'];
-        //falta terminar funcionalidad en el modelo;
+        //falta terminar funcionalidad en el productsModel;
     }
 
     function showError($texto){
