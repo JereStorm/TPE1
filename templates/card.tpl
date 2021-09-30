@@ -6,12 +6,12 @@
 
                 <div class="card-body">
                     <h5 class="card-title text-center">
-                    {$item->Producto}
+                    {$item->nombre}
                     </h5>
                     
                     <ul>
-                        <li class="card-text">{*PRECIO POR UNIDAD*}Precio {$item->Precio}$</li>
-                        <li class="card-text">{*CATEGORIA/MARCA*}Tipo: {$item->Tipo}</li>
+                        <li class="card-text">{*PRECIO POR UNIDAD*}Precio {$item->precio}$</li>
+                        <li class="card-text">{*CATEGORIA/MARCA*}Tipo: {$item->tipo}</li>
                     </ul>
 
                     

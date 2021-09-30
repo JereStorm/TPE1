@@ -1,9 +1,9 @@
 <?php
 
 // EXTERNOS
+require_once 'model/ProductsModel.php';
 require_once 'model/TypeProdModel.php';
 // INTERNOS
-require_once 'model/HomeModel.php';
 require_once 'view/HomeView.php';
 
 
@@ -19,15 +19,16 @@ class HomeController{
 
     function __construct(){
         $this -> TypeProdModel = new TypeProdModel();
+        $this -> ProductsModel = new ProductsModel();
+
        
         $this -> view = new HomeView();
-        $this -> model = new HomeModel();
 
     }
 
     function showHome(){
 
-        $products = $this -> model -> getAll();
+        $products = $this -> ProductsModel -> getAllProducts();
         $types = $this -> TypeProdModel -> getAllTypes();
 
         $this -> view -> renderHome($products, $types);
