@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-01 18:41:44
+/* Smarty version 3.1.39, created on 2021-10-01 18:48:07
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\tabla.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61573a488d5863_72769455',
+  'unifunc' => 'content_61573bc790ae30_20163991',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '81021745824d4a4acb607c92e9a563d8693235d2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\tabla.tpl',
-      1 => 1633106498,
+      1 => 1633106882,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_61573a488d5863_72769455 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61573bc790ae30_20163991 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <table class="table table-dark table-hover mt-5">
       <thead>
         <tr class="text-center">
             <th>#</th>
-        <?php if ($_smarty_tpl->tpl_vars['arreglo']->value) {?>
+       
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['arreglo']->value[0], 'item', false, 'indice');
 $_smarty_tpl->tpl_vars['item']->do_else = true;
@@ -44,13 +44,7 @@ $_smarty_tpl->tpl_vars['item']->do_else = false;
             <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-        <?php } else { ?>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Tipo</th>
-        <?php }?>
             
-        
         </tr>
     </thead>
     <tbody>
@@ -70,8 +64,7 @@ $_smarty_tpl->tpl_vars['value']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['value']->value) {
 $_smarty_tpl->tpl_vars['value']->do_else = false;
 ?>
-                    <?php if ($_smarty_tpl->tpl_vars['key']->value == 'id') {?>
-                        <td scope="col" >
+                    <?php if ($_smarty_tpl->tpl_vars['key']->value == 'id') {?>                        <td scope="col" >
                             <div class="botonera">
                                 <a class="btn btn-danger btn-js"  href="del/<?php echo $_smarty_tpl->tpl_vars['URL']->value;?>
 /<?php echo $_smarty_tpl->tpl_vars['value']->value;?>

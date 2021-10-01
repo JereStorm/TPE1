@@ -3,7 +3,7 @@
       <thead>
         <tr class="text-center">
             <th>#</th>
-        {if $arreglo}
+       
             {foreach from=$arreglo[0] item=item key=indice }
                             
                 {if $indice == 'id'}
@@ -13,13 +13,7 @@
                 {/if}
                 
             {/foreach}
-        {else}
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Tipo</th>
-        {/if}
             
-        
         </tr>
     </thead>
     <tbody>
@@ -28,7 +22,7 @@
                 <th>{$indice}</th>
 
                 {foreach from=$item item=value key=key}
-                    {if $key == 'id'}
+                    {if $key == 'id'}{* ACA PODRIAMOS PREGUNTAR POR LA SESSION SI ESTA ACTIVA *}
                         <td scope="col" >
                             <div class="botonera">
                                 <a class="btn btn-danger btn-js"  href="del/{$URL}/{$value}">Borrar</a>
