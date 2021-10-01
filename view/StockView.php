@@ -11,11 +11,7 @@ class StockView{
         $this -> smarty -> assign('base', BASE_URL);
         $this -> smarty -> assign('title', 'TPETomiJere');
     }
-/*
-    function renderHome(){
-        $this -> smarty -> display('templates/home.tpl');
-    }
-*/
+
     function renderStock($products, $stock){
         $this -> smarty -> assign('types', $products);
 
@@ -29,7 +25,18 @@ class StockView{
 
         $this -> smarty -> display('templates/homeTable.tpl');
     }
-/*
+
+    function renderError($texto){
+        $this -> smarty -> assign('texto', $texto);
+
+        $this -> smarty -> display('templates/error.tpl');
+    }
+
+    /*
+    function renderHome(){
+        $this -> smarty -> display('templates/home.tpl');
+    }
+
     function renderEditProduct($product, $types){
         $this -> smarty -> assign('types', $types);
 

@@ -43,6 +43,8 @@ switch($params[0]){
             $ProductsController -> addProduct();
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> addTypeProd();
+        }else if($params[1] == 'Stock'){
+            $StockController -> addStock();
         }
     break;
     case 'del':

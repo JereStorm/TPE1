@@ -16,25 +16,44 @@ class StockModel{
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ); 
     }
-/*
+
+    function getAllStockId(){
+        $query = $this->db->prepare('SELECT * FROM stock');
+        $query->execute();
+
+        return $items = $query->fetchAll(PDO::FETCH_OBJ); 
+    }
+
     // ---------- GET ONE
 
-    function getOneProduct($id){
-        $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
+    function getOneStockId($id){
+        $query = $this->db->prepare('SELECT * FROM stock WHERE producto_fk = ?');
         $query->execute([$id]);
 
         return $product = $query->fetch(PDO::FETCH_OBJ); 
     }
 
+    // -------- UPDATES
+
+    function updateStock($id, $cantidad_tot){
+    $query = $this->db->prepare(
+    'UPDATE stock
+    SET cantidad = ?
+    WHERE id_stock = ?');
+    
+    return $query->execute([$cantidad_tot, $id]);
+    }
+    
+
     // --------- INSERTS
 
-    function insertProduct($nombre, $precio, $tipo){
-        $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`) VALUES ( ?, ?, ?)');
-        $query -> execute([$nombre, $tipo, $precio]);
+    function insertNewStock($id_prod, $cant){
+        $query = $this->db->prepare('INSERT INTO `stock` (`producto_fk`, `cantidad`) VALUES (?, ?)');
+        $query->execute([$id_prod, $cant]);
 
-        // 3. Obtengo y devuelo el ID nuevo
         return $this->db->lastInsertId();
     }
+    /*
 
     // -------- DELETES
 
