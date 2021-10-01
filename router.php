@@ -57,7 +57,7 @@ switch($params[0]){
         }
     break;
     case 'HomeEdit':
-        if(!isset($params[1])){
+        if(!isset($params[1])  || !isset($params[2])){
             $HomeController -> showError('No existen parametros');
         }else if($params[1] == 'Producto'){
             $ProductsController -> showEditProduct($params[2]);
@@ -78,7 +78,7 @@ switch($params[0]){
             header('Location:'. BASE_URL);
         }
     break;
-    case 'View':
+    case 'Details':
         if(!isset($params[1])){
             $HomeController -> showError('No existen parametros');
         }else{
@@ -88,4 +88,5 @@ switch($params[0]){
     case 'Filter':
         $HomeController -> showFiltrado();
     break;
+    
 }

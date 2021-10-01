@@ -18,10 +18,11 @@ class HomeController{
     private $view;
 
     function __construct(){
+        //EXTERNOS
         $this -> TypeProdModel = new TypeProdModel();
         $this -> ProductsModel = new ProductsModel();
 
-       
+       //INTERNOS
         $this -> view = new HomeView();
 
     }
@@ -42,6 +43,7 @@ class HomeController{
     function showFiltrado(){
         echo 'filtrado en proceso por:'. $_REQUEST['tipo'];
         //falta terminar funcionalidad en el productsModel;
+        //y llamar a render home con estos parametros
     }
 
     function showError($texto){
