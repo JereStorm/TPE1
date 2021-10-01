@@ -19,7 +19,7 @@ class ProductsView{
         $this -> smarty -> assign('value_tipo', '');
         $this -> smarty -> assign('value_precio', '');
     
-        $this -> smarty -> assign('productos', $products);
+        $this -> smarty -> assign('arreglo', $products);
 
         $this -> smarty -> assign('URL', 'Producto');
 

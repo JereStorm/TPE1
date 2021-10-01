@@ -37,7 +37,8 @@ class HomeController{
 
     function showDetail($id){
         //FALTA CREAR LA VISTA DEL PRODUCTO
-        echo 'detalles en proceso por:'. $id;
+        //OBTENER DEL MODELO EL PRODUCTO COMPLETO
+        $this->view->renderDetail();
     }
 
     function showFiltrado(){

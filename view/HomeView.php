@@ -28,7 +28,8 @@ class HomeView{
         $this -> smarty -> display('templates/error.tpl');
     }
 
-    function renderDetails(){
-        
+    function renderDetail(){
+        //RECIBO LOS DETALLES Y LOS RENDERIZO
+        $this -> smarty -> display('templates/homeDetail.tpl');
     }
 }

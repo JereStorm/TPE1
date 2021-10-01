@@ -3,8 +3,8 @@
       <thead>
         <tr class="text-center">
             <th>#</th>
-        {if $productos}
-            {foreach from=$productos[0] item=item key=indice }
+        {if $arreglo}
+            {foreach from=$arreglo[0] item=item key=indice }
                             
                 {if $indice == 'id'}
                     <th>Acciones</td>
@@ -23,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        {foreach from=$productos item=item key=indice }
+        {foreach from=$arreglo item=item key=indice }
             <tr class="text-center">
                 <th>{$indice}</th>
 
