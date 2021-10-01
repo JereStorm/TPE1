@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-28 20:05:35
+/* Smarty version 3.1.39, created on 2021-10-01 02:10:22
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\html\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6153596f9a3d19_21427538',
+  'unifunc' => 'content_615651eee90728_13907790',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f650608e43ba37925667ba6ac2617973fbd18cb7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\html\\header.tpl',
-      1 => 1632851472,
+      1 => 1633047009,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6153596f9a3d19_21427538 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615651eee90728_13907790 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -58,7 +58,7 @@ function content_6153596f9a3d19_21427538 (Smarty_Internal_Template $_smarty_tpl)
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <a type="button" href="Login" class="btn btn-outline-light me-2">Login</a>
           <button type="button" class="btn btn-warning">Sign-up</button>
         </div>
       </div>

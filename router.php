@@ -8,6 +8,8 @@ require_once ('controller/ProductsController.php');
 require_once ('controller/TypeProdController.php');
 // -----HOME
 require_once ('controller/HomeController.php');
+// -----LOGIN
+// require_once ('controller/LoginController.php');
 
 // defino la base url para la construccion de links con urls semánticas
 
