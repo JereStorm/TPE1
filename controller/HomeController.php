@@ -43,7 +43,7 @@ class HomeController{
 
     function showFiltrado(){
         
-        if($_REQUEST['tipo'] == 'false'){
+        if($_REQUEST['tipo'] == 'false' || !isset($_REQUEST['tipo'])){
             header("Location:". BASE_URL);
             die();
         }
