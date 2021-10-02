@@ -42,19 +42,20 @@ class HomeController{
     }
 
     function showFiltrado(){
-        $tipo = $_REQUEST['tipo'];
-
-        if($tipo == 'false'){
+        
+        if($_REQUEST['tipo'] == 'false'){
             header("Location:". BASE_URL);
             die();
         }
 
+        $tipo = $_REQUEST['tipo'];
         $filtradas = $this -> ProductsModel -> filtrarProducts($tipo);
 
         if(empty($filtradas)){
             $this -> view -> renderError('no se han encontrado resultados');
             die();
         }
+        
         $types = $this -> TypeProdModel -> getAllTypes();
         
         $this -> view -> renderFiltrado($filtradas, $types);
