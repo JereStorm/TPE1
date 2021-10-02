@@ -64,4 +64,18 @@ class ProductsModel{
 
         return $value = $query->fetch(PDO::FETCH_OBJ); 
     }
+
+    // ------------ FILTRAR 
+
+    
+    function filtrarProducts($tipo){
+        // 2. Enviamos la consulta (2 sub pasos)
+        $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`tipo_prod_fk` LIKE ?');
+        $query->execute([$tipo]);
+
+        // 3. obtengo la respuesta de la DB
+        $filtradas = $query->fetchAll(PDO::FETCH_OBJ); // obtengo un arreglo con TODAS los Pagos
+
+        return $filtradas;
+    }
 }

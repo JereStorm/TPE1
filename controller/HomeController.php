@@ -42,7 +42,22 @@ class HomeController{
     }
 
     function showFiltrado(){
-        echo 'filtrado en proceso por:'. $_REQUEST['tipo'];
+        $tipo = $_REQUEST['tipo'];
+
+        if($tipo == 'false'){
+            header("Location:". BASE_URL);
+            die();
+        }
+
+        $filtradas = $this -> ProductsModel -> filtrarProducts($tipo);
+
+        if(empty($filtradas)){
+            $this -> view -> renderError('no se han encontrado resultados');
+            die();
+        }
+        $types = $this -> TypeProdModel -> getAllTypes();
+        
+        $this -> view -> renderFiltrado($filtradas, $types);
         //falta terminar funcionalidad en el productsModel;
         //y llamar a render home con estos parametros
     }
