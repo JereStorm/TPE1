@@ -14,10 +14,6 @@ class ProductsView{
 
     function renderProducts($products, $types){
         $this -> smarty -> assign('types', $types);
-
-        $this -> smarty -> assign('value_nombre', '');
-        $this -> smarty -> assign('value_tipo', '');
-        $this -> smarty -> assign('value_precio', '');
     
         $this -> smarty -> assign('arreglo', $products);
 
