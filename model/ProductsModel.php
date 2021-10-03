@@ -11,7 +11,7 @@ class ProductsModel{
     //----------- GET ALL
 
     function getAllProducts(){
-        $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`');
+        $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`');
         $query->execute();
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ); 
