@@ -1,7 +1,8 @@
-1) Logica seccionadas, seccionar el home
-
-2) Armas las vistas del home
-
 3) Crear la base de datos del Stock
 
-n) Filtrado por categoria
+4) Crear La vista individual del producto
+
+5) Terminar de intergrar Stock
+
+6) Hacer el Login de la pagina
+
