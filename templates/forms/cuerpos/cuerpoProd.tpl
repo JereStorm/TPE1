@@ -2,7 +2,7 @@
     <div class="col-9">
         <div class="form-group">
             <label>Producto
-                <input name="producto" value="{$value_nombre}" type="text" class="form-control" required>
+                <input name="producto" value="{if isset($value_nombre)}{$value_nombre}{/if}" type="text" class="form-control" required>
             </label>
         </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="col-9">
         <div class="form-group">
             <label>Precio</label>
-            <input name="precio" value="{$value_precio}" type="number" min="0" class="form-control" required>
+            <input name="precio" value="{if isset($value_precio)}{$value_precio}{/if}" type="number" min="0" class="form-control" required>
         </div>
     </div>
 </div>

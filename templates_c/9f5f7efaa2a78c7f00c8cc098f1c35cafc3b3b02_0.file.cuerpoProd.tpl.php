@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-01 00:26:38
+/* Smarty version 3.1.39, created on 2021-10-03 04:38:40
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\forms\cuerpos\cuerpoProd.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6156399e3fed27_59920413',
+  'unifunc' => 'content_615917b0936210_55583856',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9f5f7efaa2a78c7f00c8cc098f1c35cafc3b3b02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\forms\\cuerpos\\cuerpoProd.tpl',
-      1 => 1633040746,
+      1 => 1633226906,
       2 => 'file',
     ),
   ),
@@ -21,13 +21,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:forms/selectDinamico.tpl' => 1,
   ),
 ),false)) {
-function content_6156399e3fed27_59920413 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615917b0936210_55583856 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
     <div class="col-9">
         <div class="form-group">
             <label>Producto
-                <input name="producto" value="<?php echo $_smarty_tpl->tpl_vars['value_nombre']->value;?>
-" type="text" class="form-control" required>
+                <input name="producto" value="<?php if ((isset($_smarty_tpl->tpl_vars['value_nombre']->value))) {
+echo $_smarty_tpl->tpl_vars['value_nombre']->value;
+}?>" type="text" class="form-control" required>
             </label>
         </div>
     </div>
@@ -45,8 +46,9 @@ function content_6156399e3fed27_59920413 (Smarty_Internal_Template $_smarty_tpl)
     <div class="col-9">
         <div class="form-group">
             <label>Precio</label>
-            <input name="precio" value="<?php echo $_smarty_tpl->tpl_vars['value_precio']->value;?>
-" type="number" min="0" class="form-control" required>
+            <input name="precio" value="<?php if ((isset($_smarty_tpl->tpl_vars['value_precio']->value))) {
+echo $_smarty_tpl->tpl_vars['value_precio']->value;
+}?>" type="number" min="0" class="form-control" required>
         </div>
     </div>
 </div>

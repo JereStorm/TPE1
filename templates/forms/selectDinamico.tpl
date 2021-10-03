@@ -3,7 +3,7 @@
     
     {foreach from=$types item=item}
 
-        {if ($value_tipo == $item->Tipo)}
+        {if isset($value_tipo) && ($value_tipo == $item->Tipo)}
             <option value="{$item->id}" selected="true">{$item->Tipo}</option>
         {else}
             <option value="{$item->id}">{$item->Tipo}</option>
