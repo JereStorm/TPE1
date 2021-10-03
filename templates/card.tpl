@@ -20,7 +20,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class="card-text">{*STOCK*}Stock: 15</h6>
                         <div class="btn-group">
-                            <a href="Details/{$item->id}" class="btn btn-sm btn-secondary">View</a>
+                            <a href="Details/{$item->id}" class="btn btn-sm btn-outline-secondary">View</a>
                         </div>
                     </div>
                     {*<small class="text-muted">9 mins PODRIA PINTAR DATA-TIME</small>*}

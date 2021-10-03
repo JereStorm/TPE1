@@ -25,8 +25,8 @@
                     {if $key == 'id'}{* ACA PODRIAMOS PREGUNTAR POR LA SESSION SI ESTA ACTIVA *}
                         <td scope="col" >
                             <div class="botonera">
-                                <a class="btn btn-danger btn-js"  href="del/{$URL}/{$value}">Borrar</a>
-                                <a class="btn btn-warning btn-js"  href="HomeEdit/{$URL}/{$value}">Editar</a>
+                                <a class="btn btn-outline-danger btn-js"  href="del/{$URL}/{$value}">Borrar</a>
+                                <a class="btn btn-outline-warning btn-js"  href="HomeEdit/{$URL}/{$value}">Editar</a>
                                {if $URL == 'Producto'}
                                 <a class="btn btn-outline-info btn-js"  href="Details/{$value}">Ver</a>
                                 {/if} 

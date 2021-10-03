@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-03 21:59:07
+/* Smarty version 3.1.39, created on 2021-10-04 00:00:26
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\card.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615a0b8b1f8ba4_24799169',
+  'unifunc' => 'content_615a27fadf2701_97679666',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '127ec27edf3e0acf4edee66b0aa8e21b9ed6211b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\card.tpl',
-      1 => 1633291144,
+      1 => 1633298423,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615a0b8b1f8ba4_24799169 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615a27fadf2701_97679666 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
     <?php
@@ -53,7 +53,7 @@ $</li>
                         <h6 class="card-text">Stock: 15</h6>
                         <div class="btn-group">
                             <a href="Details/<?php echo $_smarty_tpl->tpl_vars['item']->value->id;?>
-" class="btn btn-sm btn-secondary">View</a>
+" class="btn btn-sm btn-outline-secondary">View</a>
                         </div>
                     </div>
                                     </div>
