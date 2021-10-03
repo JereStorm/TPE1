@@ -20,7 +20,7 @@ class ProductsModel{
     // ---------- GET ONE
 
     function getOneProduct($id){
-        $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
+        $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
         $query->execute([$id]);
 
         return $product = $query->fetch(PDO::FETCH_OBJ); 
@@ -70,7 +70,7 @@ class ProductsModel{
     
     function filtrarProducts($tipo){
         // 2. Enviamos la consulta (2 sub pasos)
-        $query = $this->db->prepare('SELECT a.`nombre`, a.`precio_kg` AS `precio`, b.`tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`tipo_prod_fk` LIKE ?');
+        $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`Tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`tipo_prod_fk` LIKE ?');
         $query->execute([$tipo]);
 
         // 3. obtengo la respuesta de la DB

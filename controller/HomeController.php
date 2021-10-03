@@ -37,8 +37,14 @@ class HomeController{
 
     function showDetail($id){
         //FALTA CREAR LA VISTA DEL PRODUCTO
+        $product = $this -> ProductsModel -> getOneProduct($id);
+
+        if(empty($product)){
+            $this -> view -> renderError('Producto inexistente');
+            die();
+        }
         //OBTENER DEL MODELO EL PRODUCTO COMPLETO
-        $this->view->renderDetail();
+        $this->view->renderDetail($product);
     }
 
     function showFiltrado(){
