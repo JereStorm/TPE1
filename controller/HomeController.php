@@ -50,15 +50,10 @@ class HomeController{
 
         $tipo = $_REQUEST['tipo'];
         $filtradas = $this -> ProductsModel -> filtrarProducts($tipo);
-
-        if(empty($filtradas)){
-            $this -> view -> renderError('no se han encontrado resultados');
-            die();
-        }
         
         $types = $this -> TypeProdModel -> getAllTypes();
         
-        $this -> view -> renderFiltrado($filtradas, $types);
+        $this -> view -> renderHome($filtradas, $types);
         //falta terminar funcionalidad en el productsModel;
         //y llamar a render home con estos parametros
     }

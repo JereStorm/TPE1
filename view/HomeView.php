@@ -28,13 +28,6 @@ class HomeView{
         $this -> smarty -> display('templates/error.tpl');
     }
 
-    function renderFiltrado($filtrados, $types){
-        //RECIBO LOS filtrado Y LOS RENDERIZO
-        $this -> smarty -> assign('types', $types);
-        $this -> smarty -> assign('productos', $filtrados);
-        $this -> smarty -> display('templates/home.tpl');
-    }
-
     function renderDetail(){
         //RECIBO LOS DETALLES Y LOS RENDERIZO
         $this -> smarty -> display('templates/homeDetail.tpl');
