@@ -23,8 +23,13 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="Home" class="nav-link px-2 text-secondary">Home</a></li>
+<<<<<<< HEAD
           <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
           <li><a href="Home/Stock" class="nav-link px-2 text-white">Stock</a></li>
+=======
+          <li><a href="#" class="nav-link px-2 text-white">Stock</a></li>
+          <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
+>>>>>>> desarrollo2
           <li><a href="Home/TipoProducto" class="nav-link px-2 text-white">Tipo Productos</a></li>
         </ul>
 
@@ -33,7 +38,7 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <a type="button" href="Login" class="btn btn-outline-light me-2">Login</a>
           <button type="button" class="btn btn-warning">Sign-up</button>
         </div>
       </div>

@@ -95,13 +95,13 @@ class ProductsController{
             (!isset($_REQUEST['precio']) || empty($_REQUEST['precio'])) || 
             (!isset($_REQUEST['tipo']) || $_REQUEST['tipo'] == 'false') )
         {
-            $this -> view -> renderError('No se pudo agregar el producto por falta de parametros');
+            $this -> view -> renderError('No se pudo editar el producto por falta de parametros');
             die();
         }
 
         if(!isset($_REQUEST['id']) || empty($_REQUEST['id']))
         {
-            $this -> view -> renderError('No se pudo agregar el producto por falta de id');
+            $this -> view -> renderError('No se pudo editar el producto por falta de id');
             die();
         }
     

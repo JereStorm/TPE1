@@ -11,11 +11,7 @@ class TypeProdView{
     }
 
     function renderTypesProd($types){
-        $this -> smarty -> assign ('productos', $types);
-
-        $this -> smarty -> assign('value_tipo', '');
-        $this -> smarty -> assign('value_descripcion', '');
-        $this -> smarty -> assign('value_id', '');
+        $this -> smarty -> assign ('arreglo', $types);
 
         $this -> smarty -> assign('URL', 'TipoProducto');
 

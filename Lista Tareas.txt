@@ -1,0 +1,11 @@
+3) Crear la base de datos del Stock
+
+4) Crear La vista individual del producto
+
+5) Terminar de intergrar Stock
+
+6) Hacer el Login de la pagina
+
+-- color 1 css B70135 (RGB)
+-- color 2 css 018A53 (RGB)
+

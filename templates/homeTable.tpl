@@ -2,6 +2,9 @@
 
 {include file="forms/formAlta.tpl"}
 
-{include file="tabla.tpl"}
+{if $arreglo}
+    {include file="tabla.tpl"}
+{/if}
+
 
 {include file="html/footer.tpl"}
