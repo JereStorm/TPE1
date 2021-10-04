@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-03 23:57:25
+/* Smarty version 3.1.39, created on 2021-10-04 04:45:08
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\tabla.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615a2745644c47_55560785',
+  'unifunc' => 'content_615a6ab4ea8220_37251812',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '81021745824d4a4acb607c92e9a563d8693235d2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\tabla.tpl',
-      1 => 1633298241,
+      1 => 1633299853,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615a2745644c47_55560785 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615a6ab4ea8220_37251812 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <table class="table table-dark table-hover mt-5">
       <thead>
