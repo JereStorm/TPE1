@@ -52,6 +52,8 @@ switch($params[0]){
             $ProductsController -> delProduct($params[2]);
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> delTypeProd($params[2]);
+        }else if($params[1] == 'Stock'){
+            $StockController -> delStock($params[2]);
         }
     break;
     case 'HomeEdit':
@@ -59,6 +61,8 @@ switch($params[0]){
             $ProductsController -> showEditProduct($params[2]);
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> showEditTypeProd($params[2]);
+        }else if($params[1] == 'Stock'){
+            $StockController -> showEditStock($params[2]);
         }
     break;
     case 'edit':
@@ -66,6 +70,8 @@ switch($params[0]){
             $ProductsController -> editProduct();
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> editTypeProd();
+        }else if($params[1] == 'Stock'){
+            $StockController -> editStock();
         }
     break;
 }

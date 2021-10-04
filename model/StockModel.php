@@ -27,7 +27,7 @@ class StockModel{
     // ---------- GET ONE
 
     function getOneStockId($id){
-        $query = $this->db->prepare('SELECT * FROM stock WHERE producto_fk = ?');
+        $query = $this->db->prepare('SELECT * FROM stock WHERE id_stock = ?');
         $query->execute([$id]);
 
         return $product = $query->fetch(PDO::FETCH_OBJ); 
@@ -53,35 +53,30 @@ class StockModel{
 
         return $this->db->lastInsertId();
     }
-    /*
+
+    // ----------- VISADOS (SIEMPRE AL ULTIMO)
+
+    function visarIdStock($id){
+        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `stock` WHERE `id_stock` = ?');
+        $query->execute([$id]);
+        return $value = $query->fetch(PDO::FETCH_OBJ); ;
+    }
+    
 
     // -------- DELETES
 
-    function delProduct($id){
-        $query = $this->db->prepare('DELETE FROM `producto` WHERE producto.`id_prod` = ?');
+    function delStock($id){
+        $query = $this->db->prepare('DELETE FROM `stock` WHERE `id_stock` = ?');
         return $query->execute([$id]);
     }
-    
+
     // -------- UPDATES
 
-    function updateProduct($nombre, $precio, $tipo, $id){
+    function updateProduct($id, $cantidad){
         $query = $this->db->prepare(
-        'UPDATE producto a
-        INNER JOIN tipo_producto b 
-        ON `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`
-        SET `a`.`nombre` = ?, `a`.`precio_kg` =?, `a`.`tipo_prod_fk` =?
-        WHERE `a`.`id_prod` = ?');
+            'UPDATE `stock` SET `cantidad` = ? WHERE `id_stock` = ?');
         
-        return $query->execute([$nombre, $precio, $tipo, $id]);
+        return $query->execute([$cantidad, $id]);
     }
-    
-    // ----------- VISADOS (SIEMPRE AL ULTIMO)
-    
-    function visarIdProd($id){
-        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `producto` WHERE producto.`id_prod` = ?');
-        $query->execute([$id]);
 
-        return $value = $query->fetch(PDO::FETCH_OBJ); 
-    }
-    */
 }
