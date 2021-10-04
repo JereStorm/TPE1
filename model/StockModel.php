@@ -16,7 +16,7 @@ class StockModel{
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ); 
     }
-
+    // por que esta esta funcion
     function getAllStockId(){
         $query = $this->db->prepare('SELECT * FROM stock');
         $query->execute();
