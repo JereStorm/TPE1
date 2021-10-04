@@ -8,9 +8,9 @@
             {foreach from=$types item=item}
 
                 {if ($value_tipo == $item->id)}
-                    <option value="{$item->id}" selected="true">{$item->nombre}</option>
+                    <option value="{$item->id}" selected="true">{$item->Nombre}</option>
                 {else}
-                    <option value="{$item->id}">{$item->nombre}</option>
+                    <option value="{$item->id}">{$item->Nombre}</option>
                 {/if}
 
             {/foreach}
@@ -22,7 +22,7 @@
                {foreach from=$types item=item}
 
                 {if ($value_tipo == $item->id)}
-                    <option value="{$value_nombre}" selected="true">{$item->nombre}</option>
+                    <option value="{$value_nombre}" selected="true">{$item->Nombre}</option>
                 {/if}
 
             {/foreach}

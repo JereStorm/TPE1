@@ -1,15 +1,11 @@
 <!-- formulario de alta de tarea -->
 <form action="edit/{$URL}" method="POST" class="my-4">
-<input type="hidden" id="identificador" value="{$value_id}" name="id">
+<input type="hidden" id="identificador" value="{if isset($value_id)}{$value_id}{/if}" name="id">
     {if $URL == 'Producto'}
         {include file="forms/cuerpos/cuerpoProd.tpl"}
     {elseif $URL == 'TipoProducto'}
-<<<<<<< HEAD
-        {include file="forms/cuerpoType.tpl"}
-    {elseif $URL == 'Stock'}
-        {include file="forms/cuerpoStock.tpl"}
-=======
         {include file="forms/cuerpos/cuerpoType.tpl"}
->>>>>>> desarrollo2
+    {elseif $URL == 'Stock'}
+        {include file="forms/cuerpos/cuerpoStock.tpl"}
     {/if}
 </form>

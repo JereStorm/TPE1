@@ -19,7 +19,7 @@ class StockView{
         $this -> smarty -> assign('value_tipo', '');
         $this -> smarty -> assign('value_precio', '');
     
-        $this -> smarty -> assign('productos', $stock);
+        $this -> smarty -> assign('arreglo', $stock);
 
         $this -> smarty -> assign('URL', 'Stock');
 

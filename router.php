@@ -6,15 +6,12 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 require_once ('controller/ProductsController.php');
 // -----TIPOS PRODUCTOS
 require_once ('controller/TypeProdController.php');
-<<<<<<< HEAD
 // -----TIPOS PRODUCTOS
 require_once ('controller/StockController.php');
-=======
 // -----HOME
 require_once ('controller/HomeController.php');
 // -----LOGIN
 // require_once ('controller/LoginController.php');
->>>>>>> desarrollo2
 
 // defino la base url para la construccion de links con urls semánticas
 
@@ -62,13 +59,10 @@ switch($params[0]){
             $ProductsController -> delProduct($params[2]);
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> delTypeProd($params[2]);
-<<<<<<< HEAD
         }else if($params[1] == 'Stock'){
             $StockController -> delStock($params[2]);
-=======
         }else{
             header('Location:'. BASE_URL);
->>>>>>> desarrollo2
         }
     break;
     case 'HomeEdit':
@@ -78,13 +72,10 @@ switch($params[0]){
             $ProductsController -> showEditProduct($params[2]);
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> showEditTypeProd($params[2]);
-<<<<<<< HEAD
         }else if($params[1] == 'Stock'){
             $StockController -> showEditStock($params[2]);
-=======
         }else{
             header('Location:'. BASE_URL);
->>>>>>> desarrollo2
         }
     break;
     case 'edit':
@@ -94,10 +85,8 @@ switch($params[0]){
             $ProductsController -> editProduct();
         }else if($params[1] == 'TipoProducto'){
             $TypeProdController -> editTypeProd();
-<<<<<<< HEAD
         }else if($params[1] == 'Stock'){
             $StockController -> editStock();
-=======
         }else{
             header('Location:'. BASE_URL);
         }
@@ -107,7 +96,6 @@ switch($params[0]){
             $HomeController -> showError('No existen parametros');
         }else{
             $HomeController -> showDetail($params[1]);
->>>>>>> desarrollo2
         }
     break;
     case 'Filter':

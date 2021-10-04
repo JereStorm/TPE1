@@ -3,12 +3,9 @@
     {if $URL == 'Producto'}
         {include file="forms/cuerpos/cuerpoProd.tpl"}
     {elseif $URL == 'TipoProducto'}
-<<<<<<< HEAD
-        {include file="forms/cuerpoType.tpl"}
-    {elseif $URL == 'Stock'}
-        {include file="forms/cuerpoStock.tpl"}
-=======
         {include file="forms/cuerpos/cuerpoType.tpl"}
->>>>>>> desarrollo2
+    {elseif $URL == 'Stock'}
+        {include file="forms/cuerpos/cuerpoStock.tpl"}
+        {include file="forms/cuerpos/cuerpoType.tpl"}
     {/if}
 </form>
