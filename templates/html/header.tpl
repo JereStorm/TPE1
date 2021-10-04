@@ -23,8 +23,8 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="Home" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Stock</a></li>
+          <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
           <li><a href="Home/TipoProducto" class="nav-link px-2 text-white">Tipo Productos</a></li>
         </ul>
 
