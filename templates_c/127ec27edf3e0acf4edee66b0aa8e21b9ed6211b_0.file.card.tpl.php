@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-04 00:00:26
+/* Smarty version 3.1.39, created on 2021-10-05 20:20:00
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\card.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615a27fadf2701_97679666',
+  'unifunc' => 'content_615c9750b1ac13_02849403',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '127ec27edf3e0acf4edee66b0aa8e21b9ed6211b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\card.tpl',
-      1 => 1633298423,
+      1 => 1633457998,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615a27fadf2701_97679666 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615c9750b1ac13_02849403 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
     <?php
@@ -48,14 +48,30 @@ $</li>
 
                     
                 </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-text">Stock: 15</h6>
+                <?php if ($_smarty_tpl->tpl_vars['item']->value->stock == false) {?>
+                <div class="card-footer bg-danger">
+                
+                    <div class="d-flex justify-content-between  align-items-center">
+                        <h6 class="card-text">Stock: No Disponible</h6>
                         <div class="btn-group">
                             <a href="Details/<?php echo $_smarty_tpl->tpl_vars['item']->value->id;?>
-" class="btn btn-sm btn-outline-secondary">View</a>
+" class="btn btn-sm btn-outline-dark">View</a>
                         </div>
                     </div>
+                    <?php } else { ?>
+                <div class="card-footer bg-success">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="card-text">Stock: <?php echo $_smarty_tpl->tpl_vars['item']->value->stock;?>
+</h6>
+                        <div class="btn-group">
+                            <a href="Details/<?php echo $_smarty_tpl->tpl_vars['item']->value->id;?>
+" class="btn btn-sm btn-outline-dark">View</a>
+                        </div>
+                    </div>
+
+
+                <?php }?>
                                     </div>
             </div>
         </div>

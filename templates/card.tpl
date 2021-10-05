@@ -16,13 +16,27 @@
 
                     
                 </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-text">{*STOCK*}Stock: 15</h6>
+                {if $item->stock == false}
+                <div class="card-footer bg-danger">
+                
+                    <div class="d-flex justify-content-between  align-items-center">
+                        <h6 class="card-text">{*STOCK*}Stock: No Disponible</h6>
                         <div class="btn-group">
-                            <a href="Details/{$item->id}" class="btn btn-sm btn-outline-secondary">View</a>
+                            <a href="Details/{$item->id}" class="btn btn-sm btn-outline-dark">View</a>
                         </div>
                     </div>
+                    {else}
+                <div class="card-footer bg-success">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="card-text">{*STOCK*}Stock: {$item->stock}</h6>
+                        <div class="btn-group">
+                            <a href="Details/{$item->id}" class="btn btn-sm btn-outline-dark">View</a>
+                        </div>
+                    </div>
+
+
+                {/if}
                     {*<small class="text-muted">9 mins PODRIA PINTAR DATA-TIME</small>*}
                 </div>
             </div>
