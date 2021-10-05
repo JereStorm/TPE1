@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-09-30 04:27:56
+/* Smarty version 3.1.39, created on 2021-10-05 22:12:43
   from '/opt/lampp/htdocs/Web2/TPE1/templates/html/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615520ace1d925_11979794',
+  'unifunc' => 'content_615cb1bb2daa73_78392679',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba78e82afbb98dff0ae41b12b6413b856b648b40' => 
     array (
       0 => '/opt/lampp/htdocs/Web2/TPE1/templates/html/header.tpl',
-      1 => 1632968668,
+      1 => 1633464608,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615520ace1d925_11979794 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615cb1bb2daa73_78392679 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -48,8 +48,8 @@ function content_615520ace1d925_11979794 (Smarty_Internal_Template $_smarty_tpl)
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="Home" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
           <li><a href="Home/Stock" class="nav-link px-2 text-white">Stock</a></li>
+          <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
           <li><a href="Home/TipoProducto" class="nav-link px-2 text-white">Tipo Productos</a></li>
         </ul>
 
@@ -58,7 +58,7 @@ function content_615520ace1d925_11979794 (Smarty_Internal_Template $_smarty_tpl)
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <a type="button" href="Login" class="btn btn-outline-light me-2">Login</a>
           <button type="button" class="btn btn-warning">Sign-up</button>
         </div>
       </div>

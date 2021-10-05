@@ -81,7 +81,13 @@ class HomeController{
     function showDetail($id){
         //FALTA CREAR LA VISTA DEL PRODUCTO
         $product = $this -> ProductsModel -> getOneProduct($id);
-
+        $stock = $this -> StockModel ->getOneStockIdProd($product->id);
+        if ($stock->cantidad == NULL)
+            $product->stock = "Agotado";
+        else
+            $product->stock = $stock->cantidad;
+            
+        
         if(empty($product)){
             $this -> view -> renderError('Producto inexistente');
             die();
