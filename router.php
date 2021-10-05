@@ -98,6 +98,13 @@ switch($params[0]){
             $HomeController -> showDetail($params[1]);
         }
     break;
+    case 'Buy':
+        if(!isset($params[1])){   
+            $HomeController -> showError('No existen parametros');
+        }else{
+            $HomeController -> comprar($params[1]);
+        }
+    break;
     case 'Filter':
         $HomeController -> showFiltrado();
     break;

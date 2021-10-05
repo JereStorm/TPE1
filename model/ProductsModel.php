@@ -20,7 +20,7 @@ class ProductsModel{
     // ---------- GET ONE
 
     function getOneProduct($id){
-        $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
+        $query = $this->db->prepare('SELECT a.`nombre` AS `Nombre`, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
         $query->execute([$id]);
 
         return $product = $query->fetch(PDO::FETCH_OBJ); 

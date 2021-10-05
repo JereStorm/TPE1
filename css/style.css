@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 .stock{
     size: 50%;
 }
-=======
 .lista__item {
   display: flex;
   justify-content: space-between;
@@ -25,4 +23,7 @@
 .card {
   width: 350px;
 }
->>>>>>> desarrollo2
+.volver{
+  text-decoration: inherit;
+  color: rgb(9 ,33, 39);
+}

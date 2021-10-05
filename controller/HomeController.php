@@ -81,7 +81,7 @@ class HomeController{
     function showDetail($id){
         //FALTA CREAR LA VISTA DEL PRODUCTO
         $product = $this -> ProductsModel -> getOneProduct($id);
-        $stock = $this -> StockModel ->getOneStockIdProd($product->id);
+        $stock = $this -> StockModel -> getOneStockIdProd($product->id);
         if ($stock->cantidad == NULL)
             $product->stock = "Agotado";
         else
@@ -95,4 +95,17 @@ class HomeController{
         //OBTENER DEL MODELO EL PRODUCTO COMPLETO
         $this->view->renderDetail($product);
     }
+    function comprar($id){
+    $cantidad = $_REQUEST['cantidad'];
+    $stock_by_prod = $this -> StockModel -> getOneStockIdProd($id);
+    $cantidad_tot = $stock_by_prod->cantidad - $cantidad;
+    $this -> StockModel -> updateStock($stock_by_prod->id_stock, $cantidad_tot);
+    $producto = $this -> ProductsModel -> getOneProduct($id);
+    $this -> success($producto->Nombre, $cantidad);
+    }
+
+    function success($nombre, $cant){
+        $this -> view -> renderSuccess('Usted ha comprado '.$nombre.' por una cantidad de ('.$cant.')');
+    }
+    
 }

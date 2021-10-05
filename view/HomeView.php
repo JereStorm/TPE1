@@ -33,4 +33,8 @@ class HomeView{
         $this -> smarty -> assign('producto', $producto);
         $this -> smarty -> display('templates/homeDetail.tpl');
     }
+    function renderSuccess($texto){
+        $this -> smarty -> assign('texto', $texto);
+        $this -> smarty -> display('templates/success.tpl');
+    }
 }
