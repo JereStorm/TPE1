@@ -42,7 +42,7 @@ class HomeController{
         $this -> view -> renderHome($products, $types);
     }
 
-    private function cargarStockinProd($products){
+    private function cargarStockInProd($products){
         foreach($products as $item){
             $stockProd = $this -> StockModel -> getOneStockIdProd($item->id);
             
