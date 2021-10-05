@@ -78,4 +78,12 @@ class ProductsModel{
 
         return $filtradas;
     }
+    // ------------ HACE UN CONTEO DE LOS ELEMENTOS REFERENCIADOS
+
+    function contarReferencia($id){
+        $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `stock` WHERE stock.`producto_fk` = ?');
+        $query->execute([$id]);
+
+        return $value = $query->fetch(PDO::FETCH_OBJ); 
+    }
 }

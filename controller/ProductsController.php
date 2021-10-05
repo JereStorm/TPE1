@@ -81,9 +81,16 @@ class ProductsController{
             die();
         }
 
-       $execute = $this -> model -> delProduct($id);
+        $conteo = $this -> model -> contarReferencia($id);
 
-       header('Location:'. BASE_URL .'Home/Producto');
+        if(empty($conteo->val)){
+            $execute = $this -> model -> delProduct($id);
+            header('Location:'. BASE_URL .'Home/Producto');
+        }else{
+            $this -> view -> renderError('No puede borrar dado que hay STOCK asociado a este elemento... borre primero este e intente de nuevo');
+        }
+
+       
     }
     
     // ---------- EDIT

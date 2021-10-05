@@ -80,7 +80,7 @@ class TypeProdController{
             $this -> model -> delTypeProd($id);
             header('Location:'. BASE_URL .'Home/TipoProducto');
         }else{
-            $this -> view -> renderError('No se puede borrar dado que hay ('.$conteo->val.') elementos asociados a este item');
+            $this -> view -> renderError('No puede borrar dado que hay ('.$conteo->val.') elementos... borre primero estos e intente de nuevo');
         }
     }
 
