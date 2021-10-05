@@ -16,7 +16,7 @@
 <div class="d-flex justify-content-center mt-5">
     <form action="Buy/{$producto->id}" method="POST" class="w-50">
             
-        <h5 class="card-header text-center alert-success">
+        <h5 class="card-header text-center {$class_type}">
         {$producto->Nombre}
         </h5>
         
