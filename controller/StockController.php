@@ -26,6 +26,8 @@ class StockController{
 
         $this -> view -> renderStock($products, $stock);
     }
+    //---------- ADD
+
     function addStock(){
 
         // VALIDACION
@@ -39,9 +41,12 @@ class StockController{
         $producto_id = $_REQUEST['producto'];
         $cantidad = $_REQUEST['cantidad'];
         
-        //CONSULTA SI EL PRODUCTO EXISTE EN EL STOCK
-        $prod_unico = $this -> model -> getOneStockId($producto_id);
-        //var_dump($prod_unico);
+        //CONSULTA SI EL PRODUCTO EXISTE EN EL STOCK 
+        $prod_unico = $this -> model -> getOneStockIdProd($producto_id);
+
+        // var_dump($prod_unico);
+        // die();
+   
         if ($prod_unico!=false){
             $cantidad_tot = $prod_unico->cantidad + $cantidad;
             $this->model->updateStock($prod_unico->id_stock, $cantidad_tot);
@@ -51,6 +56,7 @@ class StockController{
             header('Location:'. BASE_URL .'Home/Stock');
         }
     }
+    
     //------------- DEL
 
     function delStock($id){
@@ -81,20 +87,20 @@ class StockController{
 
         $this -> view -> renderEditProduct($products, $product);
     }
-        // ---------- EDIT
+    // ---------- EDIT
 
-        function editStock(){
+    function editStock(){
 
-            //SETEO DE DATOS
-            $id = $_REQUEST['producto'];
-            $cantidad = $_REQUEST['cantidad'];
+        //SETEO DE DATOS
+        $id = $_REQUEST['producto'];
+        $cantidad = $_REQUEST['cantidad'];
 
-            //UPDATEO
-            $this -> model -> updateProduct($id, $cantidad);
-        
-            //RENDERIZADO
-            header('Location:'. BASE_URL .'Home/Stock');
-        }
+        //UPDATEO
+        $this -> model -> updateStock($id, $cantidad);
+    
+        //RENDERIZADO
+        header('Location:'. BASE_URL .'Home/Stock');
+    }
 /*
     //-------- ADD
 

@@ -6,6 +6,8 @@
         {include file="forms/cuerpos/cuerpoType.tpl"}
     {elseif $URL == 'Stock'}
         {include file="forms/cuerpos/cuerpoStock.tpl"}
-        {include file="forms/cuerpos/cuerpoType.tpl"}
     {/if}
+    
+<button type="submit" class="btn btn-primary mt-2">Guardar</button>
+
 </form>

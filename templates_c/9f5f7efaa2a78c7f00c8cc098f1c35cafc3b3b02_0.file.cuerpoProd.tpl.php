@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-03 04:38:40
+/* Smarty version 3.1.39, created on 2021-10-05 15:02:32
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\forms\cuerpos\cuerpoProd.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615917b0936210_55583856',
+  'unifunc' => 'content_615c4ce8098c10_18441638',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9f5f7efaa2a78c7f00c8cc098f1c35cafc3b3b02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\forms\\cuerpos\\cuerpoProd.tpl',
-      1 => 1633226906,
+      1 => 1633437450,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:forms/selectDinamico.tpl' => 1,
   ),
 ),false)) {
-function content_615917b0936210_55583856 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615c4ce8098c10_18441638 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
     <div class="col-9">
         <div class="form-group">
@@ -52,6 +52,5 @@ echo $_smarty_tpl->tpl_vars['value_precio']->value;
         </div>
     </div>
 </div>
-
-<button type="submit" class="btn btn-primary mt-2">Guardar</button><?php }
+<?php }
 }

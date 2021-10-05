@@ -16,18 +16,18 @@ class StockModel{
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ); 
     }
-    // por que esta esta funcion
-    function getAllStockId(){
-        $query = $this->db->prepare('SELECT * FROM stock');
-        $query->execute();
-
-        return $items = $query->fetchAll(PDO::FETCH_OBJ); 
-    }
 
     // ---------- GET ONE
 
     function getOneStockId($id){
         $query = $this->db->prepare('SELECT * FROM stock WHERE id_stock = ?');
+        $query->execute([$id]);
+
+        return $product = $query->fetch(PDO::FETCH_OBJ); 
+    }
+
+    function getOneStockIdProd($id){
+        $query = $this->db->prepare('SELECT * FROM stock WHERE producto_fk = ?');
         $query->execute([$id]);
 
         return $product = $query->fetch(PDO::FETCH_OBJ); 
@@ -69,14 +69,4 @@ class StockModel{
         $query = $this->db->prepare('DELETE FROM `stock` WHERE `id_stock` = ?');
         return $query->execute([$id]);
     }
-
-    // -------- UPDATES
-
-    function updateProduct($id, $cantidad){
-        $query = $this->db->prepare(
-            'UPDATE `stock` SET `cantidad` = ? WHERE `id_stock` = ?');
-        
-        return $query->execute([$cantidad, $id]);
-    }
-
 }

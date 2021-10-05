@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-03 05:28:14
+/* Smarty version 3.1.39, created on 2021-10-05 15:02:33
   from 'C:\xampp\htdocs\proyectos\WEB2\TPE\01tpe\templates\forms\cuerpos\cuerpoType.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6159234e2fbd23_13739470',
+  'unifunc' => 'content_615c4ce92c55d5_70463461',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a89f730f9afc513ff9a8b7c7a7f4355981640b09' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyectos\\WEB2\\TPE\\01tpe\\templates\\forms\\cuerpos\\cuerpoType.tpl',
-      1 => 1633231692,
+      1 => 1633437451,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6159234e2fbd23_13739470 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615c4ce92c55d5_70463461 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
     <div class="col-9">
         <div class="form-group">
@@ -43,6 +43,5 @@ echo $_smarty_tpl->tpl_vars['value_descripcion']->value;
         </div>
     </div>
 </div>
-
-<button type="submit" class="btn btn-primary mt-2">Guardar</button><?php }
+<?php }
 }

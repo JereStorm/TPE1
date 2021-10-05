@@ -8,4 +8,6 @@
     {elseif $URL == 'Stock'}
         {include file="forms/cuerpos/cuerpoStock.tpl"}
     {/if}
+    
+<button type="submit" class="btn btn-primary mt-2">Editar</button>
 </form>
