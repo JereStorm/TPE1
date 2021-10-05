@@ -18,12 +18,6 @@ class ProductsController{
         $this -> view = new ProductsView();
     }
 
-    //---------- SHOW
-
-    function showHome(){
-        $this -> view -> renderHome();
-    }
-
     function showProducts(){
         $types = $this -> TypeProdModel -> getAllTypes();
         $products = $this -> model -> getAllProducts();
