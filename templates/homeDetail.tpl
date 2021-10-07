@@ -34,7 +34,7 @@
     
         <div class="mt-5 d-flex justify-content-center">
                 <button type="{$type}" class="btn {$class_type} mr-5">Comprar</button>
-                <input class="form-control w-25 ms-5" name="cantidad" value="{$value_precio}" placeholder="Unidades" type="number" min="1" max="{$producto->stock}" {$active}>
+                <input class="form-control w-25 ms-5" name="cantidad" placeholder="Unidades" type="number" min="1" max="{$producto->stock}" {$active}>
                 {*<div class="btn alert-info mr-5 ms-5"><a href="Home" class="volver btn-js" >Volver</a></div>*}
                 <a href="Home" class="btn alert-info mr-5 ms-5 btn-outline-info volver" >Volver</a>
         </div>
