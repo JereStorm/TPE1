@@ -1,11 +1,15 @@
-.stock{
-    size: 50%;
+:root {
+  --fuenteHeading: "PT Sans", sans-serif;
+  --fuenteParrafos: "Open Sans", sans-serif;
+  --claro: #e1e1e1;
+  --primario: #784d3c;
+  --blanco: #ffffff;
+  --negro: #000000;
+  --font: ;
 }
-.lista__item {
-  display: flex;
-  justify-content: space-between;
+.stock {
+  size: 50%;
 }
-
 .botonera {
   display: flex;
   justify-content: center;
@@ -14,16 +18,6 @@
 .card-title {
   text-align: center;
 }
-.contenedor {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 .card {
   width: 350px;
-}
-.volver{
-  text-decoration: inherit;
-  color: rgb(9 ,33, 39);
 }
