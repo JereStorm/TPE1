@@ -1,5 +1,6 @@
 <?php
 
+// defino la base url para la construccion de links con urls semánticas
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 // -----PRODUCTOS
@@ -12,8 +13,6 @@ require_once ('controller/StockController.php');
 require_once ('controller/HomeController.php');
 // -----LOGIN
 // require_once ('controller/LoginController.php');
-
-// defino la base url para la construccion de links con urls semánticas
 
 if (!empty($_GET['action'])){
     $action = $_GET['action'];
