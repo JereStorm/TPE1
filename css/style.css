@@ -1,12 +1,3 @@
-:root {
-  --fuenteHeading: "PT Sans", sans-serif;
-  --fuenteParrafos: "Open Sans", sans-serif;
-  --claro: #e1e1e1;
-  --primario: #784d3c;
-  --blanco: #ffffff;
-  --negro: #000000;
-  --font: ;
-}
 .stock {
   size: 50%;
 }

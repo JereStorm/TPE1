@@ -2,11 +2,13 @@
 
 {if $producto->stock != "Agotado"}
     {$type = "submit"}
-    {$class_type = "alert-success"}
+    {$class_type = "alert-success btn-outline-success"}
+    {$class_type_title = "alert-success"}
     {$active = "required"}
 {else}
     {$type = "button"}
     {$class_type = "alert-secondary"}
+    {$class_type_title = "alert-secondary"}
     {$active = "disabled"}
 {/if}
 
@@ -16,7 +18,7 @@
 <div class="d-flex justify-content-center mt-5">
     <form action="Buy/{$producto->id}" method="POST" class="w-50">
             
-        <h5 class="card-header text-center {$class_type}">
+        <h5 class="card-header text-center {$class_type_title}">
         {$producto->Nombre}
         </h5>
         
@@ -32,8 +34,9 @@
     
         <div class="mt-5 d-flex justify-content-center">
                 <button type="{$type}" class="btn {$class_type} mr-5">Comprar</button>
-                <input class="form-control w-25 ms-5" name="cantidad" value="" placeholder="Unidades" type="number" min="1" max="{$producto->stock}" {$active}>
-                <div class="btn alert-info mr-5 ms-5"><a href="Home" class="volver" >Volver</a></div>
+                <input class="form-control w-25 ms-5" name="cantidad" placeholder="Unidades" type="number" min="1" max="{$producto->stock}" {$active}>
+                {*<div class="btn alert-info mr-5 ms-5"><a href="Home" class="volver btn-js" >Volver</a></div>*}
+                <a href="Home" class="btn alert-info mr-5 ms-5 btn-outline-info volver" >Volver</a>
         </div>
     
     </form>
