@@ -1,11 +1,12 @@
-.stock{
-    size: 50%;
+.stock {
+  size: 50%;
 }
-.lista__item {
-  display: flex;
-  justify-content: space-between;
+.primario {
+  background-color: #81b0ae;
 }
-
+.secundario {
+  background-color: #002927;
+}
 .botonera {
   display: flex;
   justify-content: center;
@@ -14,16 +15,10 @@
 .card-title {
   text-align: center;
 }
-.contenedor {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 .card {
   width: 350px;
 }
-.volver{
+.volver {
   text-decoration: inherit;
-  color: rgb(9 ,33, 39);
+  color: rgb(9, 33, 39);
 }

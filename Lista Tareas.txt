@@ -7,4 +7,9 @@
 -- color 1 css B70135 (RGB)
 -- color 2 css 018A53 (RGB)
 
+-- color 3 css 93D9D9 (RGB)
+-- color 4 css A20000 (RGB)
+
+
+
 7) Agregar validacion delete producto

@@ -8,6 +8,6 @@
         {include file="forms/cuerpos/cuerpoStock.tpl"}
     {/if}
     
-<button type="submit" class="btn btn-primary mt-2">Guardar</button>
+<button type="submit" class="btn btn-primary mt-2">Agregar</button>
 
 </form>

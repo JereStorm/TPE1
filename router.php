@@ -43,6 +43,7 @@ switch($params[0]){
         }
     break;
     case 'add':
+        //ACA VERIFICAR
         if($params[1] == 'Producto'){
             $ProductsController -> addProduct();
         }else if($params[1] == 'TipoProducto'){

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<header class="p-3 bg-dark text-white">
+<header class="p-3 text-white secundario">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -34,7 +34,7 @@
 
         <div class="text-end">
           <a type="button" href="Login" class="btn btn-outline-light me-2">Login</a>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+          <button type="button" class="btn primario">Sign-up</button>
         </div>
       </div>
     </div>
