@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-05 22:12:43
+/* Smarty version 3.1.39, created on 2021-10-07 22:41:15
   from '/opt/lampp/htdocs/Web2/TPE1/templates/html/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_615cb1bb2daa73_78392679',
+  'unifunc' => 'content_615f5b6bc5e725_10492764',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba78e82afbb98dff0ae41b12b6413b856b648b40' => 
     array (
       0 => '/opt/lampp/htdocs/Web2/TPE1/templates/html/header.tpl',
-      1 => 1633464608,
+      1 => 1633638615,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_615cb1bb2daa73_78392679 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615f5b6bc5e725_10492764 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -39,7 +39,7 @@ function content_615cb1bb2daa73_78392679 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 
 <body>
-<header class="p-3 bg-dark text-white">
+<header class="p-3 text-white bg-dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -59,7 +59,7 @@ function content_615cb1bb2daa73_78392679 (Smarty_Internal_Template $_smarty_tpl)
 
         <div class="text-end">
           <a type="button" href="Login" class="btn btn-outline-light me-2">Login</a>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+          <button type="button" class="btn btn-primary">Sign-up</button>
         </div>
       </div>
     </div>
