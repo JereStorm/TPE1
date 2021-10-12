@@ -1,4 +1,6 @@
 <?php
+// HELPER
+require_once 'helpers/LoginHelper.php';
 
 // EXTERNOS
 require_once 'model/ProductsModel.php';
@@ -16,6 +18,8 @@ class HomeController
     private $ProductsModel;
     private $TypeProdModel;
     private $StockModel;
+    private $LoginHelper;
+
 
     // INTERNOS
     private $view;
@@ -26,8 +30,7 @@ class HomeController
         $this->TypeProdModel = new TypeProdModel();
         $this->ProductsModel = new ProductsModel();
         $this->StockModel = new StockModel();
-
-        //INTERNOS
+        $this->LoginHelper = new LoginHelper();
         $this->view = new HomeView();
     }
 

@@ -16,15 +16,17 @@ class LoginHelper
         $_SESSION['USER_EMAIL'] = $user->email;
     }
 
-    // public function checkLoggedIn() {
-    //     if (empty($_SESSION['USER_ID'])) {
-    //         header("Location: ");
-    //         die();
-    //     }
-    // }
+    public function checkLoggedIn()
+    {
+        if (empty($_SESSION['USER_ID'])) {
+            header("Location: " . BASE_URL);
+            die();
+        }
+    }
 
-    // function logout() {
-    //     session_destroy();
-    //     header("Location: " . BASE_URL);
-    // } 
+    function logout()
+    {
+        session_destroy();
+        header("Location: " . BASE_URL);
+    }
 }
