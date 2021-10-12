@@ -33,8 +33,17 @@
         </form>
 
         <div class="text-end">
-          <a type="button" href="Login" class="btn btn-outline-light me-2">Login</a>
+          {if isset($smarty.session.USER_ID)}
+          <!-- $_SESSION['USER_ID'] -->
+          <div class="d-flex align-items-baseline flex-wrap ">
+            <h6>({$smarty.session.USER_EMAIL})</h6>
+            <a href="Logout" class="btn btn-outline-light me-2 ms-2">Cerrar Sesion</a>
+          </div>
+
+          {else}
+          <a href="Login" class="btn btn-light me-2">Ingresar</a>
           <button type="button" class="btn btn-primary">Sign-up</button>
+          {/if}
         </div>
       </div>
     </div>

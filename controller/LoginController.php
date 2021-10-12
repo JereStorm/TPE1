@@ -41,14 +41,14 @@ class LoginController
                 header("Location: " . BASE_URL);
             } else {
                 $this->view->renderLogin("Usuario o contraseña inválida");
-            } 
+            }
         } else {
             $this->view->renderLogin("Usuario o contraseña vacios");
         }
     }
 
-    // public function logout()
-    // {
-    //     $this->LoginHelper->logout();
-    // }
+    public function logout()
+    {
+        $this->LoginHelper->logout();
+    }
 }

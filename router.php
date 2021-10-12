@@ -115,8 +115,8 @@ switch ($params[0]) {
         $LoginController = new LoginController();
         $LoginController->login();
         break;
-        // case 'Logout':
-        //     $LoginController = new LoginController();
-        //     $LoginController->logout();
-        //     break;
+    case 'Logout':
+        $LoginController = new LoginController();
+        $LoginController->logout();
+        break;
 }
