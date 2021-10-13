@@ -92,7 +92,7 @@ class HomeController
         $product = $this->ProductsModel->getOneProduct($id);
         $stock = $this->StockModel->getOneStockIdProd($product->id);
 
-        if ($stock->cantidad == NULL || $stock->cantidad == 0) {
+        if ($stock == false || $stock->cantidad == NULL || $stock->cantidad == 0) {
             $product->stock = "Agotado";
         } else {
             $product->stock = $stock->cantidad;
