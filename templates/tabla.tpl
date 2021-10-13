@@ -33,8 +33,6 @@
                             </div>
                         </td>
                     {else if $key !== 'id'}
-                        
-                   
                         <td scope="col">{$value}</td>
                     {/if}
                     

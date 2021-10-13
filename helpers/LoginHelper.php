@@ -19,7 +19,7 @@ class LoginHelper
     public function checkLoggedIn()
     {
         if (empty($_SESSION['USER_ID'])) {
-            header("Location: " . BASE_URL);
+            header("Location: " . BASE_URL . 'Login');
             die();
         }
     }
