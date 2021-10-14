@@ -107,6 +107,8 @@ class HomeController
     }
     function comprar($id)
     {
+        $this->LoginHelper->checkLoggedIn();
+
         $cantidad = $_REQUEST['cantidad'];
         $stock_by_prod = $this->StockModel->getOneStockIdProd($id);
         $cantidad_tot = $stock_by_prod->cantidad - $cantidad;
@@ -117,6 +119,8 @@ class HomeController
 
     function success($nombre, $cant)
     {
+        $this->LoginHelper->checkLoggedIn();
+
         $this->view->renderSuccess('Usted ha comprado ' . $nombre . ' por una cantidad de (' . $cant . ')');
     }
 }

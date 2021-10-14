@@ -33,7 +33,7 @@
                             </div>
                         </td>
                     {else if $key !== 'id'}
-                        <td scope="col">{$value}</td>
+                        <td scope="col">{$value|truncate:20}</td>
                     {/if}
                     
                 {/foreach}

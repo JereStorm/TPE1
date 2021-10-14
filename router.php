@@ -26,6 +26,7 @@ $HomeController = new HomeController();
 $ProductsController = new ProductsController();
 $TypeProdController = new TypeProdController();
 $StockController = new StockController();
+$LoginController = new LoginController();
 
 switch ($params[0]) {
     case 'Home':
@@ -42,7 +43,9 @@ switch ($params[0]) {
         }
         break;
     case 'add':
-        //ACA VERIFICAR
+        if (!isset($params[1]) || empty($params[1])) {
+            $HomeController->showError('No existen parametros');
+        }
         if ($params[1] == 'Producto') {
             $ProductsController->addProduct();
         } else if ($params[1] == 'TipoProducto') {
@@ -53,7 +56,6 @@ switch ($params[0]) {
         break;
     case 'del':
         if (!isset($params[1]) || !isset($params[2])) {
-            $HomeController->showError('No existen parametros');
         } else if ($params[1] == 'Producto') {
             $ProductsController->delProduct($params[2]);
         } else if ($params[1] == 'TipoProducto') {
@@ -65,7 +67,10 @@ switch ($params[0]) {
         }
         break;
     case 'HomeEdit':
-        if (!isset($params[1])  || !isset($params[2])) {
+        if (
+            !isset($params[1]) || empty($params[1])  ||
+            !isset($params[2]) || empty($params[2])
+        ) {
             $HomeController->showError('No existen parametros');
         } else if ($params[1] == 'Producto') {
             $ProductsController->showEditProduct($params[2]);
@@ -78,7 +83,7 @@ switch ($params[0]) {
         }
         break;
     case 'edit':
-        if (!isset($params[1])) {
+        if (!isset($params[1]) || empty($params[1])) {
             $HomeController->showError('No existen parametros');
         } else if ($params[1] == 'Producto') {
             $ProductsController->editProduct();
@@ -91,14 +96,14 @@ switch ($params[0]) {
         }
         break;
     case 'Details':
-        if (!isset($params[1])) {
+        if (!isset($params[1]) || empty($params[1])) {
             $HomeController->showError('No existen parametros');
         } else {
             $HomeController->showDetail($params[1]);
         }
         break;
     case 'Buy':
-        if (!isset($params[1])) {
+        if (!isset($params[1]) || empty($params[1])) {
             $HomeController->showError('No existen parametros');
         } else {
             $HomeController->comprar($params[1]);
@@ -108,15 +113,12 @@ switch ($params[0]) {
         $HomeController->showFiltrado();
         break;
     case 'Login':
-        $LoginController = new LoginController();
         $LoginController->showLogin();
         break;
     case 'Verify':
-        $LoginController = new LoginController();
         $LoginController->login();
         break;
     case 'Logout':
-        $LoginController = new LoginController();
         $LoginController->logout();
         break;
 }
