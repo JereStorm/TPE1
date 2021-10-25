@@ -4,6 +4,7 @@
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 define('ADMIN', 1);
 define('USER', 3);
+define('CLIENT', 5);
 
 // -----PRODUCTOS
 require_once('controller/ProductsController.php');
@@ -133,5 +134,11 @@ switch ($params[0]) {
         break;
     case 'Logout':
         $LoginController->logout();
+        break;
+    case 'SignUp':
+        $LoginController->showSignUp();
+        break;
+    case 'VerifySignUp':
+        $LoginController->SignUp();
         break;
 }

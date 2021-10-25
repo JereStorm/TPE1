@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-25 15:27:26
+/* Smarty version 3.1.39, created on 2021-10-25 17:44:39
   from '/opt/lampp/htdocs/Web2/TPE1/templates/tabla.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6176b0bebbf894_53182266',
+  'unifunc' => 'content_6176d0e76217f5_20934349',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8221da266ca9c54c6f84d2844a202fc072941af' => 
     array (
       0 => '/opt/lampp/htdocs/Web2/TPE1/templates/tabla.tpl',
-      1 => 1635168445,
+      1 => 1635176677,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6176b0bebbf894_53182266 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6176d0e76217f5_20934349 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/opt/lampp/htdocs/Web2/TPE1/libs/plugins/modifier.truncate.php','function'=>'smarty_modifier_truncate',),));
 ?>
 
@@ -36,7 +36,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['indice']->value 
 $_smarty_tpl->tpl_vars['item']->do_else = false;
 ?>
                             
-                <?php if ($_smarty_tpl->tpl_vars['indice']->value == 'id' && (isset($_SESSION['USER_ID'])) && $_SESSION['USER_ROL'] == ADMIN) {?>
+                <?php if ($_smarty_tpl->tpl_vars['indice']->value == 'id' && (isset($_SESSION['USER_ID'])) && $_SESSION['USER_ROL'] <= USER) {?>
                     <th>Acciones</td>
                 <?php } elseif ($_smarty_tpl->tpl_vars['indice']->value != 'id') {?>
                     <th><?php echo $_smarty_tpl->tpl_vars['indice']->value;?>
@@ -66,7 +66,7 @@ $_smarty_tpl->tpl_vars['value']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['value']->value) {
 $_smarty_tpl->tpl_vars['value']->do_else = false;
 ?>
-                    <?php if ($_smarty_tpl->tpl_vars['key']->value == 'id' && (isset($_SESSION['USER_ROL'])) && $_SESSION['USER_ROL'] == ADMIN) {?>                        <td scope="col" >
+                    <?php if ($_smarty_tpl->tpl_vars['key']->value == 'id' && (isset($_SESSION['USER_ROL'])) && $_SESSION['USER_ROL'] <= USER) {?>                        <td scope="col" >
                             <div class="botonera">
                                 <a class="btn btn-outline-danger btn-js"  href="del/<?php echo $_smarty_tpl->tpl_vars['URL']->value;?>
 /<?php echo $_smarty_tpl->tpl_vars['value']->value;?>

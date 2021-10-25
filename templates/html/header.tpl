@@ -45,7 +45,8 @@
 
           {else}
           <a href="Login" class="btn btn-light me-2">Ingresar</a>
-          <button type="button" class="btn btn-primary">Sign-up</button>
+          <a href="SignUp" class="btn btn-primary">Sign-up</a>
+          <!--   <button type="button" class="btn btn-primary">Sign-up</button> -->
           {/if}
         </div>
       </div>

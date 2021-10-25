@@ -13,6 +13,13 @@ class LoginView{
     }
 
     function renderLogin($error = null){
+        $this->smarty->assign('rute', 'logIn');
+        $this->smarty->assign('error', $error);
+        $this->smarty->display('templates/login.tpl');
+    }
+    
+    function renderSignUp($error = null){
+        $this->smarty->assign('rute', 'signUp');
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/login.tpl');
     }

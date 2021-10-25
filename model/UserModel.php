@@ -16,4 +16,15 @@ class UserModel
         $user = $query->fetch(PDO::FETCH_OBJ);
         return $user;
     }
+    public function SignUp($email,$pass)
+    {   //---- HASH DE PASSWORD
+        $hash = password_hash($pass,PASSWORD_BCRYPT);
+
+        //---- INSERT USER EN LA DB
+        $query = $this->db->prepare('INSERT INTO usuario (email, password, rol) VALUES ( ?, ?, ?)');
+        $query -> execute([$email, $hash, 5]);
+
+        // 3. Obtengo y devuelo el ID nuevo
+        return $this->db->lastInsertId();
+    }
 }

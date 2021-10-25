@@ -51,4 +51,28 @@ class LoginController
     {
         $this->LoginHelper->logout();
     }
+
+    public function showSignUp()
+    {
+        $this->view->renderSignUp();
+    }
+    function SignUp()
+    {
+        if (!empty($_POST['email']) && !empty($_POST['password'])  && !empty($_POST['re-password'])) {
+
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $rePassword = $_POST['re-password'];
+
+            // si las contraseñas coinciden se crea usuario
+            if ($password == $rePassword) {
+                $this->model->SignUp($email,$password);
+                header("Location: " . BASE_URL);
+            } else {
+                $this->view->renderSignUp("Error: las contraseñas no coinciden");
+            }
+        } else {
+            $this->view->renderSignUp("campos vacíos");
+        }
+    }
 }

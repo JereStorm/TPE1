@@ -16,7 +16,7 @@ class AdminController
         $this->model = new AdminModel();
         $this->view = new AdminView();
         $this->LoginHelper = new LoginHelper();
-        $this->LoginHelper->checkLoggedIn(1);
+        $this->LoginHelper->checkLoggedIn(ADMIN);
     }
 
     function showAdmin()
