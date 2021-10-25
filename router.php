@@ -2,6 +2,8 @@
 
 // defino la base url para la construccion de links con urls semánticas
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
+define('ADMIN', 1);
+define('USER', 3);
 
 // -----PRODUCTOS
 require_once('controller/ProductsController.php');
@@ -29,6 +31,7 @@ $ProductsController = new ProductsController();
 $TypeProdController = new TypeProdController();
 $StockController = new StockController();
 //$AdminController = new AdminController();
+$LoginController = new LoginController();
 
 
 
@@ -71,7 +74,6 @@ switch ($params[0]) {
         } else if ($params[1] == 'Stock') {
             $StockController->delStock($params[2]);
         } else if ($params[1] == 'Admin') {
-            $LoginController = new LoginController();
             $AdminController->delUser($params[2]);
         } else {
             header('Location:' . BASE_URL);

@@ -9,7 +9,6 @@ require_once 'model/TypeProdModel.php';
 
 class ProductsController
 {
-
     private $TypeProdModel;
     private $model;
     private $view;

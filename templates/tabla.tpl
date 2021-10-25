@@ -6,7 +6,7 @@
        
             {foreach from=$arreglo[0] item=item key=indice }
                             
-                {if $indice == 'id' && isset($smarty.session.USER_ID)}
+                {if $indice == 'id' && isset($smarty.session.USER_ID) && $smarty.session.USER_ROL==ADMIN}
                     <th>Acciones</td>
                 {else if $indice != 'id'}
                     <th>{$indice}</th>
@@ -22,7 +22,7 @@
                 <th>{$indice}</th>
 
                 {foreach from=$item item=value key=key}
-                    {if $key == 'id' && isset($smarty.session.USER_ID)}{* ACA PODRIAMOS PREGUNTAR POR LA SESSION SI ESTA ACTIVA *}
+                    {if $key == 'id' && isset($smarty.session.USER_ROL) && $smarty.session.USER_ROL==ADMIN}{* ACA PODRIAMOS PREGUNTAR POR LA SESSION SI ESTA ACTIVA *}
                         <td scope="col" >
                             <div class="botonera">
                                 <a class="btn btn-outline-danger btn-js"  href="del/{$URL}/{$value}">Borrar</a>
