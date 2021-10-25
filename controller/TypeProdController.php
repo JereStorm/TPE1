@@ -49,7 +49,7 @@ class TypeProdController
 
     function addTypeProd()
     {
-        $this->LoginHelper->checkLoggedIn();
+        $this->LoginHelper->checkLoggedIn(3);
 
         // VALIDACION
         if ((!isset($_REQUEST['tipo']) || empty($_REQUEST['tipo'])) ||
@@ -74,7 +74,7 @@ class TypeProdController
 
     function delTypeProd($id)
     {
-        $this->LoginHelper->checkLoggedIn();
+        $this->LoginHelper->checkLoggedIn(3);
 
         //VALIDACION
         $verificado = $this->model->visarIdTypeProd($id);
@@ -98,7 +98,7 @@ class TypeProdController
 
     function editTypeProd()
     {
-        $this->LoginHelper->checkLoggedIn();
+        $this->LoginHelper->checkLoggedIn(3);
 
         // VALIDACION
         if ((!isset($_REQUEST['tipo']) || empty($_REQUEST['tipo'])) ||

@@ -11,7 +11,7 @@ class UserModel
 
     function getUser($email)
     {
-        $query = $this->db->prepare('SELECT email, `password`, id_user AS id FROM usuario WHERE email = ?');
+        $query = $this->db->prepare('SELECT email, password, rol, id_user AS id FROM usuario WHERE email = ?');
         $query->execute([$email]);
         $user = $query->fetch(PDO::FETCH_OBJ);
         return $user;

@@ -13,6 +13,8 @@ require_once('controller/StockController.php');
 require_once('controller/HomeController.php');
 // -----LOGIN
 require_once('controller/LoginController.php');
+// -----ADMIN
+require_once('controller/AdminController.php');
 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -26,7 +28,9 @@ $HomeController = new HomeController();
 $ProductsController = new ProductsController();
 $TypeProdController = new TypeProdController();
 $StockController = new StockController();
-$LoginController = new LoginController();
+//$AdminController = new AdminController();
+
+
 
 switch ($params[0]) {
     case 'Home':
@@ -39,6 +43,10 @@ switch ($params[0]) {
                 $TypeProdController->showTypeProd();
             } else if ($params[1] == 'Stock') {
                 $StockController->showStock();
+            } else if ($params[1] == 'Admin') {
+                //$LoginController = new LoginController();
+                $AdminController = new AdminController();
+                $AdminController->showAdmin();
             }
         }
         break;
@@ -62,6 +70,9 @@ switch ($params[0]) {
             $TypeProdController->delTypeProd($params[2]);
         } else if ($params[1] == 'Stock') {
             $StockController->delStock($params[2]);
+        } else if ($params[1] == 'Admin') {
+            $LoginController = new LoginController();
+            $AdminController->delUser($params[2]);
         } else {
             header('Location:' . BASE_URL);
         }

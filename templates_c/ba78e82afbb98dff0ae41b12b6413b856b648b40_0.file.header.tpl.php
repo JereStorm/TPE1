@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-12 16:16:52
+/* Smarty version 3.1.39, created on 2021-10-24 19:55:24
   from '/opt/lampp/htdocs/Web2/TPE1/templates/html/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_616598d44e36e9_21868057',
+  'unifunc' => 'content_61759e0cabbd18_38071626',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba78e82afbb98dff0ae41b12b6413b856b648b40' => 
     array (
       0 => '/opt/lampp/htdocs/Web2/TPE1/templates/html/header.tpl',
-      1 => 1634048158,
+      1 => 1635098123,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_616598d44e36e9_21868057 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61759e0cabbd18_38071626 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 
@@ -51,15 +51,25 @@ function content_616598d44e36e9_21868057 (Smarty_Internal_Template $_smarty_tpl)
           <li><a href="Home/Stock" class="nav-link px-2 text-white">Stock</a></li>
           <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
           <li><a href="Home/TipoProducto" class="nav-link px-2 text-white">Tipo Productos</a></li>
+          <?php if ((isset($_SESSION['USER_ROL'])) && $_SESSION['USER_ROL'] == 1) {?>
+            <!-- SE VERIFICA QUE EL USUARIO SEA ADMINISTRADOR -->
+            <li><a href="Home/Admin" class="nav-link px-2 text-white">Panel de Adminstrador</a></li>
+          <?php }?>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        </form>
-
         <div class="text-end">
-          <a type="button" href="Login" class="btn btn-outline-light me-2">Login</a>
+          <?php if ((isset($_SESSION['USER_ID']))) {?>
+          <!-- $_SESSION['USER_ID'] -->
+          <div class="d-flex align-items-baseline flex-wrap ">
+            <h6>(<?php echo $_SESSION['USER_EMAIL'];?>
+)</h6>
+            <a href="Logout" class="btn btn-outline-light me-2 ms-2">Cerrar Sesion</a>
+          </div>
+
+          <?php } else { ?>
+          <a href="Login" class="btn btn-light me-2">Ingresar</a>
           <button type="button" class="btn btn-primary">Sign-up</button>
+          <?php }?>
         </div>
       </div>
     </div>

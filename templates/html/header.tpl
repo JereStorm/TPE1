@@ -26,11 +26,11 @@
           <li><a href="Home/Stock" class="nav-link px-2 text-white">Stock</a></li>
           <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
           <li><a href="Home/TipoProducto" class="nav-link px-2 text-white">Tipo Productos</a></li>
+          {if isset($smarty.session.USER_ROL) && $smarty.session.USER_ROL==1}
+            <!-- SE VERIFICA QUE EL USUARIO SEA ADMINISTRADOR -->
+            <li><a href="Home/Admin" class="nav-link px-2 text-white">Panel de Adminstrador</a></li>
+          {/if}
         </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        </form>
 
         <div class="text-end">
           {if isset($smarty.session.USER_ID)}

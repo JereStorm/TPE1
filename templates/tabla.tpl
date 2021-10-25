@@ -8,7 +8,7 @@
                             
                 {if $indice == 'id' && isset($smarty.session.USER_ID)}
                     <th>Acciones</td>
-                {else if $indice !== 'id'}
+                {else if $indice != 'id'}
                     <th>{$indice}</th>
                 {/if}
                 

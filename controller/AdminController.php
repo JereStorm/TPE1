@@ -2,54 +2,47 @@
 // -------- HELPER
 require_once 'helpers/LoginHelper.php';
 // -------- PRODUCTOS
-require_once 'view/ProductsView.php';
-require_once 'model/ProductsModel.php';
-// -------- TIPOS PRODUCTOS
-require_once 'model/TypeProdModel.php';
+require_once 'view/AdminView.php';
+require_once 'model/AdminModel.php';
 
-class ProductsController
+class AdminController
 {
-
-    private $TypeProdModel;
     private $model;
     private $view;
     private $LoginHelper;
 
     public function __construct()
     {
-        $this->TypeProdModel = new TypeProdModel();
-        $this->model = new ProductsModel();
-        $this->view = new ProductsView();
+        $this->model = new AdminModel();
+        $this->view = new AdminView();
         $this->LoginHelper = new LoginHelper();
+        $this->LoginHelper->checkLoggedIn(1);
     }
 
-    function showProducts()
+    function showAdmin()
     {
-        $types = $this->TypeProdModel->getAllTypes();
-        $products = $this->model->getAllProducts();
-
-        $this->view->renderProducts($products, $types);
+        $users = $this->model->getAll();
+        $this->view->renderUsers($users);
     }
 
-    function showEditProduct($id)
+    function showEditUser($id)
     {
-        $verificado = $this->model->visarIdProd($id);
-
+        //$this->LoginHelper->checkLoggedIn(1);
+    
+        $verificado = $this->model->visarIdUser($id);
         if (empty($verificado->val)) {
             $this->view->renderError('identificador erroneo');
             die();
         }
-
-        $product = $this->model->getOneProduct($id);
-        $types = $this->TypeProdModel->getAllTypes();
-        $this->view->renderEditProduct($product, $types);
+        $user = $this->model->getOne($id);
+        $this->view->renderEditUser($user);
     }
 
     //-------- ADD
-
+/*
     function addProduct()
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn();
 
         // VALIDACION
         if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) ||
@@ -70,43 +63,32 @@ class ProductsController
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/Producto');
-    }
+    }*/
 
     //------------- DEL
 
-    function delProduct($id)
+    function delUser($id)
     {
-        $this->LoginHelper->checkLoggedIn(3);
-
         //VALIDACION
-        $verificado = $this->model->visarIdProd($id);
-
+        $verificado = $this->model->visarIdUser($id);
+        //var_dump($verificado);
+        //die();
         if (empty($verificado->val)) {
             $this->view->renderError('identificador erroneo');
             die();
         }
-
-        $conteo = $this->model->contarReferencia($id);
-
-        if (empty($conteo->val)) {
-            $execute = $this->model->delProduct($id);
-            header('Location:' . BASE_URL . 'Home/Producto');
-        } else {
-            $this->view->renderError('No puede borrar dado que hay STOCK asociado a este elemento... borre primero este e intente de nuevo');
-        }
+        $execute = $this->model->delUser($id);
+        header('Location:' . BASE_URL . 'Home/Admin');
+        
     }
 
     // ---------- EDIT
 
-    function editProduct()
+    function editUser()
     {
-        $this->LoginHelper->checkLoggedIn(3);
-
         // VALIDACION
-        if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) ||
-            (!isset($_REQUEST['precio']) || empty($_REQUEST['precio'])) ||
-            (!isset($_REQUEST['tipo']) || $_REQUEST['tipo'] == 'false')
-        ) {
+        if ( !isset($_REQUEST['email']) || empty($_REQUEST['password']) ) 
+        {
             $this->view->renderError('No se pudo editar el producto por falta de parametros');
             die();
         }
