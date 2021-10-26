@@ -13,7 +13,7 @@ class apiProductsController{
         $this->data = file_get_contents("php://input");
     }
 
-    public function getAll($params = NULL){
+    public function getAll(){
         $products = $this->model->getAllProducts();
         $this->view->response($products, 200);
     }
