@@ -7,7 +7,7 @@ class ApiView{
     }
 
     public function requesStatus($code){
-        $sataus = array(
+        $status = array(
             100 => "Continue",
             101 => "Switching Protocol",
             102 => "Processing",
@@ -70,5 +70,6 @@ class ApiView{
             510 => "Not Extended",
             511 => "Network Authentication Required"
         );
+        return (isset($status[$code]))? $status[$code] : $status[500];
     }
 }

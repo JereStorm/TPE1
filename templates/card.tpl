@@ -10,7 +10,7 @@
                     </h5>
                     
                     <ul>
-                        <li class="card-text">{*PRECIO POR UNIDAD*}Precio {$item->Precio}$</li>
+                        <li class="card-text">{*PRECIO POR UNIDAD*}Precio: $ {$item->Precio}</li>
                         <li class="card-text">{*CATEGORIA/MARCA*}Tipo: {$item->Tipo}</li>
                     </ul>
 

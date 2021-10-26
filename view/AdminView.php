@@ -16,6 +16,7 @@ class AdminView{
         //$this -> smarty -> assign('types');
         $this -> smarty -> assign('arreglo', $users);
         $this -> smarty -> assign('URL', 'Admin');
+        $this -> smarty -> assign('userSegment', true);
         $this -> smarty -> display('templates/homeTable.tpl');
     }
 

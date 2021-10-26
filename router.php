@@ -34,8 +34,6 @@ $StockController = new StockController();
 //$AdminController = new AdminController();
 $LoginController = new LoginController();
 
-
-
 switch ($params[0]) {
     case 'Home':
         if (!isset($params[1])) {
@@ -48,14 +46,17 @@ switch ($params[0]) {
             } else if ($params[1] == 'Stock') {
                 $StockController->showStock();
             } else if ($params[1] == 'Admin') {
-                //$LoginController = new LoginController();
+                $LoginController = new LoginController();
                 $AdminController = new AdminController();
                 $AdminController->showAdmin();
+            } else {
+                $HomeController->showError('Error: ruta incorrecta');
             }
         }
         break;
     case 'add':
-        if (!isset($params[1]) || empty($params[1])) {
+        if (!isset($params[1]) 
+                    || empty($params[1])) {
             $HomeController->showError('No existen parametros');
         }
         if ($params[1] == 'Producto') {
@@ -64,10 +65,13 @@ switch ($params[0]) {
             $TypeProdController->addTypeProd();
         } else if ($params[1] == 'Stock') {
             $StockController->addStock();
+        } else {
+            $HomeController->showError('Error: ruta incorrecta');
         }
         break;
     case 'del':
-        if (!isset($params[1]) || !isset($params[2])) {
+        if (!isset($params[1]) 
+                    || !isset($params[2])) {
         } else if ($params[1] == 'Producto') {
             $ProductsController->delProduct($params[2]);
         } else if ($params[1] == 'TipoProducto') {
@@ -77,13 +81,15 @@ switch ($params[0]) {
         } else if ($params[1] == 'Admin') {
             $AdminController->delUser($params[2]);
         } else {
-            header('Location:' . BASE_URL);
+            $HomeController->showError('Error: ruta incorrecta');
         }
         break;
     case 'HomeEdit':
         if (
-            !isset($params[1]) || empty($params[1])  ||
-            !isset($params[2]) || empty($params[2])
+            !isset($params[1]) 
+                    || empty($params[1])  
+                            || !isset($params[2]) 
+                                    || empty($params[2])
         ) {
             $HomeController->showError('No existen parametros');
         } else if ($params[1] == 'Producto') {
@@ -93,11 +99,12 @@ switch ($params[0]) {
         } else if ($params[1] == 'Stock') {
             $StockController->showEditStock($params[2]);
         } else {
-            header('Location:' . BASE_URL);
+            $HomeController->showError('Error: ruta incorrecta');
         }
         break;
     case 'edit':
-        if (!isset($params[1]) || empty($params[1])) {
+        if (!isset($params[1]) 
+                    || empty($params[1])) {
             $HomeController->showError('No existen parametros');
         } else if ($params[1] == 'Producto') {
             $ProductsController->editProduct();
@@ -106,18 +113,20 @@ switch ($params[0]) {
         } else if ($params[1] == 'Stock') {
             $StockController->editStock();
         } else {
-            header('Location:' . BASE_URL);
+            $HomeController->showError('Error: ruta incorrecta');
         }
         break;
     case 'Details':
-        if (!isset($params[1]) || empty($params[1])) {
+        if (!isset($params[1]) 
+                    || empty($params[1])) {
             $HomeController->showError('No existen parametros');
         } else {
             $HomeController->showDetail($params[1]);
         }
         break;
     case 'Buy':
-        if (!isset($params[1]) || empty($params[1])) {
+        if (!isset($params[1]) 
+                    || empty($params[1])) {
             $HomeController->showError('No existen parametros');
         } else {
             $HomeController->comprar($params[1]);
@@ -141,4 +150,6 @@ switch ($params[0]) {
     case 'VerifySignUp':
         $LoginController->SignUp();
         break;
+    default:
+        $HomeController->showError('Error: ruta incorrecta');
 }

@@ -11,12 +11,13 @@ class apiProductsController{
         $this->model = new ProductsModel();
         $this->view = new ApiView();
         $this->data = file_get_contents("php://input");
-
     }
+
     public function getAll($params = NULL){
         $products = $this->model->getAllProducts();
         $this->view->response($products, 200);
     }
+
     public function getOne($params = NULL){
         $id = $params[':ID'];
         $task = $this->model->getOneProduct($id);

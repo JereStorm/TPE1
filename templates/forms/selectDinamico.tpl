@@ -1,5 +1,5 @@
 <select name="tipo" class="form-select" aria-label="Default select example" required>
-    <option value="false" disabled selected>Seleccione tipo</option>
+    <option value="false" disabled selected>Todos</option>
     
     {foreach from=$types item=item}
 

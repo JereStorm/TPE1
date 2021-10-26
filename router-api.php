@@ -6,8 +6,8 @@ require_once 'api/apiProductsController.php';
 $router = new Router();
 
 // tabla de ruteo
-$router->addRoute('Products', 'GET', 'apiProductsController', 'getAll');
-$router->addRoute('Products/:ID', 'GET', 'apiProductsController', 'getOne');
+$router->addRoute('Producto', 'GET', 'apiProductsController', 'getAll');
+$router->addRoute('Producto/:ID', 'GET', 'apiProductsController', 'getOne');
 
 // ruteo
 $resource = $_GET['resource'];

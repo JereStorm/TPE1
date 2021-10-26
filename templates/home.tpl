@@ -7,6 +7,7 @@
 {if isset($filtrados)}
     
 {/if}
+
 {include file="forms/formFilter.tpl"}
 
 {include file="card.tpl"}

@@ -24,6 +24,8 @@ class ProductsController
 
     function showProducts()
     {
+        $this->LoginHelper->checkLoggedIn(USER);
+        
         $types = $this->TypeProdModel->getAllTypes();
         $products = $this->model->getAllProducts();
 
@@ -48,7 +50,7 @@ class ProductsController
 
     function addProduct()
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER);
 
         // VALIDACION
         if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) ||
@@ -75,7 +77,7 @@ class ProductsController
 
     function delProduct($id)
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER);
 
         //VALIDACION
         $verificado = $this->model->visarIdProd($id);
@@ -99,7 +101,7 @@ class ProductsController
 
     function editProduct()
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER);
 
         // VALIDACION
         if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) ||
