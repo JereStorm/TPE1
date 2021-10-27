@@ -1,12 +1,15 @@
 <?php
-class ApiView{
-    public function reponse($data, $code){
+class ApiView
+{
+    public function reponse($data, $code)
+    {
         header("Content-Type: application/json");
-        header("HTTP/1.1".$code." ".$this->requestStatus($code));
+        header("HTTP/1.1" . $code . " " . $this->requestStatus($code));
         echo json_encode($data);
     }
 
-    public function requesStatus($code){
+    public function requestStatus($code)
+    {
         $status = array(
             100 => "Continue",
             101 => "Switching Protocol",
@@ -70,6 +73,6 @@ class ApiView{
             510 => "Not Extended",
             511 => "Network Authentication Required"
         );
-        return (isset($status[$code]))? $status[$code] : $status[500];
+        return (isset($status[$code])) ? $status[$code] : $status[500];
     }
 }

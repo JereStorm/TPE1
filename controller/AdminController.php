@@ -16,11 +16,11 @@ class AdminController
         $this->model = new AdminModel();
         $this->view = new AdminView();
         $this->LoginHelper = new LoginHelper();
-        $this->LoginHelper->checkLoggedIn(ADMIN);
     }
 
     function showAdmin()
     {
+        $this->LoginHelper->checkLoggedIn(ADMIN);
         $users = $this->model->getAll();
         $this->view->renderUsers($users);
     }
@@ -28,7 +28,8 @@ class AdminController
     function showEditUser($id)
     {
         //$this->LoginHelper->checkLoggedIn(1);
-    
+        $this->LoginHelper->checkLoggedIn(ADMIN);
+
         $verificado = $this->model->visarIdUser($id);
         if (empty($verificado->val)) {
             $this->view->renderError('identificador erroneo');
@@ -39,7 +40,7 @@ class AdminController
     }
 
     //-------- ADD
-/*
+    /*
     function addProduct()
     {
         $this->LoginHelper->checkLoggedIn();
@@ -69,17 +70,19 @@ class AdminController
 
     function delUser($id)
     {
+        $this->LoginHelper->checkLoggedIn(ADMIN);
+
         //VALIDACION
         $verificado = $this->model->visarIdUser($id);
-        //var_dump($verificado);
-        //die();
+
+        // var_dump($verificado);
+        // die();
         if (empty($verificado->val)) {
             $this->view->renderError('identificador erroneo');
             die();
         }
         $execute = $this->model->delUser($id);
         header('Location:' . BASE_URL . 'Home/Admin');
-        
     }
 
     // ---------- EDIT
@@ -87,8 +90,7 @@ class AdminController
     function editUser()
     {
         // VALIDACION
-        if ( !isset($_REQUEST['email']) || empty($_REQUEST['password']) ) 
-        {
+        if (!isset($_REQUEST['email']) || empty($_REQUEST['password'])) {
             $this->view->renderError('No se pudo editar el producto por falta de parametros');
             die();
         }

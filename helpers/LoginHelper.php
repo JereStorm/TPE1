@@ -22,15 +22,14 @@ class LoginHelper
 
     public function checkLoggedIn($rol)
     {
-        
+
         if (empty($_SESSION['USER_ID'])) {
             header("Location: " . BASE_URL . 'Login');
             die();
-        } else if ($_SESSION['USER_ROL'] > $rol){
+        } else if ($_SESSION['USER_ROL'] > $rol) {
             $this->viewError->renderError("Usted no tiene permisos suficientes");
             die();
         }
-
     }
 
     function logout()
