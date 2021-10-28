@@ -46,33 +46,6 @@ class AdminController
         $this->view->renderEditUser($user);
     }
 
-    //-------- ADD
-    /*
-    function addProduct()
-    {
-        $this->LoginHelper->checkLoggedIn();
-
-        // VALIDACION
-        if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) ||
-            (!isset($_REQUEST['precio']) || empty($_REQUEST['precio'])) ||
-            (!isset($_REQUEST['tipo']) || $_REQUEST['tipo'] == 'false')
-        ) {
-            $this->view->renderError('No se pudo agregar el producto por falta de parametros');
-            die();
-        }
-
-        //SETEO DE DATOS
-        $nombre = $_REQUEST['producto'];
-        $precio = $_REQUEST['precio'];
-        $tipo = $_REQUEST['tipo'];
-
-        //INSERCION
-        $this->model->insertProduct($nombre, $precio, $tipo);
-
-        //RENDERIZADO
-        header('Location:' . BASE_URL . 'Home/Producto');
-    }*/
-
     //------------- DEL
 
     function delUser($id)
