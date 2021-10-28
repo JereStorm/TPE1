@@ -31,9 +31,8 @@ class AdminController
         $this->view->renderUsers($users);
     }
 
-    function showEditUser($id)
+    function showEditUser($id, $error = NULL)
     {
-        //$this->LoginHelper->checkLoggedIn(1);
         //BARRERA
         $this->LoginHelper->checkLoggedIn(ADMIN);
 
@@ -43,7 +42,7 @@ class AdminController
             die();
         }
         $user = $this->model->getOne($id);
-        $this->view->renderEditUser($user);
+        $this->view->renderEditUser($user, $error);
     }
 
     //------------- DEL
@@ -74,26 +73,33 @@ class AdminController
         $this->LoginHelper->checkLoggedIn(ADMIN);
 
         // VALIDACION
-        if (!isset($_REQUEST['email']) || empty($_REQUEST['password'])) {
+        if (empty($_REQUEST['email']) 
+                                || empty($_REQUEST['rol'])) {
             $this->view->renderError('No se pudo editar el producto por falta de parametros');
             die();
         }
 
-        if (!isset($_REQUEST['id']) || empty($_REQUEST['id'])) {
-            $this->view->renderError('No se pudo editar el producto por falta de id');
+        if ($_REQUEST['password'] != $_REQUEST['password2']) {
+            $this->showEditUser($_REQUEST['id'], "Error: las contraseñas no coinciden");
             die();
+        } else if (!empty($_REQUEST['password'])){
+            $password = $_REQUEST['password'];
+            $password = password_hash($password,PASSWORD_BCRYPT);
+        } else {
+            $password = $_REQUEST['password'];
         }
 
         //SETEO DE DATOS
         $id = $_REQUEST['id'];
-        $nombre = $_REQUEST['producto'];
-        $precio = $_REQUEST['precio'];
-        $tipo = $_REQUEST['tipo'];
+        $email = $_REQUEST['email'];
+        $rol = $_REQUEST['rol'];
+        
+
 
         //UPDATEO
-        $this->model->update($nombre, $precio, $tipo, $id);
+        $this->model->update($email, $password, $rol, $id);
 
         //RENDERIZADO
-        header('Location:' . BASE_URL . 'Home/Producto');
+        header('Location:' . BASE_URL . 'Home/Admin');
     }
 }

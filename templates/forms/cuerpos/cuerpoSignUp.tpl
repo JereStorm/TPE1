@@ -14,7 +14,8 @@
             <label class="input-group-text alert-success" for="exampleInputPassword1">Password </label>
             <input name="re-password" type="password" class="form-control" id="exampleInputPassword1" required>
         </div>
-        {if $error}
+
+        {if ($error)}
         <p>{$error}</p>
         {/if}
 

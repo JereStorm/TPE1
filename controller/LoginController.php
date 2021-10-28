@@ -66,6 +66,8 @@ class LoginController
 
             // si las contraseñas coinciden se crea usuario
             if ($password == $rePassword) {
+                //---- HASH DE PASSWORD
+                $password = password_hash($password,PASSWORD_BCRYPT);
                 $this->model->SignUp($email, $password);
                 //PARA EL AUTO LOGEO
                 $this->login();

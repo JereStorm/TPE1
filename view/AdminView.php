@@ -20,13 +20,14 @@ class AdminView{
         $this -> smarty -> display('templates/homeTable.tpl');
     }
 
-    function renderEditUser($user){
-        //$this -> smarty -> assign('types', $types);
-        $this -> smarty -> assign('value_nombre', $user->email);
-        $this -> smarty -> assign('value_tipo', $user->rol);
-       // $this -> smarty -> assign('value_precio', $product->Precio);
+    function renderEditUser($user, $error = NULL){
+        $this -> smarty -> assign('types', $user->Rol);
+        $this -> smarty -> assign('value_nombre', $user->Usuario);
         $this -> smarty -> assign('value_id', $user->id);
         $this -> smarty -> assign('URL', 'Admin');
+        if (isset($error)){
+            $this -> smarty -> assign('error', $error);  
+        }
         $this -> smarty -> display('templates/homeEdit.tpl');
     }
     

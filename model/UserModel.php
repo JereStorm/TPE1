@@ -59,16 +59,23 @@ class UserModel
     }
 
     // -------- UPDATES
-
     function update($email, $pass, $rol, $id)
     {
-        $query = $this->db->prepare(
-            'UPDATE usuario
-        SET `email` = ?, `rol` =?, `password` =?
-        WHERE `id_user` = ?'
-        );
-
-        return $query->execute([$email, $rol, $pass, $id]);
+        if(isset($pass)){
+            $query = $this->db->prepare(
+                'UPDATE usuario
+                SET `email` = ?, `rol` =?, `password` =?
+                WHERE `id_user` = ?'
+            );
+            return $query->execute([$email, $rol, $pass, $id]);
+        } else {
+            $query = $this->db->prepare(
+                'UPDATE usuario
+                SET `email` = ?, `rol` =?,
+                WHERE `id_user` = ?'
+            );
+            return $query->execute([$email, $rol, $id]);
+        }
     }
 
     // ----------- VISADOS (SIEMPRE AL ULTIMO)
@@ -104,12 +111,10 @@ class UserModel
         return $value = $query->fetch(PDO::FETCH_OBJ);
     }
     public function SignUp($email,$pass)
-    {   //---- HASH DE PASSWORD
-        $hash = password_hash($pass,PASSWORD_BCRYPT);
-
+    {   
         //---- INSERT USER EN LA DB
         $query = $this->db->prepare('INSERT INTO usuario (email, password, rol) VALUES ( ?, ?, ?)');
-        $query -> execute([$email, $hash, 5]);
+        $query -> execute([$email, $pass, 5]);
 
         // 3. Obtengo y devuelo el ID nuevo
         return $this->db->lastInsertId();
