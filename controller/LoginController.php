@@ -66,8 +66,9 @@ class LoginController
 
             // si las contraseñas coinciden se crea usuario
             if ($password == $rePassword) {
-                $this->model->SignUp($email,$password);
-                header("Location: " . BASE_URL);
+                $this->model->SignUp($email, $password);
+                //PARA EL AUTO LOGEO
+                $this->login();
             } else {
                 $this->view->renderSignUp("Error: las contraseñas no coinciden");
             }

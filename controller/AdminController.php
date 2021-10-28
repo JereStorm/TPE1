@@ -1,6 +1,8 @@
 <?php
 // -------- HELPER
 require_once 'helpers/LoginHelper.php';
+require_once 'helpers/RenderErrorHelper.php';
+
 // -------- PRODUCTOS
 require_once 'view/AdminView.php';
 require_once 'model/AdminModel.php';
@@ -10,17 +12,21 @@ class AdminController
     private $model;
     private $view;
     private $LoginHelper;
+    private $error;
 
     public function __construct()
     {
         $this->model = new AdminModel();
         $this->view = new AdminView();
         $this->LoginHelper = new LoginHelper();
+        $this->error = new RenderErrorHelper();
     }
 
     function showAdmin()
     {
+        //BARRERA
         $this->LoginHelper->checkLoggedIn(ADMIN);
+
         $users = $this->model->getAll();
         $this->view->renderUsers($users);
     }
@@ -28,6 +34,7 @@ class AdminController
     function showEditUser($id)
     {
         //$this->LoginHelper->checkLoggedIn(1);
+        //BARRERA
         $this->LoginHelper->checkLoggedIn(ADMIN);
 
         $verificado = $this->model->visarIdUser($id);
@@ -70,15 +77,16 @@ class AdminController
 
     function delUser($id)
     {
+        //BARRERA
         $this->LoginHelper->checkLoggedIn(ADMIN);
 
         //VALIDACION
-        $verificado = $this->model->visarIdUser($id);
+        $user = $this->model->getOne($id);
+        $response = $this->model->valAdmin();
 
-        // var_dump($verificado);
-        // die();
-        if (empty($verificado->val)) {
-            $this->view->renderError('identificador erroneo');
+
+        if ($response->cant == 1 && $user->Rol == 1) {
+            $this->error->renderError('No se pudo borrar por falta de ADMINS');
             die();
         }
         $execute = $this->model->delUser($id);
@@ -89,6 +97,9 @@ class AdminController
 
     function editUser()
     {
+        //BARRERA
+        $this->LoginHelper->checkLoggedIn(ADMIN);
+
         // VALIDACION
         if (!isset($_REQUEST['email']) || empty($_REQUEST['password'])) {
             $this->view->renderError('No se pudo editar el producto por falta de parametros');
