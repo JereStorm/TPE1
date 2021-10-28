@@ -16,8 +16,8 @@ class LoginHelper
     public function login($user)
     {
         $_SESSION['USER_ID'] = $user->id;
-        $_SESSION['USER_EMAIL'] = $user->email;
-        $_SESSION['USER_ROL'] = $user->rol;
+        $_SESSION['USER_EMAIL'] = $user->Usuario;
+        $_SESSION['USER_ROL'] = $user->Rol;
     }
 
     public function checkLoggedIn($rol)

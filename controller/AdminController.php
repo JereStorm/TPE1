@@ -5,7 +5,7 @@ require_once 'helpers/RenderErrorHelper.php';
 
 // -------- PRODUCTOS
 require_once 'view/AdminView.php';
-require_once 'model/AdminModel.php';
+require_once 'model/UserModel.php';
 
 class AdminController
 {
@@ -16,7 +16,7 @@ class AdminController
 
     public function __construct()
     {
-        $this->model = new AdminModel();
+        $this->model = new UserModel();
         $this->view = new AdminView();
         $this->LoginHelper = new LoginHelper();
         $this->error = new RenderErrorHelper();
@@ -62,7 +62,7 @@ class AdminController
             $this->error->renderError('No se pudo borrar por falta de ADMINS');
             die();
         }
-        $execute = $this->model->delUser($id);
+        $execute = $this->model->delete($id);
         header('Location:' . BASE_URL . 'Home/Admin');
     }
 
@@ -91,7 +91,7 @@ class AdminController
         $tipo = $_REQUEST['tipo'];
 
         //UPDATEO
-        $this->model->updateProduct($nombre, $precio, $tipo, $id);
+        $this->model->update($nombre, $precio, $tipo, $id);
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/Producto');

@@ -10,7 +10,7 @@ class StockModel{
 
     //----------- GET ALL
 
-    function getAllStock(){
+    function getAll(){
         $query = $this->db->prepare('SELECT b. nombre AS Producto, a. cantidad AS Cantidad, a. id_stock AS id FROM stock a INNER JOIN producto b WHERE a. producto_fk = b. id_prod');
         $query->execute();
 
@@ -19,7 +19,7 @@ class StockModel{
 
     // ---------- GET ONE
 
-    function getOneStockId($id){
+    function getOne($id){
         $query = $this->db->prepare('SELECT * FROM stock WHERE id_stock = ?');
         $query->execute([$id]);
 
@@ -35,7 +35,7 @@ class StockModel{
 
     // -------- UPDATES
 
-    function updateStock($id, $cantidad_tot){
+    function update($id, $cantidad_tot){
     $query = $this->db->prepare(
     'UPDATE stock
     SET cantidad = ?
@@ -47,7 +47,7 @@ class StockModel{
 
     // --------- INSERTS
 
-    function insertNewStock($id_prod, $cant){
+    function insert($id_prod, $cant){
         $query = $this->db->prepare('INSERT INTO `stock` (`producto_fk`, `cantidad`) VALUES (?, ?)');
         $query->execute([$id_prod, $cant]);
 
@@ -65,7 +65,7 @@ class StockModel{
 
     // -------- DELETES
 
-    function delStock($id){
+    function delete($id){
         $query = $this->db->prepare('DELETE FROM `stock` WHERE `id_stock` = ?');
         return $query->execute([$id]);
     }

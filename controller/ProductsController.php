@@ -24,9 +24,9 @@ class ProductsController
 
     function showProducts()
     {
-        $this->LoginHelper->checkLoggedIn(USER);
+        $this->LoginHelper->checkLoggedIn(CLIENT);
         
-        $types = $this->TypeProdModel->getAllTypes();
+        $types = $this->TypeProdModel->getAll();
         $products = $this->model->getAllProducts();
 
         $this->view->renderProducts($products, $types);
@@ -42,7 +42,7 @@ class ProductsController
         }
 
         $product = $this->model->getOneProduct($id);
-        $types = $this->TypeProdModel->getAllTypes();
+        $types = $this->TypeProdModel->getAll();
         $this->view->renderEditProduct($product, $types);
     }
 
