@@ -20,7 +20,7 @@ class ApiComentsController
     {
         $coments = $this->model->getAllComents();
 
-        $this->view->response($coments);
+        // $this->view->response($coments);
     }
 
     function getOne($params = null)
@@ -29,7 +29,7 @@ class ApiComentsController
         $coment = $this->model->getOneComent($id);
 
         if ($coment) {
-            $this->view->response($coment);
+            // $this->view->response($coment);
         } else {
             $this->view->response('Comentario id=' . $id . ' Not Found', 404);
         }
@@ -42,7 +42,7 @@ class ApiComentsController
 
         if ($coment) {
             $this->model->delComent($id);
-            $this->view->response('Comentario id=' . $id . ' Delete successfuly');
+            $this->view->response('Comentario id=' . $id . ' Delete successfuly', 200);
         } else {
             $this->view->response('Comentario id=' . $id . ' Not Found', 404);
         }
