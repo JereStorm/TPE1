@@ -7,6 +7,8 @@ require_once 'helpers/RenderErrorHelper.php';
 require_once 'view/AdminView.php';
 require_once 'model/AdminModel.php';
 
+// COmentando
+
 class AdminController
 {
     private $model;
