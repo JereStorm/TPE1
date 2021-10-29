@@ -10,7 +10,7 @@ class TypeProdModel{
 
     //----------- GET ALL
 
-    function getAllTypes(){
+    function getAll(){
         $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto');
         $query->execute();
 
@@ -19,7 +19,7 @@ class TypeProdModel{
 
     // ---------- GET ONE
 
-    function getOneTypeProduct($id){
+    function getOne($id){
         $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto WHERE id_tipo_prod = ?');
         $query->execute([$id]);
 
@@ -28,7 +28,7 @@ class TypeProdModel{
 
     // --------- INSERTS
 
-    function insertTypeProd($nombre, $descrip){
+    function insert($nombre, $descrip){
         $query = $this->db->prepare('INSERT INTO `tipo_producto` (`tipo`, `descripcion`) VALUES ( ?, ?)');
         $query -> execute([$nombre, $descrip]);
 
@@ -38,14 +38,14 @@ class TypeProdModel{
 
     // -------- DELETES
     
-    function delTypeProd($id){
+    function delete($id){
         $query = $this->db->prepare('DELETE FROM `tipo_producto` WHERE tipo_producto.`id_tipo_prod` = ?');
         return $query->execute([$id]);
     }
     
     // -------- UPDATES
 
-    function updateTypeProd($tipo, $descripcion, $id){
+    function update($tipo, $descripcion, $id){
         $query = $this->db->prepare('UPDATE tipo_producto a
         SET `a`.`tipo` = ?, `a`.`descripcion` =?
         WHERE `a`.`id_tipo_prod` = ?');

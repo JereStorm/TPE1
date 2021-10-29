@@ -23,7 +23,7 @@ class TypeProdController
 
     function showTypeProd()
     {
-        $types = $this->model->getAllTypes();
+        $types = $this->model->getAll();
 
         $this->view->renderTypesProd($types);
     }
@@ -38,9 +38,9 @@ class TypeProdController
             die();
         }
 
-        $typeProduct = $this->model->getOneTypeProduct($id);
+        $typeProduct = $this->model->getOne($id);
 
-        $types = $this->model->getAllTypes();
+        $types = $this->model->getAll();
 
         $this->view->renderEditTypeProduct($typeProduct);
     }
@@ -64,7 +64,7 @@ class TypeProdController
         $descrip = $_REQUEST['descripcion'];
 
         //INSERCION
-        $this->model->insertTypeProd($tipo, $descrip);
+        $this->model->insert($tipo, $descrip);
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/TipoProducto');
@@ -87,7 +87,7 @@ class TypeProdController
         $conteo = $this->model->contarReferencia($id);
 
         if (empty($conteo->val)) {
-            $this->model->delTypeProd($id);
+            $this->model->delete($id);
             header('Location:' . BASE_URL . 'Home/TipoProducto');
         } else {
             $this->view->renderError('No puede borrar dado que hay (' . $conteo->val . ') elementos... borre primero estos e intente de nuevo');
@@ -119,7 +119,7 @@ class TypeProdController
         $descrip = $_REQUEST['descripcion'];
 
         //UPDATE
-        $this->model->updateTypeProd($tipo, $descrip, $id);
+        $this->model->update($tipo, $descrip, $id);
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/TipoProducto');

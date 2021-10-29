@@ -103,6 +103,8 @@ switch ($params[0]) {
             $TypeProdController->showEditTypeProd($params[2]);
         } else if ($params[1] == 'Stock') {
             $StockController->showEditStock($params[2]);
+        } else if ($params[1] == 'Admin') {
+                $AdminController->showEditUser($params[2]);
         } else {
             $HomeController->showError('Error: ruta incorrecta');
         }
@@ -119,6 +121,8 @@ switch ($params[0]) {
             $TypeProdController->editTypeProd();
         } else if ($params[1] == 'Stock') {
             $StockController->editStock();
+        } else if ($params[1] == 'Admin') {
+            $AdminController->editUser();
         } else {
             $HomeController->showError('Error: ruta incorrecta');
         }

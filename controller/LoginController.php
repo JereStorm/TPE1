@@ -32,8 +32,8 @@ class LoginController
             $password = $_POST['password'];
 
             // Obtengo el usuario de la base de datos
-            $user = $this->model->getUser($email);
-
+            $user = $this->model->getOneEmail($email);
+            
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
                 // armo la sesion del usuario
@@ -66,6 +66,8 @@ class LoginController
 
             // si las contraseñas coinciden se crea usuario
             if ($password == $rePassword) {
+                //---- HASH DE PASSWORD
+                $password = password_hash($password,PASSWORD_BCRYPT);
                 $this->model->SignUp($email, $password);
                 //PARA EL AUTO LOGEO
                 $this->login();

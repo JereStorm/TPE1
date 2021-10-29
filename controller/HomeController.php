@@ -42,7 +42,7 @@ class HomeController
         //CARGO EL STOCK
         $products = $this->cargarStockInProd($products);
 
-        $types = $this->TypeProdModel->getAllTypes();
+        $types = $this->TypeProdModel->getAll();
 
         $this->view->renderHome($products, $types);
     }
@@ -75,7 +75,7 @@ class HomeController
         //CARGO EL STOCK
         $filtradas = $this->cargarStockinProd($filtradas);
 
-        $types = $this->TypeProdModel->getAllTypes();
+        $types = $this->TypeProdModel->getAll();
 
         $this->view->renderHome($filtradas, $types);
     }
@@ -112,7 +112,7 @@ class HomeController
         $cantidad = $_REQUEST['cantidad'];
         $stock_by_prod = $this->StockModel->getOneStockIdProd($id);
         $cantidad_tot = $stock_by_prod->cantidad - $cantidad;
-        $this->StockModel->updateStock($stock_by_prod->id_stock, $cantidad_tot);
+        $this->StockModel->update($stock_by_prod->id_stock, $cantidad_tot);
         $producto = $this->ProductsModel->getOneProduct($id);
         $this->success($producto->Nombre, $cantidad);
     }

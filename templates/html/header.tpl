@@ -23,7 +23,7 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="Home" class="nav-link px-2 text-white">Home</a></li>
-          {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL<=3}
+          {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL<=CLIENT}
             <!-- SE VERIFICA QUE EL USUARIO ESTE LOGEADO PARA VER EL MENU AVANZADO -->
             <li><a href="Home/Stock" class="nav-link px-2 text-white">Stock</a></li>
             <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>

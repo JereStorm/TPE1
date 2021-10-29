@@ -28,7 +28,7 @@ class StockController
     function showStock()
     {
         $products = $this->ProductsModel->getAllProducts();
-        $stock = $this->model->getAllStock();
+        $stock = $this->model->getAll();
 
         $this->view->renderStock($products, $stock);
     }
@@ -42,7 +42,7 @@ class StockController
             die();
         }
 
-        $product = $this->model->getOneStockId($id);
+        $product = $this->model->getOne($id);
         $products = $this->ProductsModel->getAllProducts();
 
         $this->view->renderEditProduct($products, $product);
@@ -71,10 +71,10 @@ class StockController
 
         if ($prod_unico != false) {
             $cantidad_tot = $prod_unico->cantidad + $cantidad;
-            $this->model->updateStock($prod_unico->id_stock, $cantidad_tot);
+            $this->model->update($prod_unico->id_stock, $cantidad_tot);
             header('Location:' . BASE_URL . 'Home/Stock');
         } else {
-            $this->model->insertNewStock($producto_id, $cantidad);
+            $this->model->insert($producto_id, $cantidad);
             header('Location:' . BASE_URL . 'Home/Stock');
         }
     }
@@ -93,7 +93,7 @@ class StockController
             die();
         }
 
-        $execute = $this->model->delStock($id);
+        $execute = $this->model->delete($id);
 
         header('Location:' . BASE_URL . 'Home/Stock');
     }
@@ -110,7 +110,7 @@ class StockController
         $cantidad = $_REQUEST['cantidad'];
 
         //UPDATEO
-        $this->model->updateStock($id, $cantidad);
+        $this->model->update($id, $cantidad);
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/Stock');
