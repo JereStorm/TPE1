@@ -27,6 +27,7 @@ class StockController
 
     function showStock()
     {
+        $this->LoginHelper->checkLoggedIn(CLIENT);
         $products = $this->ProductsModel->getAllProducts();
         $stock = $this->model->getAll();
 
@@ -35,6 +36,7 @@ class StockController
 
     function showEditStock($id)
     {
+        $this->LoginHelper->checkLoggedIn(USER);
         $verificado = $this->model->visarIdStock($id);
 
         if (empty($verificado->val)) {
@@ -51,7 +53,7 @@ class StockController
 
     function addStock()
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER);
 
         // VALIDACION
         if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto']))) {
@@ -83,7 +85,7 @@ class StockController
 
     function delStock($id)
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER);
 
         //VALIDACION
         $verificado = $this->model->visarIdStock($id);
@@ -103,7 +105,7 @@ class StockController
 
     function editStock()
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER);
 
         //SETEO DE DATOS
         $id = $_REQUEST['producto'];
