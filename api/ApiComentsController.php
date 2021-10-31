@@ -12,13 +12,13 @@ class ApiComentsController
 
     function __construct()
     {
-        // $this->model = new ComentsModel();
+        $this->model = new ComentsModel();
         $this->view = new ApiView();
     }
 
     function getAll($params = null)
     {
-        $coments = $this->model->getAllComents();
+        $coments = $this->model->getAll();
 
         // $this->view->response($coments);
     }
@@ -26,7 +26,7 @@ class ApiComentsController
     function getOne($params = null)
     {
         $id = $params[':ID'];
-        $coment = $this->model->getOneComent($id);
+        $coment = $this->model->getOne($id);
 
         if ($coment) {
             // $this->view->response($coment);
@@ -38,10 +38,10 @@ class ApiComentsController
     function delete($params = null)
     {
         $id = $params[':ID'];
-        $coment = $this->model->getOneComent($id);
+        $coment = $this->model->getOne($id);
 
         if ($coment) {
-            $this->model->delComent($id);
+            $this->model->delete($id);
             $this->view->response('Comentario id=' . $id . ' Delete successfuly', 200);
         } else {
             $this->view->response('Comentario id=' . $id . ' Not Found', 404);

@@ -37,7 +37,7 @@ class HomeController
     function showHome()
     {
 
-        $products = $this->ProductsModel->getAllProducts();
+        $products = $this->ProductsModel->getAll();
 
         //CARGO EL STOCK
         $products = $this->cargarStockInProd($products);
@@ -89,7 +89,7 @@ class HomeController
     function showDetail($id)
     {
         //FALTA CREAR LA VISTA DEL PRODUCTO
-        $product = $this->ProductsModel->getOneProduct($id);
+        $product = $this->ProductsModel->getOne($id);
         $stock = $this->StockModel->getOneStockIdProd($product->id);
 
         if ($stock == false || $stock->cantidad == NULL || $stock->cantidad == 0) {
@@ -107,19 +107,19 @@ class HomeController
     }
     function comprar($id)
     {
-        $this->LoginHelper->checkLoggedIn(5);
+        $this->LoginHelper->checkLoggedIn(CLIENT);
 
         $cantidad = $_REQUEST['cantidad'];
         $stock_by_prod = $this->StockModel->getOneStockIdProd($id);
         $cantidad_tot = $stock_by_prod->cantidad - $cantidad;
         $this->StockModel->update($stock_by_prod->id_stock, $cantidad_tot);
-        $producto = $this->ProductsModel->getOneProduct($id);
+        $producto = $this->ProductsModel->getOne($id);
         $this->success($producto->Nombre, $cantidad);
     }
 
     function success($nombre, $cant)
     {
-        $this->LoginHelper->checkLoggedIn(5);
+        $this->LoginHelper->checkLoggedIn(CLIENT);
 
         $this->view->renderSuccess('Usted ha comprado ' . $nombre . ' por una cantidad de (' . $cant . ')');
     }

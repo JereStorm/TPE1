@@ -75,8 +75,10 @@ class AdminController
         $this->LoginHelper->checkLoggedIn(ADMIN);
 
         // VALIDACION
-        if (empty($_REQUEST['email']) 
-                                || empty($_REQUEST['rol'])) {
+        if (
+            empty($_REQUEST['email'])
+            || empty($_REQUEST['rol'])
+        ) {
             $this->view->renderError('No se pudo editar el producto por falta de parametros');
             die();
         }
@@ -84,9 +86,9 @@ class AdminController
         if ($_REQUEST['password'] != $_REQUEST['password2']) {
             $this->showEditUser($_REQUEST['id'], "Error: las contraseñas no coinciden");
             die();
-        } else if (!empty($_REQUEST['password'])){
+        } else if (!empty($_REQUEST['password'])) {
             $password = $_REQUEST['password'];
-            $password = password_hash($password,PASSWORD_BCRYPT);
+            $password = password_hash($password, PASSWORD_BCRYPT);
         } else {
             $password = $_REQUEST['password'];
         }
@@ -95,8 +97,6 @@ class AdminController
         $id = $_REQUEST['id'];
         $email = $_REQUEST['email'];
         $rol = $_REQUEST['rol'];
-        
-
 
         //UPDATEO
         $this->model->update($email, $password, $rol, $id);

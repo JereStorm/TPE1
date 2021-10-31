@@ -1,36 +1,41 @@
 <?php
 
-class ProductsModel{
+class ProductsModel
+{
 
     private $db;
 
-    public function __construct(){
-        $this -> db = new PDO('mysql:host=localhost;'.'dbname=tpe_jt;charset=utf8', 'root', '');
+    public function __construct()
+    {
+        $this->db = new PDO('mysql:host=localhost;' . 'dbname=tpe_jt;charset=utf8', 'root', '');
     }
 
     //----------- GET ALL
 
-    function getAllProducts(){
+    function getAll()
+    {
         $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`');
         $query->execute();
 
-        return $items = $query->fetchAll(PDO::FETCH_OBJ); 
+        return $items = $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     // ---------- GET ONE
 
-    function getOneProduct($id){
+    function getOne($id)
+    {
         $query = $this->db->prepare('SELECT a.`nombre` AS `Nombre`, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?');
         $query->execute([$id]);
 
-        return $product = $query->fetch(PDO::FETCH_OBJ); 
+        return $product = $query->fetch(PDO::FETCH_OBJ);
     }
 
     // --------- INSERTS
 
-    function insertProduct($nombre, $precio, $tipo){
+    function insert($nombre, $precio, $tipo)
+    {
         $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`) VALUES ( ?, ?, ?)');
-        $query -> execute([$nombre, $tipo, $precio]);
+        $query->execute([$nombre, $tipo, $precio]);
 
         // 3. Obtengo y devuelo el ID nuevo
         return $this->db->lastInsertId();
@@ -38,37 +43,42 @@ class ProductsModel{
 
     // -------- DELETES
 
-    function delProduct($id){
+    function delete($id)
+    {
         $query = $this->db->prepare('DELETE FROM `producto` WHERE producto.`id_prod` = ?');
         return $query->execute([$id]);
     }
-    
+
     // -------- UPDATES
 
-    function updateProduct($nombre, $precio, $tipo, $id){
+    function update($nombre, $precio, $tipo, $id)
+    {
         $query = $this->db->prepare(
-        'UPDATE producto a
+            'UPDATE producto a
         INNER JOIN tipo_producto b 
         ON `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`
         SET `a`.`nombre` = ?, `a`.`precio_kg` =?, `a`.`tipo_prod_fk` =?
-        WHERE `a`.`id_prod` = ?');
-        
+        WHERE `a`.`id_prod` = ?'
+        );
+
         return $query->execute([$nombre, $precio, $tipo, $id]);
     }
-    
+
     // ----------- VISADOS (SIEMPRE AL ULTIMO)
-    
-    function visarIdProd($id){
+
+    function visarIdProd($id)
+    {
         $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `producto` WHERE producto.`id_prod` = ?');
         $query->execute([$id]);
 
-        return $value = $query->fetch(PDO::FETCH_OBJ); 
+        return $value = $query->fetch(PDO::FETCH_OBJ);
     }
 
     // ------------ FILTRAR 
 
-    
-    function filtrarProducts($tipo){
+
+    function filtrarProducts($tipo)
+    {
         // 2. Enviamos la consulta (2 sub pasos)
         $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`Tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`tipo_prod_fk` LIKE ?');
         $query->execute([$tipo]);
@@ -80,10 +90,11 @@ class ProductsModel{
     }
     // ------------ HACE UN CONTEO DE LOS ELEMENTOS REFERENCIADOS
 
-    function contarReferencia($id){
+    function contarReferencia($id)
+    {
         $query = $this->db->prepare('SELECT COUNT(*) AS val FROM `stock` WHERE stock.`producto_fk` = ?');
         $query->execute([$id]);
 
-        return $value = $query->fetch(PDO::FETCH_OBJ); 
+        return $value = $query->fetch(PDO::FETCH_OBJ);
     }
 }

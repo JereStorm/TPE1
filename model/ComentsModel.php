@@ -11,7 +11,7 @@ class ComentsModel
 
     //----------- GET ALL
 
-    function getAllComents()
+    function getAll()
     {
         $query = $this->db->prepare('');
         $query->execute();
@@ -21,7 +21,7 @@ class ComentsModel
 
     // ---------- GET ONE
 
-    function getOneComent($id)
+    function getOne($id)
     {
         $query = $this->db->prepare('');
         $query->execute([$id]);
@@ -31,7 +31,7 @@ class ComentsModel
 
     // --------- INSERTS
 
-    function insertProduct($nombre, $precio, $tipo)
+    function insert($nombre, $precio, $tipo)
     {
         $query = $this->db->prepare('');
         $query->execute([$nombre, $tipo, $precio]);
@@ -42,7 +42,7 @@ class ComentsModel
 
     // -------- DELETES
 
-    function delComent($id)
+    function delete($id)
     {
         $query = $this->db->prepare('');
         return $query->execute([$id]);

@@ -28,7 +28,7 @@ class StockController
     function showStock()
     {
         $this->LoginHelper->checkLoggedIn(CLIENT);
-        $products = $this->ProductsModel->getAllProducts();
+        $products = $this->ProductsModel->getAll();
         $stock = $this->model->getAll();
 
         $this->view->renderStock($products, $stock);
@@ -45,7 +45,7 @@ class StockController
         }
 
         $product = $this->model->getOne($id);
-        $products = $this->ProductsModel->getAllProducts();
+        $products = $this->ProductsModel->getAll();
 
         $this->view->renderEditProduct($products, $product);
     }

@@ -25,9 +25,9 @@ class ProductsController
     function showProducts()
     {
         $this->LoginHelper->checkLoggedIn(CLIENT);
-        
+
         $types = $this->TypeProdModel->getAll();
-        $products = $this->model->getAllProducts();
+        $products = $this->model->getAll();
 
         $this->view->renderProducts($products, $types);
     }
@@ -41,7 +41,7 @@ class ProductsController
             die();
         }
 
-        $product = $this->model->getOneProduct($id);
+        $product = $this->model->getOne($id);
         $types = $this->TypeProdModel->getAll();
         $this->view->renderEditProduct($product, $types);
     }
@@ -67,7 +67,7 @@ class ProductsController
         $tipo = $_REQUEST['tipo'];
 
         //INSERCION
-        $this->model->insertProduct($nombre, $precio, $tipo);
+        $this->model->insert($nombre, $precio, $tipo);
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/Producto');
@@ -90,7 +90,7 @@ class ProductsController
         $conteo = $this->model->contarReferencia($id);
 
         if (empty($conteo->val)) {
-            $execute = $this->model->delProduct($id);
+            $execute = $this->model->delete($id);
             header('Location:' . BASE_URL . 'Home/Producto');
         } else {
             $this->view->renderError('No puede borrar dado que hay STOCK asociado a este elemento... borre primero este e intente de nuevo');
@@ -124,7 +124,7 @@ class ProductsController
         $tipo = $_REQUEST['tipo'];
 
         //UPDATEO
-        $this->model->updateProduct($nombre, $precio, $tipo, $id);
+        $this->model->update($nombre, $precio, $tipo, $id);
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/Producto');
