@@ -98,6 +98,14 @@ class AdminController
         $email = $_REQUEST['email'];
         $rol = $_REQUEST['rol'];
 
+        //VALIDACION
+        $user = $this->model->getOne($id);
+        $response = $this->model->valAdmin();
+
+        if ($response->cant == 1 && $user->Rol == 1 && $rol != $user->Rol) {
+            $this->error->renderError('No se pudo editar por falta de ADMINS');
+            die();
+        }
         //UPDATEO
         $this->model->update($email, $password, $rol, $id);
 
