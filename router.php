@@ -105,7 +105,7 @@ switch ($params[0]) {
         } else if ($params[1] == 'Stock') {
             $StockController->showEditStock($params[2]);
         } else if ($params[1] == 'Admin') {
-                $AdminController->showEditUser($params[2]);
+            $AdminController->showEditUser($params[2]);
         } else {
             $HomeController->showError('Error: ruta incorrecta');
         }

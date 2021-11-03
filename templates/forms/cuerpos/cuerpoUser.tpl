@@ -17,16 +17,16 @@
             <input name="password2" type="text" class="form-control" id="exampleInputPassword1">
         </div>
         
-        {if $error }
+         {if isset($error) }
              <p class="alert alert-danger mt-5">{$error}</p>
-        {/if}
+        {/if} 
         <h4>Nivel de Autorización</h4>
          <div class="input-group mb-3">
             <label class="input-group-text alert-success" for="exampleInputPassword1">Rol de Usuario </label>
             <select name="rol" class="form-select" id="inputGroupSelect01">
                 <option disabled>Seleccione Rol de Usuario</option>
-                <option value="1" {if $types == 1 } selected {/if}>Administrador</option>
-                <option value="3" {if $types == 3 } selected {/if}>Usuario</option>
-                <option value="5" {if $types == 5 } selected {/if}>Ciente</option>
+                <option value="1" {if $types == ADMIN } selected {/if}>Administrador</option>
+                <option value="3" {if $types == USER } selected {/if}>Usuario</option>
+                <option value="5" {if $types == CLIENT } selected {/if}>Cliente</option>
             </select>
         </div>
