@@ -31,7 +31,22 @@ class AdminController
         $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         $users = $this->model->getAll();
-        $this->view->renderUsers($users);
+        $usuarios=[];
+        foreach ($users as $user) {
+            switch ($user->Rol){
+                case 1:
+                    $user->Rol="Administrador";
+                break;
+                case 3:
+                    $user->Rol="Usuario";
+                break;
+                case 5:
+                    $user->Rol="Cliente";
+                break;
+            }
+            array_push($usuarios,$user);
+        }
+        $this->view->renderUsers($usuarios);
     }
 
     function showEditUser($id, $error = NULL)
@@ -87,12 +102,13 @@ class AdminController
             die();
         }
 
+        //CHECK QUE AMBAS PASSWORD SEAN IGUALES
         if ($_REQUEST['password'] != $_REQUEST['password2']) {
             $this->showEditUser($_REQUEST['id'], "Error: las contraseñas no coinciden");
             die();
         } else if (!empty($_REQUEST['password'])) {
             $password = $_REQUEST['password'];
-            $password = password_hash($password, PASSWORD_BCRYPT);
+            $password = password_hash($password, PASSWORD_BCRYPT); //HASH PASSWORD
         } else {
             $password = $_REQUEST['password'];
         }
