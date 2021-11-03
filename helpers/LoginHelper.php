@@ -35,7 +35,8 @@ class LoginHelper
     public function checkTimeLogin()
     {
         if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > SESSIONTIME)) { 
-                $this->logout(); // destruye la sesión, y vuelve al login
+                session_destroy(); // destruye la sesión, y vuelve al login
+                header("Location: " . BASE_URL.'Login');
         } 
         $_SESSION['LAST_ACTIVITY'] = time(); // actualiza el último instante de actividad
         
