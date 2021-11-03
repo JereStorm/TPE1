@@ -15,8 +15,8 @@ class HomeView{
 
         // $this -> smarty -> assign('productos', $products);
         $this -> smarty -> assign('types', $types);
-        
         $this -> smarty -> assign('productos', $products);
+        $this -> smarty -> assign('home', true);
 
         $this -> smarty -> display('templates/home.tpl');
     }

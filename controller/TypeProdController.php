@@ -49,7 +49,8 @@ class TypeProdController
 
     function addTypeProd()
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         // VALIDACION
         if ((!isset($_REQUEST['tipo']) || empty($_REQUEST['tipo'])) ||
@@ -74,7 +75,8 @@ class TypeProdController
 
     function delTypeProd($id)
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         //VALIDACION
         $verificado = $this->model->visarIdTypeProd($id);
@@ -98,7 +100,8 @@ class TypeProdController
 
     function editTypeProd()
     {
-        $this->LoginHelper->checkLoggedIn(3);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         // VALIDACION
         if ((!isset($_REQUEST['tipo']) || empty($_REQUEST['tipo'])) ||

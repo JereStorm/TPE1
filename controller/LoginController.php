@@ -18,7 +18,13 @@ class LoginController
 
     public function showLogin()
     {
-        $this->view->renderLogin();
+        //verifica si hay una sesion abierta
+        if(isset($_SESSION['USER_ID'])){
+            header("Location: " . BASE_URL );
+            die();
+        }
+
+        $this->view->renderLogin();   
     }
 
     /**

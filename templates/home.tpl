@@ -12,4 +12,8 @@
 
 {include file="card.tpl"}
 
+{if isset($home)}
+    
+{/if}
+
 {include file="html/footer.tpl"}

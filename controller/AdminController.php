@@ -27,7 +27,8 @@ class AdminController
     function showAdmin()
     {
         //BARRERA
-        $this->LoginHelper->checkLoggedIn(ADMIN);
+        $this->LoginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         $users = $this->model->getAll();
         $this->view->renderUsers($users);
@@ -36,7 +37,8 @@ class AdminController
     function showEditUser($id, $error = NULL)
     {
         //BARRERA
-        $this->LoginHelper->checkLoggedIn(ADMIN);
+        $this->LoginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         $verificado = $this->model->visarIdUser($id);
         if (empty($verificado->val)) {
@@ -52,7 +54,8 @@ class AdminController
     function delUser($id)
     {
         //BARRERA
-        $this->LoginHelper->checkLoggedIn(ADMIN);
+        $this->LoginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         //VALIDACION
         $user = $this->model->getOne($id);
@@ -72,7 +75,8 @@ class AdminController
     function editUser()
     {
         //BARRERA
-        $this->LoginHelper->checkLoggedIn(ADMIN);
+        $this->LoginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         // VALIDACION
         if (empty($_REQUEST['email']) 

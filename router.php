@@ -5,6 +5,7 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 define('ADMIN', 1);
 define('USER', 3);
 define('CLIENT', 5);
+define('SESSIONTIME', 1800);
 
 // -----PRODUCTOS
 require_once('controller/ProductsController.php');

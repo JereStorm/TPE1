@@ -18,6 +18,7 @@ class LoginHelper
         $_SESSION['USER_ID'] = $user->id;
         $_SESSION['USER_EMAIL'] = $user->Usuario;
         $_SESSION['USER_ROL'] = $user->Rol;
+        $_SESSION['LAST_ACTIVITY'] = time();
     }
 
     public function checkLoggedIn($rol)
@@ -30,6 +31,15 @@ class LoginHelper
             $this->viewError->renderError("Usted no tiene permisos suficientes");
             die();
         }
+    }
+    public function checkTimeLogin()
+    {
+        if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > SESSIONTIME)) { 
+                $this->logout(); // destruye la sesión, y vuelve al login
+        } 
+        $_SESSION['LAST_ACTIVITY'] = time(); // actualiza el último instante de actividad
+        
+        
     }
 
     function logout()

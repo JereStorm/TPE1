@@ -24,7 +24,14 @@ class ProductsController
 
     function showProducts()
     {
-        $this->LoginHelper->checkLoggedIn(CLIENT);
+        $this->LoginHelper->checkLoggedIn(CLIENT); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
+        
+        //paginado de productos
+        if(!isset($_GET['pagina']))
+            $pagina = 1;
+        else 
+            $pagina = $_GET['pagina'];
         
         $types = $this->TypeProdModel->getAll();
         $products = $this->model->getAllProducts();
@@ -50,7 +57,8 @@ class ProductsController
 
     function addProduct()
     {
-        $this->LoginHelper->checkLoggedIn(USER);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         // VALIDACION
         if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) ||
@@ -77,7 +85,8 @@ class ProductsController
 
     function delProduct($id)
     {
-        $this->LoginHelper->checkLoggedIn(USER);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         //VALIDACION
         $verificado = $this->model->visarIdProd($id);
@@ -101,7 +110,8 @@ class ProductsController
 
     function editProduct()
     {
-        $this->LoginHelper->checkLoggedIn(USER);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         // VALIDACION
         if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) ||

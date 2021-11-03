@@ -27,7 +27,9 @@ class StockController
 
     function showStock()
     {
-        $this->LoginHelper->checkLoggedIn(CLIENT);
+        $this->LoginHelper->checkLoggedIn(CLIENT); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
+        
         $products = $this->ProductsModel->getAllProducts();
         $stock = $this->model->getAll();
 
@@ -53,7 +55,8 @@ class StockController
 
     function addStock()
     {
-        $this->LoginHelper->checkLoggedIn(USER);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         // VALIDACION
         if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto']))) {
@@ -85,7 +88,8 @@ class StockController
 
     function delStock($id)
     {
-        $this->LoginHelper->checkLoggedIn(USER);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         //VALIDACION
         $verificado = $this->model->visarIdStock($id);
@@ -105,7 +109,8 @@ class StockController
 
     function editStock()
     {
-        $this->LoginHelper->checkLoggedIn(USER);
+        $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
+        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         //SETEO DE DATOS
         $id = $_REQUEST['producto'];
