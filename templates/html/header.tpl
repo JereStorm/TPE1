@@ -17,7 +17,9 @@
 <header class="p-3 text-white bg-dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-  
+        <a href="Home" class="me-5 titulo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          TPE Tomi-Jere
+        </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto ms-5 justify-content-center mb-md-0 ">
           <li><a href="Home" class="nav-link px-2 text-white  navegador">Home</a></li>
 
