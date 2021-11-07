@@ -73,6 +73,20 @@ class ProductsModel
 
         return $value = $query->fetch(PDO::FETCH_OBJ);
     }
+    // ------------ BUSCAR 
+
+    function buscarProduct($producto)
+    {
+
+        // 2. Enviamos la consulta (2 sub pasos)
+        $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`nombre` LIKE ?');
+        $query->execute([$producto]);
+
+        // 3. obtengo la respuesta de la DB
+        $busquedas = $query->fetchAll(PDO::FETCH_OBJ); // obtengo un arreglo con TODAS los Pagos
+
+        return $busquedas;
+    }
 
     // ------------ FILTRAR 
 

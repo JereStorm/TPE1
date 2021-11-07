@@ -166,6 +166,10 @@ switch ($params[0]) {
     case 'VerifySignUp':
         $LoginController->SignUp();
         break;
+    case 'buscar':
+        //Borrar una tarea de la DB
+        $HomeController->buscarProduct();
+        break;
     default:
         $HomeController->showError('Error: ruta incorrecta');
 }

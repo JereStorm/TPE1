@@ -1,3 +1,6 @@
+header {
+  height: 100px;
+}
 .stock {
   size: 50%;
 }
@@ -11,4 +14,18 @@
 }
 .card {
   width: 350px;
+}
+.buscador {
+  margin: 0 auto;
+  width: 50%;
+  min-width: 200px;
+}
+.navegador {
+  transition: font-size 0.3s ease;
+  font-size: 18px;
+}
+.navegador:hover {
+  text-decoration: underline white;
+  font-size: 20px;
+  color: aqua;
 }

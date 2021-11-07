@@ -17,22 +17,22 @@
 <header class="p-3 text-white bg-dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        </a>
+  
+        <ul class="nav col-12 col-lg-auto me-lg-auto ms-5 justify-content-center mb-md-0 ">
+          <li><a href="Home" class="nav-link px-2 text-white  navegador">Home</a></li>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="Home" class="nav-link px-2 text-white">Home</a></li>
           {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL<=CLIENT}
             <!-- SE VERIFICA QUE EL USUARIO ESTE LOGEADO PARA VER EL MENU AVANZADO -->
-            <li><a href="Home/Stock" class="nav-link px-2 text-white">Stock</a></li>
-            <li><a href="Home/Producto" class="nav-link px-2 text-white">Productos</a></li>
-            <li><a href="Home/TipoProducto" class="nav-link px-2 text-white">Tipo Productos</a></li>
+            <li><a href="Home/Stock" class="nav-link px-2 text-white navegador">Stock</a></li>
+            <li><a href="Home/Producto" class="nav-link px-2 text-white navegador">Productos</a></li>
+            <li><a href="Home/TipoProducto" class="nav-link px-2 text-white navegador">Tipo Productos</a></li>
           {/if} 
+
           {if isset($smarty.session.USER_ROL) && $smarty.session.USER_ROL==1}
             <!-- SE VERIFICA QUE EL USUARIO SEA ADMINISTRADOR -->
-            <li><a href="Home/Admin" class="nav-link px-2 text-white">Panel de Adminstrador</a></li>
+            <li><a href="Home/Admin" class="nav-link px-2 text-white navegador">Panel de Adminstrador</a></li>
           {/if}
+
         </ul>
 
         <div class="text-end">
@@ -54,3 +54,4 @@
   </header>
     <!-- inicio de contenido principal -->
     <div class="container">
+  

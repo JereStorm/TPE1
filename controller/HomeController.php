@@ -125,4 +125,27 @@ class HomeController
 
         $this->view->renderSuccess('Usted ha comprado ' . $nombre . ' por una cantidad de (' . $cant . ')');
     }
+    function buscarProduct()
+    {
+        if (!isset($_REQUEST['nombre']) || empty($_REQUEST['nombre'])) {
+            $this->view->renderError('Debe ingresar algo para BUSCAR');
+            die();
+        }
+        $product = $_REQUEST['nombre'];
+        $product = '%' . $product . '%';
+
+        $productsBuscadas = $this->ProductsModel->buscarProduct($product);
+
+        //CARGO EL STOCK
+        $productsBuscadas = $this->cargarStockInProd($productsBuscadas);
+
+        $types = $this->TypeProdModel->getAll();
+
+        if (empty($productsBuscadas)) {
+            $this->view->renderError('No se han encontrado productos');
+            die();
+        } else {
+            $this->view->renderHome($productsBuscadas, $types);
+        }
+    }
 }
