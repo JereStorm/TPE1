@@ -1,7 +1,7 @@
 {include file="html/header.tpl"}
 
-<h1>Preparado para el exito?</h1>
-<div class="buscador">
+{* <h1>Preparado para el exito?</h1> *}
+<div class="buscador mt-5">
       {include file="forms/formSearch.tpl"}
     </div>
 
