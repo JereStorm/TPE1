@@ -11,11 +11,12 @@ class HomeView{
         $this -> smarty -> assign('title', 'TPETomiJere');
     }
 
-    function renderHome($products, $types){
+    function renderHome($products, $types, $pages = NULL){
 
         // $this -> smarty -> assign('productos', $products);
         $this -> smarty -> assign('types', $types);
         $this -> smarty -> assign('productos', $products);
+        $this -> smarty -> assign('pages', $pages);
         $this -> smarty -> assign('home', true);
 
         $this -> smarty -> display('templates/home.tpl');

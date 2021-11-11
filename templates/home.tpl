@@ -9,4 +9,12 @@
 
 {include file="card.tpl"}
 
+<div>
+  {if (isset($pages))}
+    {for $page=1 to $pages}
+      <span>   -    <a href="Home?pagina={$page}">{$page}</a>   -  </span>
+    {/for}
+  {/if}
+<div>
+
 {include file="html/footer.tpl"}
