@@ -60,7 +60,6 @@ class HomeController
 
         // cuenta la cantidad de productos
         $cant_prod = $this->ProductsModel->countProd();
-
         $cant_prod = $cant_prod->cant;
 
         // item inicial de la pagina
@@ -70,9 +69,12 @@ class HomeController
         $cant_pag = ceil($cant_prod / ITEMS_BY_PAGE); 
 
         $types = $this->TypeProdModel->getAll();
-        $products = $this->model->getPage($inicio);
+        $products = $this->ProductsModel->getPage($inicio);
+        
+        //CARGO EL STOCK
+        $products = $this->cargarStockInProd($products);
 
-        $this->view->renderHome($products, $types);
+        $this->view->renderHome($products, $types, $cant_pag);
     }
 
 
