@@ -36,19 +36,6 @@ class HomeController
 
     function showHome()
     {
-
-        $products = $this->ProductsModel->getAll();
-
-        //CARGO EL STOCK
-        $products = $this->cargarStockInProd($products);
-
-        $types = $this->TypeProdModel->getAll();
-
-        $this->view->renderHome($products, $types);
-    }
-
-    function showHomePag()
-    {
         $this->LoginHelper->checkLoggedIn(CLIENT); // REVISION DE AUTORIZACION
         $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
         

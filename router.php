@@ -39,7 +39,7 @@ $LoginController = new LoginController();
 switch ($params[0]) {
     case 'Home':
         if (!isset($params[1])) {
-            $HomeController->showHomePag();
+            $HomeController->showHome();
         } else {
             if ($params[1] == 'Producto') {
                 $ProductsController->showProducts();
