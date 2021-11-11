@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 13-10-2021 a las 22:25:57
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 11-11-2021 a las 22:47:43
 -- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tpe_jt`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id_comen` int(11) NOT NULL,
+  `mensaje` varchar(200) NOT NULL,
+  `fecha` date NOT NULL DEFAULT current_timestamp(),
+  `puntaje` tinyint(5) NOT NULL,
+  `id_user_fk` int(11) NOT NULL,
+  `id_prod_fk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id_comen`, `mensaje`, `fecha`, `puntaje`, `id_user_fk`, `id_prod_fk`) VALUES
+(1, 'que onda gato todo piola vitehhh re piola el reishkii', '0000-00-00', 5, 24, 15);
 
 -- --------------------------------------------------------
 
@@ -39,10 +61,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_prod`, `nombre`, `tipo_prod_fk`, `precio_kg`) VALUES
-(7, 'Pepinillos en Conserva', 1, 570),
 (8, 'Miel de Campo Premium 500g', 1, 890),
-(10, 'Hongo Melena de León', 2, 3800),
-(12, 'Girgola Parda', 2, 1000),
 (13, 'Girgola Seca 250gr', 3, 400),
 (14, 'Shitake disecado 200gr', 3, 380),
 (15, 'Reishi 1kg', 2, 2500),
@@ -68,10 +87,8 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id_stock`, `producto_fk`, `cantidad`) VALUES
-(21, 15, 47),
-(22, 17, 25),
-(23, 7, 2),
-(25, 14, 36),
+(22, 17, 41),
+(25, 14, 10),
 (26, 19, 30),
 (27, 8, 0);
 
@@ -95,7 +112,8 @@ INSERT INTO `tipo_producto` (`id_tipo_prod`, `tipo`, `descripcion`) VALUES
 (1, 'Envasados', 'Phasellus quis sollicitudin quam, a semper arcu. Nullam imperdiet enim turpis, ac lacinia diam placerat at. Nam at commodo felis.'),
 (2, 'Frescos', 'Nam sit amet enim justo. Maecenas justo odio, dignissim sit amet est non, ultrices sagittis nisi. Mauris dapibus sit amet sem ut hendrerit.'),
 (3, 'Secos', 'Vivamus in sapien ut turpis dignissim consectetur eget vitae lectus. Etiam blandit non est vitae fermentum. Proin ac neque id massa cursus gravida. Nam ac pharetra sem.'),
-(5, 'Esporas', 'Esporas de variedades de hongos para cultivar');
+(5, 'Esporas', 'Esporas de variedades de hongos para cultivar'),
+(7, 'LO QUE SEA', '...');
 
 -- --------------------------------------------------------
 
@@ -115,11 +133,21 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_user`, `email`, `password`, `rol`) VALUES
-(1, 'admin@admin.com', '$2y$10$n27cl4ir/gupMzUPJ2aKuuwTfetrKEnD5ejiX8lUdwhRWftNNG5xq', '');
+(23, 'admin@admin.com', '$2y$10$ZgNNyiq1okRo/18lJw3gieErA9/Y3WF/WULM7C6nGfjAj64Zrm5ui', '1'),
+(24, 'jerestorm@gmail.com', '$2y$10$ZgNNyiq1okRo/18lJw3gieErA9/Y3WF/WULM7C6nGfjAj64Zrm5ui', '3'),
+(25, 'sofibeludominguez@hotmail.com', '$2y$10$sXA6bghqkWcuoTuI2AgaRuCgiSunyCWy7sJpXvu.Qpal/s0O7Rmfe', '5');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comen`),
+  ADD KEY `id_user_fk` (`id_user_fk`),
+  ADD KEY `id_prod_fk` (`id_prod_fk`);
 
 --
 -- Indices de la tabla `producto`
@@ -152,32 +180,45 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_producto`
 --
 ALTER TABLE `tipo_producto`
-  MODIFY `id_tipo_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_tipo_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_user_fk`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_prod_fk`) REFERENCES `producto` (`id_prod`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`
