@@ -36,9 +36,6 @@ class HomeController
 
     function showHome()
     {
-        $this->LoginHelper->checkLoggedIn(CLIENT); // REVISION DE AUTORIZACION
-        $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
-        
         //paginado de productos
         if(!isset($_GET['pagina']))
             $pagina = 1;
