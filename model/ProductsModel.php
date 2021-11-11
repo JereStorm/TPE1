@@ -17,8 +17,45 @@ class ProductsModel
         $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`');
         $query->execute();
 
+        return $items = $query->fetch(PDO::FETCH_OBJ);
+    }
+
+     //----------- CONTAR PRODUCTOS
+
+     function countProd()
+     {
+         $query = $this->db->prepare('SELECT COUNT(*) AS cant FROM producto');
+         $query->execute();
+ 
+         return $items = $query->fetch(PDO::FETCH_OBJ);
+     }
+
+    //----------- GET PAGE
+
+    function getPage($actual)
+    {   /*
+        $result = $this->db->query(
+            'SELECT * FROM product p 
+            LEFT JOIN product_lang pl ON (pl.id_product = p.id_product AND pl.id_lang = 1) 
+            LEFT JOIN `image` i ON (i.id_product = p.id_product AND cover = 1) 
+            WHERE active = 1 
+            ORDER BY date_upd DESC LIMIT '.$start.', '.ITEMS_BY_PAGE);
+        */
+        
+        $query = $this->db->prepare(
+            'SELECT a.nombre AS Nombre, a.precio_kg AS Precio, b.tipo AS Tipo, a.id_prod AS id 
+            FROM producto AS a 
+            INNER JOIN tipo_producto AS b ON  a.tipo_prod_fk = b.id_tipo_prod
+            ORDER BY a.nombre DESC
+            LIMIT '.$actual.', '.ITEMS_BY_PAGE);
+
+        $query->execute();
+
         return $items = $query->fetchAll(PDO::FETCH_OBJ);
     }
+
+    // ---------- GET ONE
+
 
     // ---------- GET ONE
 

@@ -27,12 +27,6 @@ class ProductsController
         $this->LoginHelper->checkLoggedIn(CLIENT); // REVISION DE AUTORIZACION
         $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
         
-        //paginado de productos
-        if(!isset($_GET['pagina']))
-            $pagina = 1;
-        else 
-            $pagina = $_GET['pagina'];
-        
         $types = $this->TypeProdModel->getAll();
         $products = $this->model->getAll();
 

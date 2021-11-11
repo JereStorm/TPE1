@@ -6,6 +6,7 @@ define('ADMIN', 1);
 define('USER', 3);
 define('CLIENT', 5);
 define('SESSIONTIME', 1800);
+define('ITEMS_BY_PAGE', 6);
 
 // -----PRODUCTOS
 require_once('controller/ProductsController.php');
@@ -38,7 +39,7 @@ $LoginController = new LoginController();
 switch ($params[0]) {
     case 'Home':
         if (!isset($params[1])) {
-            $HomeController->showHome();
+            $HomeController->showHomePag();
         } else {
             if ($params[1] == 'Producto') {
                 $ProductsController->showProducts();
