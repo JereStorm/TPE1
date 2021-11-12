@@ -35,22 +35,35 @@ class HomeController
     }
 
     function showHome()
-    {
-        //paginado de productos
-        if(!isset($_GET['pagina']))
-            $pagina = 1;
-        else 
-            $pagina = $_GET['pagina'];
-
+    {   
         // cuenta la cantidad de productos
         $cant_prod = $this->ProductsModel->countProd();
-        $cant_prod = $cant_prod->cant;
+        $cant_prod = $cant_prod->cant;      
+
+        // calcula la cantidad de paginas que van a haber
+        $cant_pag = ceil($cant_prod / ITEMS_BY_PAGE); 
+
+        //paginado de productos
+        if(!isset($_GET['pagina'])){
+            $pagina = 1;
+        }elseif($_GET['pagina']<1 || $_GET['pagina']>$cant_pag){
+            $this->view->renderError('Parametros de paginacion incorrectos');
+            die();
+        }else{
+            $pagina = $_GET['pagina'];
+        } 
+            
 
         // item inicial de la pagina
         $inicio = ($pagina - 1) * ITEMS_BY_PAGE;
         
-        // calcula la cantidad de paginas que van a haber
-        $cant_pag = ceil($cant_prod / ITEMS_BY_PAGE); 
+
+
+
+
+
+
+        
 
         $types = $this->TypeProdModel->getAll();
         $products = $this->ProductsModel->getPage($inicio);

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <base href="//localhost:8080/Web2/TPE1/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPETomiJere</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+<header class="p-3 text-white bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="Home" class="me-5 titulo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          TPE Tomi-Jere
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto ms-5 justify-content-center mb-md-0 ">
+          <li><a href="Home" class="nav-link px-2 text-white  navegador">Home</a></li>
+
+           
+
+          
+        </ul>
+
+        <div class="text-end">
+                    <a href="Login" class="btn btn-light me-2">Ingresar</a>
+          <a href="SignUp" class="btn btn-primary">Sign-up</a>
+          <!--   <button type="button" class="btn btn-primary">Sign-up</button> -->
+                  </div>
+      </div>
+    </div>
+  </header>
+    <!-- inicio de contenido principal -->
+    <div class="container">
+  
+<div class="buscador mt-5">
+      <form class="d-flex" method="GET" action="buscar" >
+    <button class="btn btn-outline-primary me-2" type="submit">Buscar</button>
+    <input class="form-control " type="text" name="nombre" placeholder="Ej: Alfajor aguila" aria-label="Search" require >
+</form>    </div>
+
+<form method="POST" class="botonera mt-3" action="Filter">
+    <button class="btn btn-outline-info" type="submit">Filtrar</button> 
+    <select name="tipo" class="form-select" aria-label="Default select example" required>
+    <option value="false" disabled selected>Todos</option>
+    
+    
+                    <option value="1">Envasados</option>
+        
+    
+                    <option value="2">Frescos</option>
+        
+    
+                    <option value="3">Secos</option>
+        
+    
+                    <option value="5">Esporas</option>
+        
+        
+</select></form>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
+            <div class="col">
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                    Galletitas Oreo
+                    </h5>
+                    
+                    <ul>
+                        <li class="card-text">Precio: $ 200</li>
+                        <li class="card-text">Tipo: Secos</li>
+                    </ul>
+
+                    
+                </div>
+                                <div class="card-footer bg-danger">
+                
+                    <div class="d-flex justify-content-between  align-items-center">
+                        <h6 class="card-text">Stock: No Disponible</h6>
+                        <div class="btn-group">
+                            <a href="Details/22" class="btn btn-sm btn-outline-dark">View</a>
+                        </div>
+                    </div>
+                                                        </div>
+            </div>
+        </div>
+            <div class="col">
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                    Girgola Parda
+                    </h5>
+                    
+                    <ul>
+                        <li class="card-text">Precio: $ 1000</li>
+                        <li class="card-text">Tipo: Frescos</li>
+                    </ul>
+
+                    
+                </div>
+                                <div class="card-footer bg-danger">
+                
+                    <div class="d-flex justify-content-between  align-items-center">
+                        <h6 class="card-text">Stock: No Disponible</h6>
+                        <div class="btn-group">
+                            <a href="Details/12" class="btn btn-sm btn-outline-dark">View</a>
+                        </div>
+                    </div>
+                                                        </div>
+            </div>
+        </div>
+            <div class="col">
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                    Girgola Seca 250gr
+                    </h5>
+                    
+                    <ul>
+                        <li class="card-text">Precio: $ 400</li>
+                        <li class="card-text">Tipo: Secos</li>
+                    </ul>
+
+                    
+                </div>
+                                <div class="card-footer bg-danger">
+                
+                    <div class="d-flex justify-content-between  align-items-center">
+                        <h6 class="card-text">Stock: No Disponible</h6>
+                        <div class="btn-group">
+                            <a href="Details/13" class="btn btn-sm btn-outline-dark">View</a>
+                        </div>
+                    </div>
+                                                        </div>
+            </div>
+        </div>
+            <div class="col">
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                    Hongo Ganoderma 1kg
+                    </h5>
+                    
+                    <ul>
+                        <li class="card-text">Precio: $ 1800</li>
+                        <li class="card-text">Tipo: Frescos</li>
+                    </ul>
+
+                    
+                </div>
+                                <div class="card-footer bg-success">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="card-text">Stock: 25</h6>
+                        <div class="btn-group">
+                            <a href="Details/17" class="btn btn-sm btn-outline-dark">View</a>
+                        </div>
+                    </div>
+
+
+                                                    </div>
+            </div>
+        </div>
+            <div class="col">
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                    Huevos de Campo x12
+                    </h5>
+                    
+                    <ul>
+                        <li class="card-text">Precio: $ 180</li>
+                        <li class="card-text">Tipo: Frescos</li>
+                    </ul>
+
+                    
+                </div>
+                                <div class="card-footer bg-success">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="card-text">Stock: 27</h6>
+                        <div class="btn-group">
+                            <a href="Details/19" class="btn btn-sm btn-outline-dark">View</a>
+                        </div>
+                    </div>
+
+
+                                                    </div>
+            </div>
+        </div>
+            <div class="col">
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                    Jugo Frutal xLt
+                    </h5>
+                    
+                    <ul>
+                        <li class="card-text">Precio: $ 230</li>
+                        <li class="card-text">Tipo: Frescos</li>
+                    </ul>
+
+                    
+                </div>
+                                <div class="card-footer bg-danger">
+                
+                    <div class="d-flex justify-content-between  align-items-center">
+                        <h6 class="card-text">Stock: No Disponible</h6>
+                        <div class="btn-group">
+                            <a href="Details/24" class="btn btn-sm btn-outline-dark">View</a>
+                        </div>
+                    </div>
+                                                        </div>
+            </div>
+        </div>
+    </div>
+<div>
+  <span>Paginas: </span>
+            <span>   -    <a href="Home?pagina=1">1</a>   -  </span>
+          <span>   -    <a href="Home?pagina=2">2</a>   -  </span>
+          <span>   -    <a href="Home?pagina=3">3</a>   -  </span>
+      <div>
+
+  
+  </div>
+  <!-- fin del contenido principal -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
