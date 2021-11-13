@@ -1,2 +1,4 @@
 #eliminar la carpeta de smarty
 templates_c/
+api/apiView.php
+api/ApiView.php
