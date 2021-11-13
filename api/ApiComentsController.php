@@ -23,7 +23,7 @@ class ApiComentsController
         }
         $coments = $this->model->getAll($params[':ID']);
 
-        $this->view->response($coments, 300);
+        $this->view->response($coments, 200);
     }
 
     function delete($params = null)
