@@ -10,6 +10,7 @@
 {include file="card.tpl"}
 
 <div>
+  <span>Paginas: </span>
   {if (isset($pages))}
     {for $page=1 to $pages}
       <span>   -    <a href="Home?pagina={$page}">{$page}</a>   -  </span>
