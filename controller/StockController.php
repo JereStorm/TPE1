@@ -29,7 +29,7 @@ class StockController
     {
         $this->LoginHelper->checkLoggedIn(CLIENT); // REVISION DE AUTORIZACION
         $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
-        
+
         $products = $this->ProductsModel->getAll();
 
         $stock = $this->model->getAll();
@@ -47,10 +47,10 @@ class StockController
             die();
         }
 
-        $product = $this->model->getOne($id);
+        $stock = $this->model->getOne($id);
         $products = $this->ProductsModel->getAll();
 
-        $this->view->renderEditProduct($products, $product);
+        $this->view->renderEditStock($products, $stock);
     }
     //---------- ADD
 

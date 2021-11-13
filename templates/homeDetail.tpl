@@ -46,6 +46,7 @@
     
     </form>
 </div>
+{include file="forms/formComent.tpl"}
 
 {include file="vue/coments.tpl"}
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

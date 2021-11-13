@@ -39,3 +39,6 @@ header {
   margin: 30px auto;
   max-height: 300px;
 }
+.form-select {
+  width: 25%;
+}

@@ -15,23 +15,23 @@
 
             {/foreach}
             </select>
-        {else}
+    {else}
 
-            <label class="input-group-text alert-secondary" id="disabledSelect">Producto</label>
-            <select  name="producto" class="form-select" id="disabledSelect">
-               {foreach from=$types item=item}
+        <label class="input-group-text alert-secondary" for="sarasa">Producto</label>
+        <select  name="producto" class="form-select" id="sarasa">
+            {foreach from=$types item=item}
 
-                {if ($value_tipo == $item->id)}
-                    <option value="{$value_nombre}" selected="true">{$item->Nombre}</option>
-                {/if}
+            {if ($value_tipo == $item->id)}
+                <option value="{$value_nombre}" selected="true">{$item->Nombre}</option>
+            {/if}
 
-            {/foreach}
-            </select>
-        {/if}
+        {/foreach}
+        </select>
+    {/if}
         
        
          
-        <label class="input-group-text alert-success" for="inputGroupSelect01">Cantidad</label>
-        <input name="cantidad" value="{$value_precio}" type="number" min="0" class="form-control" required>
+        <label class="input-group-text alert-success" for="sarasa">Cantidad</label>
+        <input name="cantidad" value="{$value_precio}" id="sarasa" type="number" min="0" class="form-control" required>
 
       </div>
