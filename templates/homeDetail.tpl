@@ -17,7 +17,9 @@
 {include file="html/header.tpl"}
 <div class="d-flex justify-content-center mt-5">
     <form action="Buy/{$producto->id}" method="POST" class="w-50">
-            
+        
+        <input id="id_prod" type="hidden" value="{$producto->id}">
+
         <h5 class="card-header text-center {$class_type_title}">
         {$producto->Nombre}
         </h5>
@@ -44,6 +46,8 @@
     
     </form>
 </div>
-{include file="coments.tpl"}
 
+{include file="vue/coments.tpl"}
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/main.js"></script>
 {include file="html/footer.tpl"}
