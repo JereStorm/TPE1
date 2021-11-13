@@ -28,6 +28,8 @@ class ApiComentsController
 
     function delete($params = null)
     {
+        //$this->LoginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
+
         $id = $params[':ID'];
         $coment = $this->model->getOne($id);
 

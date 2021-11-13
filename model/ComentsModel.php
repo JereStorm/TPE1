@@ -23,7 +23,7 @@ class ComentsModel
 
     function getOne($id)
     {
-        $query = $this->db->prepare('');
+        $query = $this->db->prepare('SELECT * FROM comentario WHERE id_comen = ?');
         $query->execute([$id]);
 
         return $product = $query->fetch(PDO::FETCH_OBJ);
@@ -44,7 +44,7 @@ class ComentsModel
 
     function delete($id)
     {
-        $query = $this->db->prepare('');
+        $query = $this->db->prepare('DELETE FROM comentario WHERE id_comen = ?');
         return $query->execute([$id]);
     }
 
