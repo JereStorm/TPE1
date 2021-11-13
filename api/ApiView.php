@@ -4,7 +4,7 @@ class ApiView
     public function response($data, $code)
     {
         header("Content-Type: application/json");
-        header("HTTP/1.1" . $code . " " . $this->requestStatus($code));
+        header("HTTP/1.1 " . $code . " " . $this->requestStatus($code));
         echo json_encode($data);
     }
 
