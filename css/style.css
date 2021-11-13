@@ -31,3 +31,10 @@ header {
   font-size: 20px;
   color: aqua;
 }
+.caja {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 700px;
+  overflow: scroll;
+  margin: 30px auto;
+}

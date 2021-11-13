@@ -37,9 +37,9 @@ class HomeController
     function showHome()
     {
         //paginado de productos
-        if(!isset($_GET['pagina']))
+        if (!isset($_GET['pagina']))
             $pagina = 1;
-        else 
+        else
             $pagina = $_GET['pagina'];
 
         // cuenta la cantidad de productos
@@ -48,13 +48,13 @@ class HomeController
 
         // item inicial de la pagina
         $inicio = ($pagina - 1) * ITEMS_BY_PAGE;
-        
+
         // calcula la cantidad de paginas que van a haber
-        $cant_pag = ceil($cant_prod / ITEMS_BY_PAGE); 
+        $cant_pag = ceil($cant_prod / ITEMS_BY_PAGE);
 
         $types = $this->TypeProdModel->getAll();
         $products = $this->ProductsModel->getPage($inicio);
-        
+
         //CARGO EL STOCK
         $products = $this->cargarStockInProd($products);
 
@@ -103,7 +103,7 @@ class HomeController
     // ACA SE TRABAJA EL DETALLE DEL PRODUCTO
     function showDetail($id)
     {
-        //FALTA CREAR LA VISTA DEL PRODUCTO
+
         $product = $this->ProductsModel->getOne($id);
         $stock = $this->StockModel->getOneStockIdProd($product->id);
 
