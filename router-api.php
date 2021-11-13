@@ -1,7 +1,7 @@
 <?php
 
 require_once 'libs/Router.php';
-require_once 'api/apiProductsController.php';
+require_once 'api/ApiComentsController.php';
 
 //creamos el router
 $router = new Router();

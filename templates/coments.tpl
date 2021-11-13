@@ -8,6 +8,10 @@
         </div>
     {/foreach}
 {else}
-    
+    <p>- Hola mundo</p>
+    <p>- Hola mundo</p>
+    <p>- Hola mundo</p>
+    <p>- Hola mundo</p>
+    <p>- Hola mundo</p>
 {/if}
 </div>

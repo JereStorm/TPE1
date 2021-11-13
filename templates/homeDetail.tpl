@@ -43,6 +43,7 @@
         </div>
     
     </form>
-{include file="coments.tpl"}
 </div>
+{include file="coments.tpl"}
+
 {include file="html/footer.tpl"}
