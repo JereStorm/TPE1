@@ -15,7 +15,7 @@ header {
   text-align: center;
 }
 .card {
-  width: 350px;
+  width: 100%;
 }
 .buscador {
   margin: 0 auto;
@@ -33,8 +33,9 @@ header {
 }
 .caja {
   display: flex;
-  flex-direction: column-reverse;
-  height: 700px;
+  flex-direction: column;
+  width: 60%;
   overflow: scroll;
   margin: 30px auto;
+  max-height: 300px;
 }
