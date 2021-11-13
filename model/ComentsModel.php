@@ -11,10 +11,10 @@ class ComentsModel
 
     //----------- GET ALL
 
-    function getAll()
+    function getAll($id_prod)
     {
-        $query = $this->db->prepare('');
-        $query->execute();
+        $query = $this->db->prepare('SELECT * FROM `comentario` WHERE id_prod_fk = ?');
+        $query->execute([$id_prod]);
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ);
     }

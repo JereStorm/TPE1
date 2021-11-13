@@ -18,21 +18,12 @@ class ApiComentsController
 
     function getAll($params = null)
     {
-        $coments = $this->model->getAll();
-
-        // $this->view->response($coments);
-    }
-
-    function getOne($params = null)
-    {
-        $id = $params[':ID'];
-        $coment = $this->model->getOne($id);
-
-        if ($coment) {
-            // $this->view->response($coment);
-        } else {
-            $this->view->response('Comentario id=' . $id . ' Not Found', 404);
+        if (!isset($params[':ID'])) {
+            $this->view->response('Comentario Not Found', 404);
         }
+        $coments = $this->model->getAll($params[':ID']);
+
+        $this->view->response($coments, 300);
     }
 
     function delete($params = null)
