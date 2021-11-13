@@ -52,18 +52,9 @@ class HomeController
         }else{
             $pagina = $_GET['pagina'];
         } 
-            
-
+    
         // item inicial de la pagina
         $inicio = ($pagina - 1) * ITEMS_BY_PAGE;
-        
-
-
-
-
-
-
-        
 
         $types = $this->TypeProdModel->getAll();
         $products = $this->ProductsModel->getPage($inicio);
