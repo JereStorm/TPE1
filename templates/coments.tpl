@@ -3,7 +3,7 @@
     {foreach from=$coments item=coment} 
         <div class="card mt-1">
             <div class="card-body">
-                <p class="card-text">-{$coment->message}</p>
+                <p class="card-text">- {$coment->mensaje}</p>
             </div>
         </div>
     {/foreach}

@@ -9,6 +9,7 @@ class ApiComentsController
 {
     private $model;
     private $view;
+    private $data;
 
     function __construct()
     {
@@ -38,6 +39,33 @@ class ApiComentsController
             $this->view->response('Comentario id=' . $id . ' Delete successfuly', 200);
         } else {
             $this->view->response('Comentario id=' . $id . ' Not Found', 404);
+        }
+    }
+
+    private function getBody()
+    {
+        $data = file_get_contents("php://input");
+        return json_decode($data);
+    }
+
+    function add($params = null)
+    {
+        $data = $this->getBody();
+
+        $mensaje = $data->mensaje;
+        $fecha = $data->fecha;
+        $puntaje = $data->puntaje;
+        $id_user = $data->id_user_fk;
+        $id_prod = $data->id_prod_fk;
+
+        $id = $this->model->insert($mensaje, $fecha, $puntaje, $id_user, $id_prod);
+
+        $coment = $this->model->getOne($id);
+
+        if ($coment) {
+            $this->view->response($coment, 200);
+        } else {
+            $this->view->response("El Comentario no fue creado", 500);
         }
     }
 }
