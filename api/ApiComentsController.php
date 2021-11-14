@@ -55,7 +55,7 @@ class ApiComentsController
         $mensaje = $data->mensaje;
         $fecha = $data->fecha;
         $puntaje = $data->puntaje;
-        $id_user = $data->id_user_fk;
+        $id_user = $_SESSION['USER_ID'];
         $id_prod = $data->id_prod_fk;
 
         $id = $this->model->insert($mensaje, $fecha, $puntaje, $id_user, $id_prod);
