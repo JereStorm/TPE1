@@ -18,7 +18,8 @@ class ComentsModel
             FROM `comentario` AS c 
             INNER JOIN `usuario` AS u 
             ON c.`id_user_fk` = u.`id_user` 
-            WHERE c.`id_prod_fk` = ?');
+            WHERE c.`id_prod_fk` = ?'
+        );
         $query->execute([$id_prod]);
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ);
@@ -28,10 +29,16 @@ class ComentsModel
 
     function getOne($id)
     {
-        $query = $this->db->prepare('SELECT * FROM comentario WHERE id_comen = ?');
+        $query = $this->db->prepare(
+            'SELECT c.*, u.email 
+            FROM `comentario` AS c 
+            INNER JOIN `usuario` AS u 
+            ON c.`id_user_fk` = u.`id_user`
+            WHERE id_comen = ?'
+        );
         $query->execute([$id]);
 
-        return $product = $query->fetch(PDO::FETCH_OBJ);
+        return $coment = $query->fetch(PDO::FETCH_OBJ);
     }
 
     // --------- INSERTS

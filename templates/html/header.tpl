@@ -41,7 +41,7 @@
           {if isset($smarty.session.USER_ID)}
           <!-- $_SESSION['USER_ID'] -->
           <div class="d-flex align-items-baseline flex-wrap ">
-            <h6>({$smarty.session.USER_EMAIL})</h6>
+            <h6 data_id="{$smarty.session.USER_ID}" id="user">({$smarty.session.USER_EMAIL})</h6>
             <a href="Logout" class="btn btn-outline-light me-2 ms-2">Cerrar Sesion</a>
           </div>
 
