@@ -73,10 +73,18 @@ async function addComent(e) {
     let user = document.querySelector('#user');
     let id_user = user.getAttribute('data_id');
 
+    let mensaje = data.get('coment');
+    let puntaje = data.get('puntaje');
+
+    if(mensaje == ''){
+        console.log('No se puede comentar vacio');
+        return;
+    }
+
     let coment = {
-        mensaje: data.get('coment'),
+        mensaje: mensaje,
         fecha: hoy,
-        puntaje: data.get('puntaje'),
+        puntaje: puntaje,
         id_user_fk: id_user,
         id_prod_fk: data.get('id_prod'),
     }
