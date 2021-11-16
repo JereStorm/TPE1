@@ -10,6 +10,7 @@ var app = new Vue({
     },
     methods: {
         delComent: delComent,
+        getUser: getUser,
     },
     
 });
@@ -17,6 +18,18 @@ var app = new Vue({
 let form = document.querySelector("#form-coment");
 form.addEventListener('submit', addComent);
 
+async function getComents() {
+let id_prod = document.querySelector("#id_prod").value;
+    try {
+        let response = await fetch(API_URL+'/producto/'+id_prod);
+        let comentarios = await response.json();
+        
+        app.comentarios = comentarios;
+    } catch(e) {
+        console.log(e);
+    }
+        
+}
 
 async function delComent(e) {
     e.preventDefault();
@@ -34,35 +47,7 @@ async function delComent(e) {
     } catch (error) {
         console.log(error);
     }
-
-    
-
 }
-
-async function getComents() {
-let id_prod = document.querySelector("#id_prod").value;
-try {
-    let response = await fetch(API_URL+'/producto/'+id_prod);
-    let comentarios = await response.json();
-    
-    app.comentarios = comentarios;
-
-    if(comentarios.ok){
-    
-    }
-    
-    
-
-    
-} catch(e) {
-    console.log(e);
-}
-
-    
-}
-
-
-
 
 async function addComent(e) {
     e.preventDefault();
@@ -88,6 +73,10 @@ async function addComent(e) {
         id_user_fk: id_user,
         id_prod_fk: data.get('id_prod'),
     }
+    await insertComent(coment);
+}
+
+async function insertComent(coment) {
     try {
         let response = await fetch(API_URL, {
             method: "POST",
@@ -98,16 +87,14 @@ async function addComent(e) {
         });
 
         if (response.ok) {
-            
             let comentario = await response.json();
-            console.log(comentario)
-         
+            console.log(comentario);
+
             app.comentarios.push(comentario);
-            
         }
 
-    } catch(e) {
-        console.log(e)
+    } catch (e) {
+        console.log(e);
     }
 }
 

@@ -2,6 +2,7 @@
 
 require_once 'model/ComentsModel.php';
 require_once 'api/ApiView.php';
+require_once 'helpers/LoginHelper.php';
 
 
 
@@ -10,6 +11,7 @@ class ApiComentsController
     private $model;
     private $view;
     private $data;
+    private $loginHelper;
 
     function __construct()
     {

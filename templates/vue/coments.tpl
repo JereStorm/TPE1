@@ -7,9 +7,9 @@
             <p class="card-text">- {{coment.mensaje}}</p>
         </div>
         
-            <div class="card-end text-end">
-                <button class="borrar btn btn-danger" v-on:click="delComent" v-bind:data-id="coment.id_comen">X</button>
-            </div>
+        <div class="card-end text-end">
+            <button class="borrar btn btn-danger" v-on:click="delComent" v-bind:data-id="coment.id_comen">X</button>
+        </div>
         
         
     </div>
