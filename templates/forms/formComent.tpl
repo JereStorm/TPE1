@@ -9,8 +9,12 @@
         </select>
         
         <input name="id_prod" id="id_prod" type="hidden" value="{$producto->id}">
-        
+        {if isset($smarty.session.USER_ID)}
         <button type="submit" class="btn btn-primary mt-2 ms-3">Enviar</button>
+        {else}
+        <a href="Login" class="btn btn-primary mt-2 ms-3">Enviar</a>       
+        {/if}
+        
     </div>
 
 </form>

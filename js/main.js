@@ -7,11 +7,37 @@ var app = new Vue({
     data: {
         titulo: "cosas imposibles",
         comentarios : [],
-    }
-  });
+    },
+    methods: {
+        delComent: delComent,
+    },
+    
+});
 
 let form = document.querySelector("#form-coment");
 form.addEventListener('submit', addComent);
+
+
+async function delComent(e) {
+    e.preventDefault();
+    let id = e.target.getAttribute('data-id');
+    try {
+        let res = await fetch(`${API_URL}/${id}`, {
+            "method": "DELETE",
+        });
+        if (res.ok) {
+            getComents();
+            console.log("Eliminado con exito")
+        } else {
+            console.log("Eliminado fallido")
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    
+
+}
 
 async function getComents() {
 let id_prod = document.querySelector("#id_prod").value;
@@ -20,10 +46,21 @@ try {
     let comentarios = await response.json();
     
     app.comentarios = comentarios;
-    } catch(e) {
-        console.log(e);
+
+    if(comentarios.ok){
+    
     }
+    
+    
+
+    
+} catch(e) {
+    console.log(e);
 }
+
+    
+}
+
 
 
 
