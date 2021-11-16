@@ -10,7 +10,7 @@ var app = new Vue({
     },
     methods: {
         delComent: delComent,
-        getUser: getUser,
+        
     },
     
 });
