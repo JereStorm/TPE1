@@ -57,6 +57,7 @@ class HomeController
         $inicio = ($pagina - 1) * ITEMS_BY_PAGE;
 
         $types = $this->TypeProdModel->getAll();
+
         $products = $this->ProductsModel->getPage($inicio);
 
         //CARGO EL STOCK

@@ -11,7 +11,8 @@ class TypeProdModel{
     //----------- GET ALL
 
     function getAll(){
-        $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto');
+        $query = $this->db->prepare(
+            'SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto');
         $query->execute();
 
         return $tipos = $query->fetchAll(PDO::FETCH_OBJ); 
@@ -20,7 +21,10 @@ class TypeProdModel{
     // ---------- GET ONE
 
     function getOne($id){
-        $query = $this->db->prepare('SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id FROM tipo_producto WHERE id_tipo_prod = ?');
+        $query = $this->db->prepare(
+            'SELECT tipo AS Tipo, descripcion AS Descripción, id_tipo_prod AS id 
+            FROM tipo_producto 
+            WHERE id_tipo_prod = ?');
         $query->execute([$id]);
 
         return $tipo = $query->fetch(PDO::FETCH_OBJ); 

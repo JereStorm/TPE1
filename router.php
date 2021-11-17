@@ -5,8 +5,8 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 define('ADMIN', 1);
 define('USER', 3);
 define('CLIENT', 5);
-define('SESSIONTIME', 1800);
-define('ITEMS_BY_PAGE', 6);
+define('SESSIONTIME', 1800); //segundos
+define('ITEMS_BY_PAGE', 6); //items de paginado
 
 // -----PRODUCTOS
 require_once('controller/ProductsController.php');
@@ -36,6 +36,9 @@ $StockController = new StockController();
 $AdminController = new AdminController();
 $LoginController = new LoginController();
 
+// chequea el tiempo de login
+//$this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
+
 switch ($params[0]) {
     case 'Home':
         if (!isset($params[1])) {
@@ -48,8 +51,6 @@ switch ($params[0]) {
             } else if ($params[1] == 'Stock') {
                 $StockController->showStock();
             } else if ($params[1] == 'Admin') {
-                $LoginController = new LoginController();
-                $AdminController = new AdminController();
                 $AdminController->showAdmin();
             } else {
                 $HomeController->showError('Error: ruta incorrecta');

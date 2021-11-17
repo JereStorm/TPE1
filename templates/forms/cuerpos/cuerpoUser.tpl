@@ -9,12 +9,12 @@
         </div>
         <h4>Blanqueo de Passoword</h4>
         <div class="input-group mb-3">
-            <label class="input-group-text alert-success" for="exampleInputPassword1">Password </label>
-            <input name="password" type="text" class="form-control" id="exampleInputPassword1">
+            <label class="input-group-text alert-success" for="pass1">Password </label>
+            <input name="password" type="text" class="form-control" id="pass1">
         </div>
         <div class="input-group mb-3">
-            <label class="input-group-text alert-success" for="exampleInputPassword1">Re Password </label>
-            <input name="password2" type="text" class="form-control" id="exampleInputPassword1">
+            <label class="input-group-text alert-success" for="pass2">Re Password </label>
+            <input name="password2" type="text" class="form-control" id="pass2">
         </div>
         
          {if isset($error) }

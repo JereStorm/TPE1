@@ -105,8 +105,8 @@ class UserModel
 
     function valAdmin()
     {
-        $query = $this->db->prepare('SELECT COUNT(*) AS cant FROM `usuario` WHERE `rol` = 1');
-        $query->execute([]);
+        $query = $this->db->prepare('SELECT COUNT(*) AS cant FROM `usuario` WHERE `rol` = ?');
+        $query->execute([ADMIN]);
 
         return $value = $query->fetch(PDO::FETCH_OBJ);
     }
@@ -114,7 +114,7 @@ class UserModel
     {
         //---- INSERT USER EN LA DB
         $query = $this->db->prepare('INSERT INTO usuario (email, password, rol) VALUES ( ?, ?, ?)');
-        $query->execute([$email, $pass, 5]);
+        $query->execute([$email, $pass, CLIENT]);
 
         // 3. Obtengo y devuelo el ID nuevo
         return $this->db->lastInsertId();

@@ -11,7 +11,11 @@ class StockModel{
     //----------- GET ALL
 
     function getAll(){
-        $query = $this->db->prepare('SELECT b. nombre AS Producto, a. cantidad AS Cantidad, a. id_stock AS id FROM stock a INNER JOIN producto b WHERE a. producto_fk = b. id_prod');
+        $query = $this->db->prepare(
+            'SELECT b. nombre AS Producto, a. cantidad AS Cantidad, a. id_stock AS id 
+            FROM stock a 
+            INNER JOIN producto b 
+            WHERE a. producto_fk = b. id_prod');
         $query->execute();
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ); 

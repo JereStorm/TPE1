@@ -31,7 +31,10 @@ class LoginHelper
             // $this->viewError->renderError("Usted no tiene permisos suficientes");
             die();
         }
+
+       // $this->checkTimeLogin();
     }
+    
     public function checkTimeLogin()
     {
         if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > SESSIONTIME)) {
