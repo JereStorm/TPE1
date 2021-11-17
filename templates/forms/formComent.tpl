@@ -1,6 +1,7 @@
 <form action="api/coments" method="POST" class="form mt-5" id="form-coment">
     <textarea type="text-area" name="coment" id="coment" class="form-control"></textarea>
-    <div class="d-flex"><select name="puntaje" id="puntaje" class="form-select">
+    <div class="d-flex">
+        <select name="puntaje" id="puntaje" class="form-select">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

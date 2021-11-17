@@ -17,6 +17,7 @@ class ApiComentsController
     {
         $this->model = new ComentsModel();
         $this->view = new ApiView();
+        $this->loginHelper = new LoginHelper();
     }
 
     function getAll($params = null)
@@ -31,7 +32,7 @@ class ApiComentsController
 
     function delete($params = null)
     {
-        //$this->LoginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
+        $this->loginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
 
         $id = $params[':ID'];
         $coment = $this->model->getOne($id);
