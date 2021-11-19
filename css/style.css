@@ -34,11 +34,21 @@ header {
 .caja {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  min-width: 500px;
   overflow: scroll;
   margin: 30px auto;
   max-height: 300px;
 }
 .form-select {
   width: 25%;
+}
+.contenedor_detail {
+  display: flex;
+  justify-content: space-around;
+}
+.no_comentarios {
+  font-size: 24px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }

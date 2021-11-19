@@ -1,4 +1,4 @@
-<form action="api/coments" method="POST" class="form mt-5" id="form-coment">
+<form action="api/coments" method="POST" class="form mb-5 mt-3" id="form-coment">
     <textarea type="text-area" name="coment" id="coment" class="form-control"></textarea>
     <div class="d-flex">
         <select name="puntaje" id="puntaje" class="form-select">
