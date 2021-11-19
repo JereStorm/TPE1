@@ -7,7 +7,7 @@ class ProductsModel
 
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;' . 'dbname=tpe_jt;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;' . 'dbname=web_tpe;charset=utf8', 'root', '');
     }
 
     //----------- GET ALL
@@ -20,26 +20,27 @@ class ProductsModel
         return $items = $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-     //----------- CONTAR PRODUCTOS
+    //----------- CONTAR PRODUCTOS
 
-     function countProd()
-     {
-         $query = $this->db->prepare('SELECT COUNT(*) AS cant FROM producto');
-         $query->execute();
- 
-         return $items = $query->fetch(PDO::FETCH_OBJ);
-     }
+    function countProd()
+    {
+        $query = $this->db->prepare('SELECT COUNT(*) AS cant FROM producto');
+        $query->execute();
+
+        return $items = $query->fetch(PDO::FETCH_OBJ);
+    }
 
     //----------- GET PAGE
 
     function getPage($inicio)
-    { 
+    {
         $query = $this->db->prepare(
             'SELECT a.nombre AS Nombre, a.precio_kg AS Precio, b.tipo AS Tipo, a.id_prod AS id 
             FROM producto AS a 
             INNER JOIN tipo_producto AS b ON  a.tipo_prod_fk = b.id_tipo_prod
             ORDER BY a.nombre ASC
-            LIMIT '.$inicio.', '.ITEMS_BY_PAGE); // desde $inicio, trae la cantidad de elementos indicados por ITEMS_BY_PAGE
+            LIMIT ' . $inicio . ', ' . ITEMS_BY_PAGE
+        ); // desde $inicio, trae la cantidad de elementos indicados por ITEMS_BY_PAGE
 
         $query->execute();
 

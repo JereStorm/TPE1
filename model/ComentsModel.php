@@ -6,7 +6,7 @@ class ComentsModel
 
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;' . 'dbname=tpe_jt;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;' . 'dbname=web_tpe;charset=utf8', 'root', '');
     }
 
     //----------- GET ALL
@@ -73,13 +73,18 @@ class ComentsModel
     // ------------ FILTRAR 
 
 
-    function filtrarComents($tipo)
+    function filtrarComents($puntaje)
     {
         // 2. Enviamos la consulta (2 sub pasos)
-        $query = $this->db->prepare('');
-        $query->execute([$tipo]);
+        $query = $this->db->prepare(
+            'SELECT c.*, u.email 
+            FROM `comentario` AS c 
+            INNER JOIN `usuario` AS u 
+            ON c.`id_user_fk` = u.`id_user`
+            WHERE c.`puntaje` = ?'
+        );
+        $query->execute([$puntaje]);
 
-        // 3. obtengo la respuesta de la DB
         $filtradas = $query->fetchAll(PDO::FETCH_OBJ); // obtengo un arreglo con TODAS los Pagos
 
         return $filtradas;

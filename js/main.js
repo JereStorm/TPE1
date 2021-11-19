@@ -39,6 +39,7 @@ async function delComent(e) {
             "method": "DELETE",
         });
         if (res.ok) {
+            console.log(res)
             getComents();
             console.log("Eliminado con exito")
         } else {

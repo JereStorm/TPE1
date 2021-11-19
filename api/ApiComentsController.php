@@ -2,7 +2,7 @@
 
 require_once 'model/ComentsModel.php';
 require_once 'api/ApiView.php';
-require_once 'helpers/LoginHelper.php';
+require_once 'helpers/ApiLoginHelper.php';
 
 
 
@@ -11,13 +11,13 @@ class ApiComentsController
     private $model;
     private $view;
     private $data;
-    private $loginHelper;
+    private $apiLoginHelper;
 
     function __construct()
     {
         $this->model = new ComentsModel();
         $this->view = new ApiView();
-        $this->loginHelper = new LoginHelper();
+        $this->apiLoginHelper = new ApiLoginHelper();
     }
 
     function getAll($params = null)
@@ -32,8 +32,11 @@ class ApiComentsController
 
     function delete($params = null)
     {
-        $this->loginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
+        // $verificado = $this->apiLoginHelper->apiCheckLoggedIn(ADMIN); // REVISION DE AUTORIZACION
 
+        // if (!$verificado) {
+        //     $this->view->response('No Permissions', 404);
+        // }
         $id = $params[':ID'];
         $coment = $this->model->getOne($id);
 
