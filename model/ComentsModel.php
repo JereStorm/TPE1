@@ -98,13 +98,4 @@ class ComentsModel
 
         return $filtradas;
     }
-    // ------------ HACE UN CONTEO DE LOS ELEMENTOS REFERENCIADOS
-
-    function contarReferencia($id)
-    {
-        $query = $this->db->prepare('');
-        $query->execute([$id]);
-
-        return $value = $query->fetch(PDO::FETCH_OBJ);
-    }
 }

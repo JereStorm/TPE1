@@ -5,7 +5,6 @@ require_once 'api/ApiView.php';
 require_once 'helpers/ApiLoginHelper.php';
 
 
-
 class ApiComentsController
 {
     private $model;
@@ -22,17 +21,24 @@ class ApiComentsController
 
     function getAll($params = null)
     {
-        if (isset($params[':ORDEN'])  && ($params[':ORDEN'] == 'ASC' || $params[':ORDEN'] == 'DESC')) {
-            $order = $params[':ORDEN'];
-        }
-
-        $campo = 'id_comen';
-
+        // $this->view->response($_GET, 200);
+        // die();
         if (!isset($params[':ID'])) {
             $this->view->response('Comentario Not Found', 404);
         }
-        $coments = $this->model->getAll($params[':ID'], $campo, $order);
 
+        if (isset($_GET['campo']) && $_GET['campo'] == 'puntaje') {
+            $campo = $_GET['campo'];
+        } else {
+            $campo = 'id_comen';
+        }
+
+        if (isset($_GET['orden'])  && ($_GET['orden'] == 'ASC' || $_GET['orden'] == 'DESC')) {
+            $order = $_GET['orden'];
+            $coments = $this->model->getAll($params[':ID'], $campo, $order);
+        } else {
+            $coments = $this->model->getAll($params[':ID'], $campo);
+        }
         $this->view->response($coments, 200);
     }
 
@@ -81,27 +87,4 @@ class ApiComentsController
             $this->view->response("El Comentario no fue creado", 500);
         }
     }
-
-    // function getOrder($params = null)
-    // {
-    //     $sql = 'SELECT c.*, u.email 
-    //     FROM `comentario` AS c 
-    //     INNER JOIN `usuario` AS u 
-    //     ON c.`id_user_fk` = u.`id_user` 
-    //     WHERE c.`id_prod_fk` = ?
-    //     ORDER BY `id_comen` ';
-
-    //     if (!empty($params[':ORDEN']) && ($params[':ORDEN'] == 'ASC' || $params[':ORDEN'] == 'DESC')) {
-    //         $sql = $sql . $params[':ORDEN'];
-    //     } else {
-    //         $this->view->response('Comentario Not Found', 404);
-    //     }
-
-    //     if (!empty($params[':ID'])) {
-    //         $this->view->response('Comentario Not Found', 404);
-    //     }
-    //     $coments = $this->model->getAllOrder($params[':ID'], $sql);
-
-    //     $this->view->response($coments, 200);
-    // }
 }

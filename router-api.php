@@ -8,7 +8,6 @@ $router = new Router();
 
 //definimos la tabla (  $router->addRoute(RECURSO, METODO, CLASSE, FUNCION)  )
 $router->addRoute('coments/producto/:ID', 'GET', 'ApiComentsController', 'getAll');
-$router->addRoute('coments/producto/:ID/:ORDEN', 'GET', 'ApiComentsController', 'getAll');
 $router->addRoute('coments/:ID', 'DELETE', 'ApiComentsController', 'delete');
 $router->addRoute('coments', 'POST', 'ApiComentsController', 'add');
 
