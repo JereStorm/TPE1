@@ -22,10 +22,20 @@ class ApiComentsController
 
     function getAll($params = null)
     {
+        $sql = 'SELECT c.*, u.email 
+        FROM `comentario` AS c 
+        INNER JOIN `usuario` AS u 
+        ON c.`id_user_fk` = u.`id_user` 
+        WHERE c.`id_prod_fk` = ?';
+
+        if (!empty($params[':ORDEN']) && ($params[':ORDEN'] == 'ASC' || $params[':ORDEN'] == 'DESC')) {
+            $sql = $sql . 'ORDER BY id_comen ' . $params[':ORDEN'];
+        }
+
         if (!isset($params[':ID'])) {
             $this->view->response('Comentario Not Found', 404);
         }
-        $coments = $this->model->getAll($params[':ID']);
+        $coments = $this->model->getAll($params[':ID'], $sql);
 
         $this->view->response($coments, 200);
     }
@@ -75,4 +85,27 @@ class ApiComentsController
             $this->view->response("El Comentario no fue creado", 500);
         }
     }
+
+    // function getOrder($params = null)
+    // {
+    //     $sql = 'SELECT c.*, u.email 
+    //     FROM `comentario` AS c 
+    //     INNER JOIN `usuario` AS u 
+    //     ON c.`id_user_fk` = u.`id_user` 
+    //     WHERE c.`id_prod_fk` = ?
+    //     ORDER BY `id_comen` ';
+
+    //     if (!empty($params[':ORDEN']) && ($params[':ORDEN'] == 'ASC' || $params[':ORDEN'] == 'DESC')) {
+    //         $sql = $sql . $params[':ORDEN'];
+    //     } else {
+    //         $this->view->response('Comentario Not Found', 404);
+    //     }
+
+    //     if (!empty($params[':ID'])) {
+    //         $this->view->response('Comentario Not Found', 404);
+    //     }
+    //     $coments = $this->model->getAllOrder($params[':ID'], $sql);
+
+    //     $this->view->response($coments, 200);
+    // }
 }

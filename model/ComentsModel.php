@@ -11,15 +11,19 @@ class ComentsModel
 
     //----------- GET ALL
 
-    function getAll($id_prod)
+    function getAll($id_prod, $sql)
     {
         $query = $this->db->prepare(
-            'SELECT c.*, u.email 
-            FROM `comentario` AS c 
-            INNER JOIN `usuario` AS u 
-            ON c.`id_user_fk` = u.`id_user` 
-            WHERE c.`id_prod_fk` = ?'
+            $sql
         );
+        $query->execute([$id_prod]);
+
+        return $items = $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function getAllOrder($id_prod, $sql)
+    {
+        $query = $this->db->prepare($sql);
         $query->execute([$id_prod]);
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ);
