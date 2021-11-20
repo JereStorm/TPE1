@@ -11,10 +11,15 @@ class ComentsModel
 
     //----------- GET ALL
 
-    function getAll($id_prod, $sql)
+    function getAll($id_prod, $campo, $orden = 'ASC')
     {
         $query = $this->db->prepare(
-            $sql
+            'SELECT c.*, u.email 
+            FROM `comentario` AS c 
+            INNER JOIN `usuario` AS u 
+            ON c.`id_user_fk` = u.`id_user` 
+            WHERE c.`id_prod_fk` = ?
+            ORDER BY ' . $campo . ' ' . $orden
         );
         $query->execute([$id_prod]);
 

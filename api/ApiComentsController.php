@@ -22,20 +22,16 @@ class ApiComentsController
 
     function getAll($params = null)
     {
-        $sql = 'SELECT c.*, u.email 
-        FROM `comentario` AS c 
-        INNER JOIN `usuario` AS u 
-        ON c.`id_user_fk` = u.`id_user` 
-        WHERE c.`id_prod_fk` = ?';
-
-        if (!empty($params[':ORDEN']) && ($params[':ORDEN'] == 'ASC' || $params[':ORDEN'] == 'DESC')) {
-            $sql = $sql . 'ORDER BY id_comen ' . $params[':ORDEN'];
+        if (isset($params[':ORDEN'])  && ($params[':ORDEN'] == 'ASC' || $params[':ORDEN'] == 'DESC')) {
+            $order = $params[':ORDEN'];
         }
+
+        $campo = 'id_comen';
 
         if (!isset($params[':ID'])) {
             $this->view->response('Comentario Not Found', 404);
         }
-        $coments = $this->model->getAll($params[':ID'], $sql);
+        $coments = $this->model->getAll($params[':ID'], $campo, $order);
 
         $this->view->response($coments, 200);
     }
