@@ -1,21 +1,26 @@
-<form action="api/coments" method="POST" class="form mb-5 mt-3" id="form-coment">
-    <textarea type="text-area" name="coment" id="coment" class="form-control"></textarea>
-    <div class="d-flex">
-        <select name="puntaje" id="puntaje" class="form-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        
-        <input name="id_prod" id="id_prod" type="hidden" value="{$producto->id}">
-        {if isset($smarty.session.USER_ID)}
-        <button type="submit" class="btn btn-primary mt-2 ms-3">Enviar</button>
-        {else}
-        <a href="Login" class="btn btn-primary mt-2 ms-3">Enviar</a>       
-        {/if}
-        
-    </div>
+<div class="d-flex justify-content-center">
+    <p id="respuesta" class="mb-0"></p>
+</div>
 
-</form>
+<form action="api/coments" method="POST" class="container w-75 d-flex form mt-5 " id="form-coment">
+            
+            <textarea type="text-area" maxlength="200" name="coment" id="coment" class="form-control" placeholder="Dejá tu comentario y puntuá..." required></textarea>
+            <span class="label" id="count_message"></span>
+            <div class="w-25">
+                <select name="puntaje" id="puntaje" class="form-select w-100 ms-3" required>
+                    <option value="false" disabled selected>Puntaje</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input name="id_prod" id="id_prod" type="hidden" value="{$producto->id}">
+                  {if isset($smarty.session.USER_ID)}
+                <button type="submit" class="btn btn-primary mt-2 ms-3 w-100">Enviar</button>
+                {else}
+                <a href="Login" class="btn btn-primary mt-2 ms-3 w-100">Enviar</a>       
+                {/if}
+            </div>
+        
+        </form>

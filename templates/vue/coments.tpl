@@ -15,7 +15,7 @@
             <div class="card-body">
                 <p class="card-text">Usuario: {{coment.email}} - Estrellas: ({{coment.puntaje}})</p>
                 <div class="card_caja">
-                    <p class="card-text">- {{coment.mensaje | truncate(70)}}...</p>
+                    <p class="card-text">- {{coment.mensaje | truncate(40)}}...</p>
                     {/literal}
                     {if isset($smarty.session.USER_ROL) && $smarty.session.USER_ROL==ADMIN}
                     {literal}

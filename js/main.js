@@ -97,10 +97,15 @@ async function addComent(e) {
     let mensaje = data.get('coment');
     let puntaje = data.get('puntaje');
 
-    if(mensaje == ''){
-        console.log('No se puede comentar vacio');
+
+
+    if(mensaje == '' || puntaje==null){
+        showMensaje(false, "No se puede comentar sin puntuar");
         return;
     }
+
+    document.querySelector('#coment').value = '';
+    document.querySelector('#puntaje').value = false;
 
     let coment = {
         mensaje: mensaje,
@@ -110,6 +115,8 @@ async function addComent(e) {
         id_prod_fk: data.get('id_prod'),
     }
     await insertComent(coment);
+    
+
 }
 //----------------- INSERT
 
@@ -128,10 +135,12 @@ async function insertComent(coment) {
             console.log(comentario);
 
             app.comentarios.push(comentario);
+            showMensaje(true, "El mensaje fue enviado correctamente");
         }
 
     } catch (e) {
         console.log(e);
+        showMensaje(false, "Error en el envío del mensaje");
     }
 }
 // ---------- FECHA
@@ -153,5 +162,28 @@ function fechaHoy(){
     
     return today
 }
+
+// ------------ MENSAJE DE RESPUESTA ENVIO COMENTARIO
+
+function showMensaje(state, mensaje='error'){
+    
+    let aviso = document.querySelector('#respuesta');
+
+    if(state){
+        aviso.className = 'alert alert-success w-50';
+        aviso.innerHTML = mensaje;   
+    }else{
+        aviso.className = 'alert alert-danger w-50';
+        aviso.innerHTML = mensaje;   
+    }
+    setTimeout(()=>{
+        aviso.className = '';
+        aviso.innerHTML = '';  
+    }, 2000);
+}
+
+
+
+
 // ------------ AUTORENDER
 getComents()
