@@ -2,7 +2,7 @@
     <p id="respuesta" class="mb-0"></p>
 </div>
 
-<form action="api/coments" method="POST" class="container w-75 d-flex form mt-5 " id="form-coment">
+<form action="api/coments" method="POST" class="container w-75 d-flex form mt-5 mb-5" id="form-coment">
             
             <textarea type="text-area" maxlength="200" name="coment" id="coment" class="form-control" placeholder="Dejá tu comentario y puntuá..." required></textarea>
             <span class="label" id="count_message"></span>
