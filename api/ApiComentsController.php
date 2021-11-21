@@ -44,11 +44,7 @@ class ApiComentsController
 
     function delete($params = null)
     {
-        // $verificado = $this->apiLoginHelper->apiCheckLoggedIn(ADMIN); // REVISION DE AUTORIZACION
 
-        // if (!$verificado) {
-        //     $this->view->response('No Permissions', 404);
-        // }
         $id = $params[':ID'];
         $coment = $this->model->getOne($id);
 
