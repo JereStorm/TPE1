@@ -2,8 +2,7 @@
 
 require_once 'model/ComentsModel.php';
 require_once 'api/ApiView.php';
-require_once 'helpers/LoginHelper.php';
-
+require_once 'helpers/ApiLoginHelper.php';
 
 
 class ApiComentsController
@@ -11,28 +10,40 @@ class ApiComentsController
     private $model;
     private $view;
     private $data;
-    private $loginHelper;
+    private $apiLoginHelper;
 
     function __construct()
     {
         $this->model = new ComentsModel();
         $this->view = new ApiView();
-        $this->loginHelper = new LoginHelper();
+        $this->apiLoginHelper = new ApiLoginHelper();
     }
 
     function getAll($params = null)
     {
+        // $this->view->response($_GET, 200);
+        // die();
         if (!isset($params[':ID'])) {
             $this->view->response('Comentario Not Found', 404);
         }
-        $coments = $this->model->getAll($params[':ID']);
 
+        if (isset($_GET['campo']) && $_GET['campo'] == 'puntaje') {
+            $campo = $_GET['campo'];
+        } else {
+            $campo = 'id_comen';
+        }
+
+        if (isset($_GET['orden'])  && ($_GET['orden'] == 'ASC' || $_GET['orden'] == 'DESC')) {
+            $order = $_GET['orden'];
+            $coments = $this->model->getAll($params[':ID'], $campo, $order);
+        } else {
+            $coments = $this->model->getAll($params[':ID'], $campo);
+        }
         $this->view->response($coments, 200);
     }
 
     function delete($params = null)
     {
-        $this->loginHelper->checkLoggedIn(ADMIN); // REVISION DE AUTORIZACION
 
         $id = $params[':ID'];
         $coment = $this->model->getOne($id);

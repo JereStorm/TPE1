@@ -7,21 +7,52 @@ var app = new Vue({
     data: {
         titulo: "cosas imposibles",
         comentarios : [],
+        
     },
     methods: {
         delComent: delComent,
-        
+        orderComents: orderComents,
+       
     },
+    filters: {
+        truncate: function(data,num){
+            const reqdString = 
+              data.split("").slice(0, num).join("");
+            return reqdString;
+        }
+    }
     
 });
 
 let form = document.querySelector("#form-coment");
 form.addEventListener('submit', addComent);
 
-async function getComents() {
-let id_prod = document.querySelector("#id_prod").value;
+//----------------- ORDER
+
+
+async function orderComents(orden){
+    let prioridad = document.querySelector('#prioridad').value;
+    let id_prod = document.querySelector("#id_prod").value;
+    
+    // throw(console.log(prioridad, id_prod, orden))
     try {
-        let response = await fetch(API_URL+'/producto/'+id_prod);
+        
+        let response = await fetch(API_URL+'/producto/'+id_prod+'?campo='+prioridad+'&orden='+orden); 
+        let comentarios = await response.json();
+        console.log(comentarios)
+        app.comentarios = comentarios;
+    } catch(e) {
+        console.log(e);
+    }
+}
+//----------------- GETALL
+
+async function getComents(orden = '') {
+let id_prod = document.querySelector("#id_prod").value;
+
+    try {
+        
+        let response = await fetch(API_URL+'/producto/'+id_prod); 
         let comentarios = await response.json();
         
         app.comentarios = comentarios;
@@ -30,6 +61,8 @@ let id_prod = document.querySelector("#id_prod").value;
     }
         
 }
+//----------------- DELETE
+
 
 async function delComent(e) {
     e.preventDefault();
@@ -39,6 +72,7 @@ async function delComent(e) {
             "method": "DELETE",
         });
         if (res.ok) {
+            console.log(res)
             getComents();
             console.log("Eliminado con exito")
         } else {
@@ -48,6 +82,8 @@ async function delComent(e) {
         console.log(error);
     }
 }
+//----------------- ADD
+
 
 async function addComent(e) {
     e.preventDefault();
@@ -75,6 +111,7 @@ async function addComent(e) {
     }
     await insertComent(coment);
 }
+//----------------- INSERT
 
 async function insertComent(coment) {
     try {
@@ -97,7 +134,7 @@ async function insertComent(coment) {
         console.log(e);
     }
 }
-
+// ---------- FECHA
 function fechaHoy(){
     var today = new Date();
     var dd = today.getDate();
@@ -116,4 +153,5 @@ function fechaHoy(){
     
     return today
 }
+// ------------ AUTORENDER
 getComents()

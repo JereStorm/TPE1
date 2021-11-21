@@ -7,7 +7,7 @@ class ProductsModel
 
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;' . 'dbname=tpe_jt;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;' . 'dbname=web_tpe;charset=utf8', 'root', '');
     }
 
     //----------- GET ALL
@@ -44,7 +44,7 @@ class ProductsModel
             FROM producto AS a 
             INNER JOIN tipo_producto AS b ON  a.tipo_prod_fk = b.id_tipo_prod
             ORDER BY a.nombre ASC
-            LIMIT ' . $inicio . ' , ' . ITEMS_BY_PAGE . ''
+            LIMIT ' . $inicio . ', ' . ITEMS_BY_PAGE
         ); // desde $inicio, trae la cantidad de elementos indicados por ITEMS_BY_PAGE
 
         $query->execute();

@@ -15,8 +15,8 @@
 {* FORMULARIO *}
 
 {include file="html/header.tpl"}
-<div class="d-flex justify-content-center mt-5">
-    <form action="Buy/{$producto->id}" method="POST" class="w-50">
+<div class="d-flex align-items-center mt-5 contenedor_detail">
+    <form action="Buy/{$producto->id}" method="POST" class="w-50 ">
         
         
 
@@ -45,10 +45,11 @@
         </div>
     
     </form>
+    {include file="vue/coments.tpl"}
 </div>
 {include file="forms/formComent.tpl"}
 
-{include file="vue/coments.tpl"}
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/main.js"></script>
 {include file="html/footer.tpl"}

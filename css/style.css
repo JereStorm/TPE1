@@ -16,6 +16,12 @@ header {
 }
 .card {
   width: 100%;
+  min-height: 100px;
+  max-height: 300px;
+}
+.card_caja {
+  display: flex;
+  justify-content: space-between;
 }
 .buscador {
   margin: 0 auto;
@@ -34,11 +40,22 @@ header {
 .caja {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  min-width: 500px;
   overflow: scroll;
   margin: 30px auto;
-  max-height: 300px;
+  max-height: 400px;
+  max-width: 700px;
 }
 .form-select {
   width: 25%;
+}
+.contenedor_detail {
+  display: flex;
+  justify-content: space-around;
+}
+.no_comentarios {
+  font-size: 24px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }

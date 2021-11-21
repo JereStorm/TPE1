@@ -2,6 +2,7 @@
 
 require_once 'libs/Router.php';
 require_once 'api/ApiComentsController.php';
+require_once 'api/ApiUserController.php';
 
 //creamos el router
 $router = new Router();
@@ -10,7 +11,9 @@ $router = new Router();
 $router->addRoute('coments/producto/:ID', 'GET', 'ApiComentsController', 'getAll');
 $router->addRoute('coments/:ID', 'DELETE', 'ApiComentsController', 'delete');
 $router->addRoute('coments', 'POST', 'ApiComentsController', 'add');
-//$router->addRoute('productos/:ID', 'UPDATE', 'ApiComentsController', 'update');
+
+$router->addRoute('users/token', 'GET', 'ApiUserController', 'obtenerToken');
+$router->addRoute('users/:ID', 'GET', 'ApiUserController', 'obtenerUsuario');
 
 // ruteo
 $resource = $_GET['resource'];

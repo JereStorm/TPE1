@@ -6,20 +6,29 @@ class ComentsModel
 
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;' . 'dbname=tpe_jt;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;' . 'dbname=web_tpe;charset=utf8', 'root', '');
     }
 
     //----------- GET ALL
 
-    function getAll($id_prod)
+    function getAll($id_prod, $campo, $orden = 'ASC')
     {
         $query = $this->db->prepare(
             'SELECT c.*, u.email 
             FROM `comentario` AS c 
             INNER JOIN `usuario` AS u 
             ON c.`id_user_fk` = u.`id_user` 
-            WHERE c.`id_prod_fk` = ?'
+            WHERE c.`id_prod_fk` = ?
+            ORDER BY ' . $campo . ' ' . $orden
         );
+        $query->execute([$id_prod]);
+
+        return $items = $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function getAllOrder($id_prod, $sql)
+    {
+        $query = $this->db->prepare($sql);
         $query->execute([$id_prod]);
 
         return $items = $query->fetchAll(PDO::FETCH_OBJ);
@@ -73,24 +82,20 @@ class ComentsModel
     // ------------ FILTRAR 
 
 
-    function filtrarComents($tipo)
+    function filtrarComents($puntaje)
     {
         // 2. Enviamos la consulta (2 sub pasos)
-        $query = $this->db->prepare('');
-        $query->execute([$tipo]);
+        $query = $this->db->prepare(
+            'SELECT c.*, u.email 
+            FROM `comentario` AS c 
+            INNER JOIN `usuario` AS u 
+            ON c.`id_user_fk` = u.`id_user`
+            WHERE c.`puntaje` = ?'
+        );
+        $query->execute([$puntaje]);
 
-        // 3. obtengo la respuesta de la DB
         $filtradas = $query->fetchAll(PDO::FETCH_OBJ); // obtengo un arreglo con TODAS los Pagos
 
         return $filtradas;
-    }
-    // ------------ HACE UN CONTEO DE LOS ELEMENTOS REFERENCIADOS
-
-    function contarReferencia($id)
-    {
-        $query = $this->db->prepare('');
-        $query->execute([$id]);
-
-        return $value = $query->fetch(PDO::FETCH_OBJ);
     }
 }
