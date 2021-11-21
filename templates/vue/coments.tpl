@@ -3,7 +3,7 @@
 
     <div class="caja" v-if="comentarios != 0">
         <!-- Caja de cada comentario -->
-        <form class="botonera sticky-top bg-white" id="orden">
+        <form class="botonera sticky-top bg-white p-1" id="orden">
             <select name="campo" class="form-select" id="prioridad">
                 <option value="puntaje">Puntaje</option>
                 <option value="antiguedad">Antiguedad</option>
