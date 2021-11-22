@@ -78,7 +78,7 @@ async function orderComents(orden){
 }
 //----------------- GETALL
 
-async function getComents(orden = '') {
+async function getComents() {
 let id_prod = document.querySelector("#id_prod").value;
 
     try {
@@ -104,7 +104,13 @@ async function delComent(e) {
         });
         if (res.ok) {
             console.log(res)
-            getComents();
+            
+            for(let i = 0; i < app.comentarios.length; i++){
+
+                if(app.comentarios[i].id_comen == id){
+                    app.comentarios.splice(i, 1)
+                }
+            };
             console.log("Eliminado con exito")
         } else {
             console.log("Eliminado fallido")
