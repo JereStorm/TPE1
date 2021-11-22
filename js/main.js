@@ -51,7 +51,7 @@ async function filterComents(){
         console.log(e);
         }
     }else{
-        showMensaje(false, "No se puede comentar sin puntuar");
+        showMensaje(false, "No se puede filtrar sin puntaje");
     }
     
     
