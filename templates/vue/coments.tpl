@@ -32,23 +32,24 @@
             </div>
         </div>
 
-        <div class="d-flex">
-            <select name="puntaje" id="filtro" class="form-select w-100 ms-3" required>
-                <option value="false" disabled selected>Puntaje</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <button type="button" class="btn btn-info" v-on:click="filterComents">Filtrar</button>
-        </div>
+        
     </div>
 
     <div v-else>
         <p class="no_comentarios">No hay comentarios Aun</p>
     </div>
-
+   
+<div class="d-flex">
+        <select name="puntaje" id="filtro" class="form-select w-100 ms-3" required>
+            <option value="false" disabled selected>Puntaje</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button type="button" class="btn btn-info" v-on:click="filterComents">Filtrar</button>
+    </div>
 </section>
-
+ 
 {/literal}

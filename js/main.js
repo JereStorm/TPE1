@@ -27,6 +27,7 @@ var app = new Vue({
 
 let form = document.querySelector("#form-coment");
 form.addEventListener('submit', addComent);
+let id_prod = document.querySelector("#id_prod").value;
 
 //----------------- FIILTER
 
@@ -36,34 +37,31 @@ form.addEventListener('submit', addComent);
 async function filterComents(){
     
     let filtro = document.querySelector('#filtro').value;
-    let id_prod = document.querySelector("#id_prod").value;
+    
     
     if(filtro != 'false' && (filtro == 1 || filtro == 2 || filtro ==3 || filtro ==4 || filtro ==5)){
         
         try {
             let response = await fetch(API_URL+'/producto/'+id_prod+'/filter?puntaje='+filtro+''); 
-            
             let comentarios = await response.json();
+
             console.log(comentarios)
             app.comentarios = comentarios;
+
         } catch(e) {
             showMensaje(false, "Algo salio mal");
-        console.log(e);
+            console.log(e);
         }
     }else{
         showMensaje(false, "No se puede filtrar sin puntaje");
     }
-    
-    
 }
-
 
 //----------------- ORDER
 
-
 async function orderComents(orden){
     let prioridad = document.querySelector('#prioridad').value;
-    let id_prod = document.querySelector("#id_prod").value;
+    
     
     // throw(console.log(prioridad, id_prod, orden))
     try {
@@ -76,13 +74,12 @@ async function orderComents(orden){
         console.log(e);
     }
 }
+
 //----------------- GETALL
 
 async function getComents() {
-let id_prod = document.querySelector("#id_prod").value;
 
     try {
-        
         let response = await fetch(API_URL+'/producto/'+id_prod); 
         let comentarios = await response.json();
         
@@ -119,8 +116,8 @@ async function delComent(e) {
         console.log(error);
     }
 }
-//----------------- ADD
 
+//----------------- ADD
 
 async function addComent(e) {
     e.preventDefault();
@@ -152,9 +149,8 @@ async function addComent(e) {
         id_prod_fk: data.get('id_prod'),
     }
     await insertComent(coment);
-    
-
 }
+
 //----------------- INSERT
 
 async function insertComent(coment) {
@@ -219,8 +215,6 @@ function showMensaje(state, mensaje='error'){
     }, 2000);
 }
 
-
-
-
 // ------------ AUTORENDER
+
 getComents()
