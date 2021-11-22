@@ -12,6 +12,7 @@ var app = new Vue({
     methods: {
         delComent: delComent,
         orderComents: orderComents,
+        filterComents: filterComents,
        
     },
     filters: {
@@ -26,6 +27,36 @@ var app = new Vue({
 
 let form = document.querySelector("#form-coment");
 form.addEventListener('submit', addComent);
+
+//----------------- FIILTER
+
+// let formFilter = document.querySelector("#filter-coments");
+// formFilter.addEventListener('submit', filterComents);
+
+async function filterComents(){
+    
+    let filtro = document.querySelector('#filtro').value;
+    let id_prod = document.querySelector("#id_prod").value;
+    
+    if(filtro != 'false' && (filtro == 1 || filtro == 2 || filtro ==3 || filtro ==4 || filtro ==5)){
+        
+        try {
+            let response = await fetch(API_URL+'/producto/'+id_prod+'/filter?puntaje='+filtro+''); 
+            
+            let comentarios = await response.json();
+            console.log(comentarios)
+            app.comentarios = comentarios;
+        } catch(e) {
+            showMensaje(false, "Algo salio mal");
+        console.log(e);
+        }
+    }else{
+        showMensaje(false, "No se puede comentar sin puntuar");
+    }
+    
+    
+}
+
 
 //----------------- ORDER
 
