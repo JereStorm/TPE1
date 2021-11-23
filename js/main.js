@@ -27,6 +27,7 @@ var app = new Vue({
 
 let form = document.querySelector("#form-coment");
 form.addEventListener('submit', addComent);
+let id_prod = document.querySelector("#id_prod").value;
 
 //----------------- FIILTER
 
@@ -36,53 +37,49 @@ form.addEventListener('submit', addComent);
 async function filterComents(){
     
     let filtro = document.querySelector('#filtro').value;
-    let id_prod = document.querySelector("#id_prod").value;
+    
     
     if(filtro != 'false' && (filtro == 1 || filtro == 2 || filtro ==3 || filtro ==4 || filtro ==5)){
         
         try {
             let response = await fetch(API_URL+'/producto/'+id_prod+'/filter?puntaje='+filtro+''); 
-            
             let comentarios = await response.json();
+
             console.log(comentarios)
             app.comentarios = comentarios;
+
         } catch(e) {
             showMensaje(false, "Algo salio mal");
-        console.log(e);
+            console.log(e);
         }
     }else{
         showMensaje(false, "No se puede filtrar sin puntaje");
     }
-    
-    
 }
-
 
 //----------------- ORDER
 
-
 async function orderComents(orden){
     let prioridad = document.querySelector('#prioridad').value;
-    let id_prod = document.querySelector("#id_prod").value;
     
     // throw(console.log(prioridad, id_prod, orden))
     try {
         
         let response = await fetch(API_URL+'/producto/'+id_prod+'?campo='+prioridad+'&orden='+orden); 
         let comentarios = await response.json();
+
         console.log(comentarios)
         app.comentarios = comentarios;
     } catch(e) {
         console.log(e);
     }
 }
+
 //----------------- GETALL
 
 async function getComents() {
-let id_prod = document.querySelector("#id_prod").value;
 
     try {
-        
         let response = await fetch(API_URL+'/producto/'+id_prod); 
         let comentarios = await response.json();
         
@@ -93,12 +90,14 @@ let id_prod = document.querySelector("#id_prod").value;
     }
         
 }
-//----------------- DELETE
 
+//----------------- DELETE
 
 async function delComent(e) {
     e.preventDefault();
+
     let id = e.target.getAttribute('data-id');
+
     try {
         let res = await fetch(`${API_URL}/${id}`, {
             "method": "DELETE",
@@ -121,8 +120,8 @@ async function delComent(e) {
         console.log(error);
     }
 }
-//----------------- ADD
 
+//----------------- ADD
 
 async function addComent(e) {
     e.preventDefault();
@@ -135,7 +134,6 @@ async function addComent(e) {
 
     let mensaje = data.get('coment');
     let puntaje = data.get('puntaje');
-
 
 
     if(mensaje == '' || puntaje==null){
@@ -154,9 +152,8 @@ async function addComent(e) {
         id_prod_fk: data.get('id_prod'),
     }
     await insertComent(coment);
-    
-
 }
+
 //----------------- INSERT
 
 async function insertComent(coment) {
@@ -183,7 +180,9 @@ async function insertComent(coment) {
         showMensaje(false, "Error en el envío del mensaje");
     }
 }
+
 // ---------- FECHA
+
 function fechaHoy(){
     var today = new Date();
     var dd = today.getDate();
@@ -237,4 +236,5 @@ function showMensaje(state, mensaje='error'){
  }
 
 // ------------ AUTORENDER
+
 getComents()
