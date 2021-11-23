@@ -42,6 +42,25 @@ class ApiComentsController
         $this->view->response($coments, 200);
     }
 
+    function filter($params = null)
+    {
+        if (!isset($params[':ID'])) {
+            $this->view->response('Comentario Not Found', 404);
+        }
+        if (
+            isset($_GET['puntaje']) &&
+            ($_GET['puntaje'] == 1 ||
+                $_GET['puntaje'] == 2 ||
+                $_GET['puntaje'] == 3 ||
+                $_GET['puntaje'] == 4 ||
+                $_GET['puntaje'] == 5)
+        ) {
+            $filter = $_GET['puntaje'];
+            $filtradas = $this->model->filtrarComents($params[':ID'], $filter);
+            $this->view->response($filtradas, 200);
+        }
+    }
+
     function delete($params = null)
     {
 

@@ -47,6 +47,10 @@
     </form>
     {include file="vue/coments.tpl"}
 </div>
+
+    
+
+
 {include file="forms/formComent.tpl"}
 
 

@@ -11,6 +11,7 @@ $router = new Router();
 $router->addRoute('coments/producto/:ID', 'GET', 'ApiComentsController', 'getAll');
 $router->addRoute('coments/:ID', 'DELETE', 'ApiComentsController', 'delete');
 $router->addRoute('coments', 'POST', 'ApiComentsController', 'add');
+$router->addRoute('coments/producto/:ID/filter', 'GET', 'ApiComentsController', 'filter');
 
 $router->addRoute('users/token', 'GET', 'ApiUserController', 'obtenerToken');
 $router->addRoute('users/:ID', 'GET', 'ApiUserController', 'obtenerUsuario');

@@ -82,7 +82,7 @@ class ComentsModel
     // ------------ FILTRAR 
 
 
-    function filtrarComents($puntaje)
+    function filtrarComents($id, $puntaje)
     {
         // 2. Enviamos la consulta (2 sub pasos)
         $query = $this->db->prepare(
@@ -90,9 +90,9 @@ class ComentsModel
             FROM `comentario` AS c 
             INNER JOIN `usuario` AS u 
             ON c.`id_user_fk` = u.`id_user`
-            WHERE c.`puntaje` = ?'
+            WHERE c.`id_prod_fk` = ? AND c.`puntaje` = ?'
         );
-        $query->execute([$puntaje]);
+        $query->execute([$id, $puntaje]);
 
         $filtradas = $query->fetchAll(PDO::FETCH_OBJ); // obtengo un arreglo con TODAS los Pagos
 
