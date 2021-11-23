@@ -1,27 +1,7 @@
 {literal}
 <section id="coments">
-
-
     <div class="d-flex flex-column" v-if="comentarios != 0">
-        <!-- Caja de cada comentario -->
-<<<<<<< HEAD
-        <form class="botonera sticky-top bg-white p-1" id="orden">
-            <select name="campo" class="form-select" id="prioridad">
-                <option value="puntaje">Puntaje</option>
-                <option value="antiguedad">Antiguedad</option>
-            </select>
-            <button class="btn" type="button" v-on:click="orderComents('ASC')">Ascendente</button>
-            <button class="btn" type="button" v-on:click="orderComents('DESC')">Descendente</button>
-        </form>
-        <div v-for="coment in comentarios" class="card mt-1">
-            <div class="card-body">
-                <p class="card-text">Usuario: {{coment.email}} | Estrellas: ({{coment.puntaje}}) | Fecha: ({{coment.fecha}}) </p>
-                <div class="card_caja">
-                    <p class="card-text">- {{coment.mensaje | truncate(40)}}...</p>
-                    {/literal}
-                    {if isset($smarty.session.USER_ROL) && $smarty.session.USER_ROL==ADMIN}
-                    {literal}
-=======
+        <!--Caja de cada comentario-->
         <div class=" caja">
             <form class="botonera sticky-top bg-white p-1" id="orden">
                 <select name="campo" class="form-select" id="prioridad">
@@ -33,13 +13,12 @@
             </form>
             <div v-for="coment in comentarios" class="card mt-1">
                 <div class="card-body">
-                    <p class="card-text">Usuario: {{coment.email}} - Estrellas: ({{coment.puntaje}})</p>
+                    <p class="card-text">Usuario: {{coment.email}} - Estrellas: ({{coment.puntaje}}) Fecha: {{coment.fecha}}</p>
                     <div class="card_caja">
                         <p class="card-text">- {{coment.mensaje | truncate(40)}}...</p>
                         {/literal}
                         {if isset($smarty.session.USER_ROL) && $smarty.session.USER_ROL==ADMIN}
                         {literal}
->>>>>>> 351129fc8275e808a2a7167158f0792a52fc62e3
                         <button class="borrar btn btn-danger" v-on:click="delComent"
                             v-bind:data-id="coment.id_comen">X</button>
                         {/literal}

@@ -124,6 +124,7 @@ class HomeController
         }
         //OBTENER DEL MODELO EL PRODUCTO COMPLETO
         $this->view->renderDetail($product);
+        
     }
     function comprar($id)
     {
