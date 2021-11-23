@@ -62,12 +62,12 @@ async function filterComents(){
 async function orderComents(orden){
     let prioridad = document.querySelector('#prioridad').value;
     
-    
     // throw(console.log(prioridad, id_prod, orden))
     try {
         
         let response = await fetch(API_URL+'/producto/'+id_prod+'?campo='+prioridad+'&orden='+orden); 
         let comentarios = await response.json();
+
         console.log(comentarios)
         app.comentarios = comentarios;
     } catch(e) {
@@ -89,12 +89,14 @@ async function getComents() {
     }
         
 }
-//----------------- DELETE
 
+//----------------- DELETE
 
 async function delComent(e) {
     e.preventDefault();
+
     let id = e.target.getAttribute('data-id');
+
     try {
         let res = await fetch(`${API_URL}/${id}`, {
             "method": "DELETE",
@@ -130,7 +132,6 @@ async function addComent(e) {
 
     let mensaje = data.get('coment');
     let puntaje = data.get('puntaje');
-
 
 
     if(mensaje == '' || puntaje==null){
@@ -176,7 +177,9 @@ async function insertComent(coment) {
         showMensaje(false, "Error en el envío del mensaje");
     }
 }
+
 // ---------- FECHA
+
 function fechaHoy(){
     var today = new Date();
     var dd = today.getDate();
