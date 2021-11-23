@@ -182,8 +182,5 @@ function showMensaje(state, mensaje='error'){
     }, 2000);
 }
 
-
-
-
 // ------------ AUTORENDER
 getComents()

@@ -1,4 +1,4 @@
-<select name="tipo" class="form-select" aria-label="Default select example" required>
+<select name="tipo" class="form-select" aria-label="Default select example" id="selectorDinamico" required>
     <option value="false" disabled selected>Todos</option>
     
     {foreach from=$types item=item}
