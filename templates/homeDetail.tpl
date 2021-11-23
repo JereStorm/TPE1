@@ -15,7 +15,7 @@
 {* FORMULARIO *}
 
 {include file="html/header.tpl"}
-<div class="d-flex align-items-center mt-5 contenedor_detail">
+<div class="d-flex align-items-center mt-5 contenedor_detail" id="coments">
     <form action="Buy/{$producto->id}" method="POST" class="w-50 ">
         
         
@@ -29,8 +29,10 @@
             <li class="card-text">{*CATEGORIA/MARCA*}Tipo: {$producto->Tipo}</li>
         </ul>
 
-        <div class="card-footer">
+        <div class="card-footer d-flex justify-content-between">
                 <h6 class="card-text">{*STOCK*}Stock: {$producto->stock}</h6>
+                {* INSERTAMOS EL PROMEDIO CON PARTIAL RENDER Y VUE *}
+                <h6 id="promComent" class="card-text">{*PROMEDIO PUNTOS*}Estrellas de producto ({literal}{{promedio}}{/literal})</h6>   
             {*<small class="text-muted">9 mins PODRIA PINTAR DATA-TIME</small>*}
         </div>
     

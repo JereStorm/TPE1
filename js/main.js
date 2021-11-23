@@ -6,8 +6,8 @@ var app = new Vue({
     el: '#coments',
     data: {
         titulo: "cosas imposibles",
-        comentarios : [],
-        
+        comentarios: [],
+        promedio:'cargando...',
     },
     methods: {
         delComent: delComent,
@@ -87,6 +87,7 @@ let id_prod = document.querySelector("#id_prod").value;
         let comentarios = await response.json();
         
         app.comentarios = comentarios;
+        promMeje();
     } catch(e) {
         console.log(e);
     }
@@ -109,6 +110,7 @@ async function delComent(e) {
 
                 if(app.comentarios[i].id_comen == id){
                     app.comentarios.splice(i, 1)
+                    promMeje();
                 }
             };
             console.log("Eliminado con exito")
@@ -172,6 +174,7 @@ async function insertComent(coment) {
             console.log(comentario);
 
             app.comentarios.push(comentario);
+            promMeje();
             showMensaje(true, "El mensaje fue enviado correctamente");
         }
 
@@ -207,10 +210,10 @@ function showMensaje(state, mensaje='error'){
     let aviso = document.querySelector('#respuesta');
 
     if(state){
-        aviso.className = 'alert alert-success w-50';
+        aviso.className = 'alert alert-success w-50 mt-3';
         aviso.innerHTML = mensaje;   
     }else{
-        aviso.className = 'alert alert-danger w-50';
+        aviso.className = 'alert alert-danger w-50 mt-3';
         aviso.innerHTML = mensaje;   
     }
     setTimeout(()=>{
@@ -218,6 +221,20 @@ function showMensaje(state, mensaje='error'){
         aviso.innerHTML = '';  
     }, 2000);
 }
+
+// ------------ CALCULO DE PROMEDIO DE PUNTAJE PARA EL PRODUCTO
+ function promMeje(){
+    if(app.comentarios.length==0){
+        app.promedio='Sin puntuación';
+    }else{
+        let suma=0;
+        app.comentarios.forEach(comment => {
+           suma = suma + parseFloat(comment.puntaje);
+        });
+        let prom = suma/app.comentarios.length;
+        app.promedio = prom.toFixed(1);
+    }
+ }
 
 // ------------ AUTORENDER
 getComents()
