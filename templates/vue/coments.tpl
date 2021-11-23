@@ -1,9 +1,7 @@
 {literal}
 <section id="coments">
-
-
     <div class="d-flex flex-column" v-if="comentarios != 0">
-        <!-- Caja de cada comentario -->
+        <!--Caja de cada comentario-->
         <div class=" caja">
             <form class="botonera sticky-top bg-white p-1" id="orden">
                 <select name="campo" class="form-select" id="prioridad">
@@ -15,7 +13,7 @@
             </form>
             <div v-for="coment in comentarios" class="card mt-1">
                 <div class="card-body">
-                    <p class="card-text">Usuario: {{coment.email}} - Estrellas: ({{coment.puntaje}})</p>
+                    <p class="card-text">Usuario: {{coment.email}} - Estrellas: ({{coment.puntaje}}) Fecha: {{coment.fecha}}</p>
                     <div class="card_caja">
                         <p class="card-text">- {{coment.mensaje | truncate(40)}}...</p>
                         {/literal}
