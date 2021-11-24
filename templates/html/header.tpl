@@ -22,10 +22,13 @@
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto ms-5 justify-content-center mb-md-0 ">
           <li><a href="Home" class="nav-link px-2 text-white  navegador">Home</a></li>
-
-          {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL<=CLIENT}
+          {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL<=USER}
             <!-- SE VERIFICA QUE EL USUARIO ESTE LOGEADO PARA VER EL MENU AVANZADO -->
             <li><a href="Home/Stock" class="nav-link px-2 text-white navegador">Stock</a></li>
+          {/if} 
+          {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL<=CLIENT}
+            <!-- SE VERIFICA QUE EL USUARIO ESTE LOGEADO PARA VER EL MENU AVANZADO -->
+            {* <li><a href="Home/Stock" class="nav-link px-2 text-white navegador">Stock</a></li> *}
             <li><a href="Home/Producto" class="nav-link px-2 text-white navegador">Productos</a></li>
             <li><a href="Home/TipoProducto" class="nav-link px-2 text-white navegador">Tipo Productos</a></li>
           {/if} 
