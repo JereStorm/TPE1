@@ -1,7 +1,7 @@
 <?php
 // HELPER
 require_once 'helpers/LoginHelper.php';
-require_once 'helpers/RenderErrorHelper.php';
+
 // EXTERNOS
 require_once 'model/ProductsModel.php';
 require_once 'model/TypeProdModel.php';
@@ -125,7 +125,7 @@ class HomeController
     {
         //OBTENER DEL MODELO EL PRODUCTO COMPLETO
         $product = $this->ProductsModel->getOne($id);
-        
+
         // VERIFICAR SI EL PRODUCTO EXISTE
         if (empty($product)) {
             $this->view->renderError('Producto inexistente');
@@ -145,11 +145,10 @@ class HomeController
             $product->img_path = IMAGE_DEFAULT_BROKE;
         }
 
-        
 
-        
+
+
         $this->view->renderDetail($product);
-        
     }
     function comprar($id)
     {

@@ -15,6 +15,11 @@ Al ingresar, lo hace como User Deslogueado:
 EMAIL: admin@admin.com,
 PASSWORD: admin
 
+----------- IMAGES --------------
+
+- Se debera crear una carpeta "upload" dentro de la carpeta "images".
+  Alli se guardaran los archivos temporales que se suban
+
 ----------- JSON EXAMPLE -------------
 
 {
@@ -27,6 +32,7 @@ PASSWORD: admin
 }
 
 ----------- API RULES -----------
+
 Como primer medida se tomara el parametro :ID segun el recurso que se encuentre a su izquierda <- .
 
 Por ej: api/coments/producto/:ID donde ":ID" haria refencia al recurso "producto".
