@@ -6,6 +6,7 @@ require_once 'helpers/LoginHelper.php';
 require_once 'model/ProductsModel.php';
 require_once 'model/TypeProdModel.php';
 require_once 'model/StockModel.php';
+require_once 'view/RenderError.php';
 
 // INTERNOS
 require_once 'view/HomeView.php';
