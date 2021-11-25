@@ -1,5 +1,5 @@
 <?php
-require_once 'view/loginView.php';
+require_once 'view/LoginView.php';
 require_once 'api/ApiView.php';
 class LoginHelper
 {
