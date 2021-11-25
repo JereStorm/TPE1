@@ -1,5 +1,9 @@
 Bienvenido a nuestro sistema...
 
+----------- BBDD ---------------
+
+- NOMBRE DEL ARCHIVO: "web_tpe"
+
 ----------- INFO ROLES -----------
 
 - ADMIN = Usuario administrador del sitio.
