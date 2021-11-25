@@ -2,13 +2,17 @@
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
     {foreach from=$productos item=item key=key name=name}
         <div class="col">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm mb-5">
 
                 <div class="card-body">
                     <h5 class="card-title text-center">
                     {$item->Nombre}
                     </h5>
-                    
+                    <div class="d-flex justify-content-center mt-3 mb-3">
+                        <div class="img_home">
+                            <img src="{$item->img_path}" class="imagen">
+                        </div>
+                    </div>
                     <ul>
                         <li class="card-text">{*PRECIO POR UNIDAD*}Precio: $ {$item->Precio}</li>
                         <li class="card-text">{*CATEGORIA/MARCA*}Tipo: {$item->Tipo}</li>

@@ -60,3 +60,21 @@ header {
   justify-content: center;
   margin-bottom: 100px;
 }
+.img_home{
+  display: flex;
+  justify-content: center;  
+  width: 30%;
+
+
+}
+
+.img_detail{
+  width: 60%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.imagen{
+  display: flex;
+  justify-content: center;
+  height: 120px;
+}

@@ -1,6 +1,6 @@
 <!-- formulario de alta de tarea -->
 <div class="ms-25 mt 5 ml-25">
-    <form action="edit/{$URL}" method="POST" class="my-4">
+    <form action="edit/{$URL}" method="POST" class="my-4" enctype="multipart/form-data">
         <input type="hidden" id="identificador" value="{if isset($value_id)}{$value_id}{/if}" name="id">
             {if $URL == 'Producto'}
                 {include file="forms/cuerpos/cuerpoProd.tpl"}

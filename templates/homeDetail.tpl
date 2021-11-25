@@ -23,7 +23,11 @@
         <h5 class="card-header text-center {$class_type_title}">
         {$producto->Nombre}
         </h5>
-        
+        <div class="d-flex justify-content-center mt-3 mb-3">
+            <div class="w-50">
+                <img src="{$producto->img_path}" class="w-75">
+            </div>
+        </div>
         <ul>
             <li class="card-text">{*PRECIO POR UNIDAD*}Precio {$producto->Precio}$</li>
             <li class="card-text">{*CATEGORIA/MARCA*}Tipo: {$producto->Tipo}</li>

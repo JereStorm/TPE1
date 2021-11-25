@@ -7,6 +7,8 @@ define('USER', 3);
 define('CLIENT', 5);
 define('SESSIONTIME', 1800); //segundos
 define('ITEMS_BY_PAGE', 6); //items de paginado
+define('IMAGE_DEFAULT','images/no_image_uploaded.jpeg'); //imagen por defecto cuando no hay una subida
+define('IMG_PATH','images/upload/'); // ruta donde se guardan las imagenes subidas
 
 // -----PRODUCTOS
 require_once('controller/ProductsController.php');

@@ -22,6 +22,8 @@ class ProductsController
         $this->LoginHelper = new LoginHelper();
     }
 
+    // ---------- MOSTRAR TODOS LOS PRODUCTOS
+
     function showProducts()
     {
         $this->LoginHelper->checkLoggedIn(CLIENT); // REVISION DE AUTORIZACION
@@ -32,6 +34,8 @@ class ProductsController
 
         $this->view->renderProducts($products, $types);
     }
+
+    //--------- MOSTRAR LA EDICION DE PRODUCTO
 
     function showEditProduct($id)
     {
@@ -104,9 +108,10 @@ class ProductsController
 
     function editProduct()
     {
+        
         $this->LoginHelper->checkLoggedIn(USER); // REVISION DE AUTORIZACION
         $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
-
+        
         // VALIDACION
         if ((!isset($_REQUEST['producto']) || empty($_REQUEST['producto'])) ||
             (!isset($_REQUEST['precio']) || empty($_REQUEST['precio'])) ||
@@ -121,6 +126,18 @@ class ProductsController
             die();
         }
 
+        // SI NO SE ACTUALIZÓ LA IMAGEN QUEDA LA QUE YA TENIA GUARDADA
+        if (!isset($_FILES['imagesToUpload']['name']) || empty($_FILES['imagesToUpload']['name']) )
+            $path = $_REQUEST['imagen_original'];
+        
+        //VERIFICA EL FORMATO DE LA IMAGEN
+        elseif($_FILES['imagesToUpload']['type'] == "image/jpg" || $_FILES['imagesToUpload']['type'] == "image/jpeg" || $_FILES['imagesToUpload']['type'] == "image/png"){
+            $image = $_FILES['imagesToUpload']['tmp_name']; 
+            $path = IMG_PATH . uniqid("", true) . "." .  strtolower(pathinfo($_FILES['imagesToUpload']['name'], PATHINFO_EXTENSION));
+        }        
+        else
+            $this->view->renderError('El formato de imagen es incorrecto');     
+
         //SETEO DE DATOS
         $id = $_REQUEST['id'];
         $nombre = $_REQUEST['producto'];
@@ -128,7 +145,7 @@ class ProductsController
         $tipo = $_REQUEST['tipo'];
 
         //UPDATEO
-        $this->model->update($nombre, $precio, $tipo, $id);
+        $this->model->update($nombre, $precio, $tipo, $id, $image, $path);
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/Producto');

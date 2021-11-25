@@ -15,9 +15,9 @@ class ProductsModel
     function getAll()
     {
         $query = $this->db->prepare(
-            'SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id 
-            FROM `producto` a 
-            INNER JOIN tipo_producto b 
+            'SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id
+            FROM `producto` a
+            INNER JOIN tipo_producto b
             WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`'
         );
         $query->execute();
@@ -40,8 +40,8 @@ class ProductsModel
     function getPage($inicio)
     {
         $query = $this->db->prepare(
-            'SELECT a.nombre AS Nombre, a.precio_kg AS Precio, b.tipo AS Tipo, a.id_prod AS id 
-            FROM producto AS a 
+            'SELECT a.nombre AS Nombre, a.precio_kg AS Precio, b.tipo AS Tipo, a.id_prod AS id, img_path
+            FROM producto AS a
             INNER JOIN tipo_producto AS b ON  a.tipo_prod_fk = b.id_tipo_prod
             ORDER BY a.nombre ASC
             LIMIT ' . $inicio . ', ' . ITEMS_BY_PAGE
@@ -57,9 +57,9 @@ class ProductsModel
     function getOne($id)
     {
         $query = $this->db->prepare(
-            'SELECT a.`nombre` AS `Nombre`, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id 
-            FROM `producto` a 
-            INNER JOIN tipo_producto b 
+            'SELECT a.`nombre` AS `Nombre`, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id, img_path
+            FROM `producto` a
+            INNER JOIN tipo_producto b
             WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND a.`id_prod` = ?'
         );
         $query->execute([$id]);
@@ -71,8 +71,8 @@ class ProductsModel
 
     function insert($nombre, $precio, $tipo)
     {
-        $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`) VALUES ( ?, ?, ?)');
-        $query->execute([$nombre, $tipo, $precio]);
+        $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`, `img_path`) VALUES ( ?, ?, ?, ?)');
+        $query->execute([$nombre, $tipo, $precio, IMAGE_DEFAULT]);
 
         // 3. Obtengo y devuelo el ID nuevo
         return $this->db->lastInsertId();
@@ -88,17 +88,18 @@ class ProductsModel
 
     // -------- UPDATES
 
-    function update($nombre, $precio, $tipo, $id)
+    function update($nombre, $precio, $tipo, $id, $image = null, $path)
     {
+
+        if($image != IMAGE_DEFAULT)
+            move_uploaded_file($image,$path);
+
         $query = $this->db->prepare(
             'UPDATE producto a
-        INNER JOIN tipo_producto b 
-        ON `a`.`tipo_prod_fk` = `b`.`id_tipo_prod`
-        SET `a`.`nombre` = ?, `a`.`precio_kg` =?, `a`.`tipo_prod_fk` =?
-        WHERE `a`.`id_prod` = ?'
+            SET `a`.`nombre` = ?, `a`.`precio_kg` =?, `a`.`tipo_prod_fk` =?,`a`.`img_path`=?
+            WHERE `a`.`id_prod` = ?'
         );
-
-        return $query->execute([$nombre, $precio, $tipo, $id]);
+        return $query->execute([$nombre, $precio, $tipo, $path, $id]);
     }
 
     // ----------- VISADOS (SIEMPRE AL ULTIMO)
@@ -110,7 +111,7 @@ class ProductsModel
 
         return $value = $query->fetch(PDO::FETCH_OBJ);
     }
-    // ------------ BUSCAR 
+    // ------------ BUSCAR
 
     function buscarProduct($producto)
     {
@@ -125,7 +126,7 @@ class ProductsModel
         return $busquedas;
     }
 
-    // ------------ FILTRAR 
+    // ------------ FILTRAR
 
 
     function filtrarProducts($tipo)
