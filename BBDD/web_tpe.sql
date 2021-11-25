@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2021 a las 06:25:22
+-- Tiempo de generación: 25-11-2021 a las 17:14:25
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -43,7 +43,6 @@ CREATE TABLE `comentario` (
 INSERT INTO `comentario` (`id_comen`, `mensaje`, `fecha`, `puntaje`, `id_user_fk`, `id_prod_fk`) VALUES
 (3, 'esdfefaa', '2021-11-13', 3, 10, 8),
 (4, 'sfsefsfs f sf sf sdf sdf s', '2021-11-10', 5, 10, 20),
-(5, 's f ad v dfvdafvadf df dog a', '2021-11-12', 2, 6, 8),
 (6, 'buena pinta tiene el producto aunque bátanme malo', '2020-11-04', 2, 11, 8),
 (7, 'buena pinta tiene el producto aunque bátanme malo', '2020-11-04', 2, 11, 8),
 (8, 'buena pinta tiene el producto aunque bátanme malo', '2020-11-04', 2, 11, 8),
@@ -185,9 +184,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_user`, `email`, `password`, `rol`) VALUES
 (1, 'admin@admin.com', '$2y$10$WvGcMVfIIGXfsccl5rlgd...DvDLrbN8RjyNCF9qypLoLLtdbRLBu', '1'),
 (3, 'user@user.com', '$2y$10$TaHvG9mvKbnQmlhlOTsFde4HA2yv1VyHlLmjTHX4z8WETH39SBqga', '3'),
-(6, 'client@client.com', '$2y$10$ngt3CvOEf29IeMleiti5JubZlxscuQwk6KZSsCePlrcGrqZwIXO/m', '5'),
-(9, 'client@demo.com', '$2y$10$Zs637ip9Jj6AkGlgDpp0nO6hfO01EMFPCjgVI2B4YLL7hGae4/gBS', '5'),
-(10, 'admin@demo.com', '$2y$10$/BIAYMGWBl7xLzwtJb5mJebn5KoNqjXXqNeyFAEZ.q75VjBaMNxfi', '1'),
+(10, 'admin@demo.com', '$2y$10$/BIAYMGWBl7xLzwtJb5mJebn5KoNqjXXqNeyFAEZ.q75VjBaMNxfi', '5'),
 (11, 'user@demo.com', '$2y$10$DIrZK/r9eltZEidmFWHBl.PQzbNS5lO5pVSEunq0uI487UHFemJuG', '3');
 
 --
@@ -237,7 +234,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -261,7 +258,7 @@ ALTER TABLE `tipo_producto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
@@ -271,8 +268,8 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_user_fk`) REFERENCES `usuario` (`id_user`),
-  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_prod_fk`) REFERENCES `producto` (`id_prod`);
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_user_fk`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_prod_fk`) REFERENCES `producto` (`id_prod`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`

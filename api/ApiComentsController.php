@@ -2,7 +2,6 @@
 
 require_once 'model/ComentsModel.php';
 require_once 'api/ApiView.php';
-require_once 'helpers/ApiLoginHelper.php';
 
 
 class ApiComentsController
@@ -16,7 +15,6 @@ class ApiComentsController
     {
         $this->model = new ComentsModel();
         $this->view = new ApiView();
-        $this->apiLoginHelper = new ApiLoginHelper();
     }
 
     function getAll($params = null)

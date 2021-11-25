@@ -13,8 +13,7 @@
             </form>
             <div v-for="coment in comentarios" class="card mt-1">
                 <div class="card-body">
-                <p class="card-text mb-0">Fecha: {{coment.fecha}}</p>
-                    <p class="card-text">Usuario: {{coment.email}} | Estrellas: ({{coment.puntaje}})</p>
+                    <p class="card-text ">Usuario: {{coment.email}} | Estrellas: ({{coment.puntaje}}) <span>- ({{coment.fecha}}) </span></p>
                     <div class="card_caja">
                         <p class="card-text">- {{coment.mensaje | truncate(40)}}...</p>
                         {/literal}
