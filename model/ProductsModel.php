@@ -69,10 +69,15 @@ class ProductsModel
 
     // --------- INSERTS
 
-    function insert($nombre, $precio, $tipo)
+    function insert($nombre, $precio, $tipo, $image, $path)
     {
-        $query = $this->db->prepare('INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`, `img_path`) VALUES ( ?, ?, ?, ?)');
-        $query->execute([$nombre, $tipo, $precio, IMAGE_DEFAULT]);
+        if($image != IMAGE_DEFAULT)
+            move_uploaded_file($image,$path);
+
+        $query = $this->db->prepare(
+            'INSERT INTO `producto` (`nombre`, `tipo_prod_fk`, `precio_kg`, `img_path`) 
+            VALUES ( ?, ?, ?, ?)');
+        $query->execute([$nombre, $tipo, $precio, $path]);
 
         // 3. Obtengo y devuelo el ID nuevo
         return $this->db->lastInsertId();
@@ -117,7 +122,10 @@ class ProductsModel
     {
 
         // 2. Enviamos la consulta (2 sub pasos)
-        $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`nombre` LIKE ?');
+        $query = $this->db->prepare(
+            'SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`tipo` AS Tipo, a.`id_prod` AS id, a.`img_path` 
+            FROM `producto` a 
+            INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`nombre` LIKE ?');
         $query->execute([$producto]);
 
         // 3. obtengo la respuesta de la DB
@@ -132,7 +140,11 @@ class ProductsModel
     function filtrarProducts($tipo)
     {
         // 2. Enviamos la consulta (2 sub pasos)
-        $query = $this->db->prepare('SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`Tipo`, a.`id_prod` AS id FROM `producto` a INNER JOIN tipo_producto b WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`tipo_prod_fk` LIKE ?');
+        $query = $this->db->prepare(
+            'SELECT a.`nombre` AS Nombre, a.`precio_kg` AS `Precio`, b.`Tipo`, a.`id_prod` AS id, a.`img_path` 
+            FROM `producto` a 
+            INNER JOIN tipo_producto b 
+            WHERE `a`.`tipo_prod_fk` = `b`.`id_tipo_prod` AND `a`.`tipo_prod_fk` LIKE ?');
         $query->execute([$tipo]);
 
         // 3. obtengo la respuesta de la DB

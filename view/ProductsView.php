@@ -17,6 +17,8 @@ class ProductsView{
     
         $this -> smarty -> assign('arreglo', $products);
 
+        $this -> smarty -> assign('image',IMAGE_DEFAULT);
+
         $this -> smarty -> assign('URL', 'Producto');
 
         $this -> smarty -> display('templates/homeTable.tpl');

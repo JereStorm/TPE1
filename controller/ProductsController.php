@@ -35,7 +35,7 @@ class ProductsController
         $this->view->renderProducts($products, $types);
     }
 
-    //--------- MOSTRAR LA EDICION DE PRODUCTO
+    // --------- MOSTRAR LA EDICION DE PRODUCTO
 
     function showEditProduct($id)
     {
@@ -67,13 +67,25 @@ class ProductsController
             die();
         }
 
+        // SI NO SE ACTUALIZÓ LA IMAGEN QUEDA LA QUE YA TENIA GUARDADA
+        if (!isset($_FILES['imagesToUpload']['name']) || empty($_FILES['imagesToUpload']['name']) )
+             $path = $_REQUEST['imagen_original'];
+
+        //VERIFICA EL FORMATO DE LA IMAGEN
+        elseif($_FILES['imagesToUpload']['type'] == "image/jpg" || $_FILES['imagesToUpload']['type'] == "image/jpeg" || $_FILES['imagesToUpload']['type'] == "image/png"){
+            $image = $_FILES['imagesToUpload']['tmp_name']; 
+            $path = IMG_PATH . uniqid("", true) . "." .  strtolower(pathinfo($_FILES['imagesToUpload']['name'], PATHINFO_EXTENSION));
+        }        
+        else
+            $this->view->renderError('El formato de imagen es incorrecto');     
+
         //SETEO DE DATOS
         $nombre = $_REQUEST['producto'];
         $precio = $_REQUEST['precio'];
         $tipo = $_REQUEST['tipo'];
 
         //INSERCION
-        $this->model->insert($nombre, $precio, $tipo);
+        $this->model->insert($nombre, $precio, $tipo, $image, $path);
 
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/Producto');
@@ -97,8 +109,17 @@ class ProductsController
         $conteo = $this->model->contarReferencia($id);
 
         if (empty($conteo->val)) {
+
+            $productoToDelete = $this->model->getOne($id);
+
             $execute = $this->model->delete($id);
+            
+            //ELIMINA IMAGEN ASOCIADA SI ES QUE LA TIENE
+            if($productoToDelete->img_path!=IMAGE_DEFAULT)
+                unlink($productoToDelete->img_path);
+
             header('Location:' . BASE_URL . 'Home/Producto');
+
         } else {
             $this->view->renderError('No puede borrar dado que hay STOCK asociado a este elemento... borre primero este e intente de nuevo');
         }
@@ -136,7 +157,12 @@ class ProductsController
             $path = IMG_PATH . uniqid("", true) . "." .  strtolower(pathinfo($_FILES['imagesToUpload']['name'], PATHINFO_EXTENSION));
         }        
         else
-            $this->view->renderError('El formato de imagen es incorrecto');     
+            $this->view->renderError('El formato de imagen es incorrecto');
+        
+        // ELIMINA LA IMAGEN ANTIGUA EN CASO QUE SE SUBA UNA NUEVA
+        $path_image = explode('/', $_REQUEST['imagen_original']);
+        if($path_image[2]!=['imagesToUpload']['name'])
+            unlink($_REQUEST['imagen_original']);
 
         //SETEO DE DATOS
         $id = $_REQUEST['id'];
@@ -150,4 +176,5 @@ class ProductsController
         //RENDERIZADO
         header('Location:' . BASE_URL . 'Home/Producto');
     }
+
 }

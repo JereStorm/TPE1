@@ -63,6 +63,9 @@ class HomeController
         //CARGO EL STOCK
         $products = $this->cargarStockInProd($products);
 
+        //VERIFICO QUE LAS IMAGENES EXISTAN Y SI NO CARGO UNA DEFAULT
+        $products = $this->cargarImgProd($products);
+
         $this->view->renderHome($products, $types, $cant_pag);
     }
 
@@ -76,6 +79,17 @@ class HomeController
                 $item->stock = false;
             } else {
                 $item->stock = $stockProd->cantidad;
+            }
+        }
+        return $products;
+    }
+
+    private function cargarImgProd($products)
+    {
+        foreach ($products as $item) {
+
+            if (!file_exists($item->img_path)) {
+                $item->img_path = IMAGE_DEFAULT_BROKE;
             }
         }
         return $products;
@@ -108,8 +122,15 @@ class HomeController
     // ACA SE TRABAJA EL DETALLE DEL PRODUCTO
     function showDetail($id)
     {
-
+        //OBTENER DEL MODELO EL PRODUCTO COMPLETO
         $product = $this->ProductsModel->getOne($id);
+        
+        // VERIFICAR SI EL PRODUCTO EXISTE
+        if (empty($product)) {
+            $this->view->renderError('Producto inexistente');
+            die();
+        }
+        // OBTENER STOK DEL PRODUCTO
         $stock = $this->StockModel->getOneStockIdProd($product->id);
 
         if ($stock == false || $stock->cantidad == NULL || $stock->cantidad == 0) {
@@ -118,11 +139,14 @@ class HomeController
             $product->stock = $stock->cantidad;
         }
 
-        if (empty($product)) {
-            $this->view->renderError('Producto inexistente');
-            die();
+        // VERIFICAR SI LA IMAGEN EXISTE LOCALMENTE
+        if (!file_exists($product->img_path)) {
+            $product->img_path = IMAGE_DEFAULT_BROKE;
         }
-        //OBTENER DEL MODELO EL PRODUCTO COMPLETO
+
+        
+
+        
         $this->view->renderDetail($product);
         
     }
