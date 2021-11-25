@@ -8,7 +8,7 @@ class LoginHelper
 
     function __construct()
     {
-        // $this->viewError = new RenderErrorHelper();
+
         // abre la sessión siempre para usar el helper
         if (session_status() != PHP_SESSION_ACTIVE) {
             session_start();

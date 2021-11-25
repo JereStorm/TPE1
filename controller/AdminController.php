@@ -1,7 +1,7 @@
 <?php
 // -------- HELPER
 require_once 'helpers/LoginHelper.php';
-require_once 'helpers/RenderErrorHelper.php';
+require_once 'view/RenderErrorView.php';
 
 // -------- PRODUCTOS
 require_once 'view/AdminView.php';
@@ -21,7 +21,7 @@ class AdminController
         $this->model = new UserModel();
         $this->view = new AdminView();
         $this->LoginHelper = new LoginHelper();
-        $this->error = new RenderErrorHelper();
+        $this->error = new RenderErrorView();
     }
 
     function showAdmin()
@@ -31,20 +31,20 @@ class AdminController
         $this->LoginHelper->checkTimeLogin(); // REVISION DE TIEMPO DE SESSION
 
         $users = $this->model->getAll();
-        $usuarios=[];
+        $usuarios = [];
         foreach ($users as $user) {
-            switch ($user->Rol){
+            switch ($user->Rol) {
                 case 1:
-                    $user->Rol="Administrador";
-                break;
+                    $user->Rol = "Administrador";
+                    break;
                 case 3:
-                    $user->Rol="Usuario";
-                break;
+                    $user->Rol = "Usuario";
+                    break;
                 case 5:
-                    $user->Rol="Cliente";
-                break;
+                    $user->Rol = "Cliente";
+                    break;
             }
-            array_push($usuarios,$user);
+            array_push($usuarios, $user);
         }
         $this->view->renderUsers($usuarios);
     }
