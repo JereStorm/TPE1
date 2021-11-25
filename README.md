@@ -2,7 +2,7 @@ Bienvenido a nuestro sistema...
 
 ----------- BBDD ---------------
 
-- NOMBRE DEL ARCHIVO: "web_tpe"
+NOMBRE DEL ARCHIVO: "web_tpe"
 
 ----------- INFO ROLES -----------
 

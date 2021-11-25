@@ -1,10 +1,10 @@
 <?php
-require_once 'helpers/RenderErrorHelper.php';
+require_once 'view/loginView.php';
 require_once 'api/ApiView.php';
 class LoginHelper
 {
     private $viewError;
-    private $apiView;
+    private $loginView;
 
     function __construct()
     {
@@ -13,7 +13,7 @@ class LoginHelper
         if (session_status() != PHP_SESSION_ACTIVE) {
             session_start();
         }
-        // $this->apiView = new ApiView();
+        $this->loginView = new LoginView();
     }
 
     public function login($user)
@@ -31,13 +31,13 @@ class LoginHelper
             header("Location: " . BASE_URL . 'Login');
             die();
         } else if ($_SESSION['USER_ROL'] > $rol) {
-            $this->viewError->renderError("Usted no tiene permisos suficientes");
+            $this->loginView->renderError("Usted no tiene permisos suficientes");
             die();
         }
 
-       // $this->checkTimeLogin();
+        // $this->checkTimeLogin();
     }
-    
+
     public function checkTimeLogin()
     {
         if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > SESSIONTIME)) {

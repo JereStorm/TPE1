@@ -7,10 +7,8 @@ require_once 'model/ProductsModel.php';
 require_once 'model/TypeProdModel.php';
 require_once 'model/StockModel.php';
 
-
 // INTERNOS
 require_once 'view/HomeView.php';
-
 
 class HomeController
 {
@@ -110,6 +108,9 @@ class HomeController
         //CARGO EL STOCK
         $filtradas = $this->cargarStockinProd($filtradas);
 
+        //CARGO SUS IMAGENES 
+        $filtradas = $this->cargarImgProd($filtradas);
+
         $types = $this->TypeProdModel->getAll();
 
         $this->view->renderHome($filtradas, $types);
@@ -118,6 +119,7 @@ class HomeController
     function showError($texto)
     {
         $this->view->renderError($texto);
+        die();
     }
 
     // ACA SE TRABAJA EL DETALLE DEL PRODUCTO
@@ -145,11 +147,9 @@ class HomeController
             $product->img_path = IMAGE_DEFAULT_BROKE;
         }
 
-
-
-
         $this->view->renderDetail($product);
     }
+
     function comprar($id)
     {
         $this->LoginHelper->checkLoggedIn(CLIENT); // REVISION DE AUTORIZACION
@@ -170,6 +170,7 @@ class HomeController
 
         $this->view->renderSuccess('Usted ha comprado ' . $nombre . ' por una cantidad de (' . $cant . ')');
     }
+
     function buscarProduct()
     {
         if (!isset($_REQUEST['nombre']) || empty($_REQUEST['nombre'])) {
@@ -183,6 +184,9 @@ class HomeController
 
         //CARGO EL STOCK
         $productsBuscadas = $this->cargarStockInProd($productsBuscadas);
+
+        //CARGO SUS IMAGENES 
+        $productsBuscadas = $this->cargarImgProd($productsBuscadas);
 
         $types = $this->TypeProdModel->getAll();
 
