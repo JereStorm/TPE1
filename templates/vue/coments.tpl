@@ -15,13 +15,14 @@
                 <div class="card-body">
                     <p class="card-text ">Usuario: {{coment.email}} | Estrellas: ({{coment.puntaje}}) <span>- ({{coment.fecha}}) </span></p>
                     <div class="card_caja">
+                                                
                         <p class="card-text">- {{coment.mensaje | truncate(40)}}...</p>
                         {/literal}
                         {if isset($smarty.session.USER_ROL) && $smarty.session.USER_ROL==ADMIN}
-                        {literal}
-                        <button class="borrar btn btn-danger" v-on:click="delComent"
-                            v-bind:data-id="coment.id_comen">X</button>
-                        {/literal}
+                            {literal}
+                                <button class="borrar btn btn-danger" v-on:click="delComent"
+                                    v-bind:data-id="coment.id_comen">X</button>
+                            {/literal}
                         {/if}
                         {literal}
                     </div>
