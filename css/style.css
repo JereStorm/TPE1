@@ -1,13 +1,8 @@
+/*------------------------ HEADER ----------------------------*/
+
 header {
   display: flex;
   align-items: center;
-}
-.titulo {
-  color: white;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 40px;
-  text-decoration: none;
-  text-align: center;
 }
 .header {
   height: 300px;
@@ -17,6 +12,37 @@ header {
   justify-content: center;
   gap: 30px;
 }
+.titulo {
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 30px;
+  text-decoration: none;
+  text-align: center;
+  transition: font-family 0.3s ease;
+  transition: font-size 0.3s ease;
+}
+/* .titulo:hover {
+  font-family: "Big Shoulders Stencil Text", cursive;
+  font-size: 70px;
+} */
+/* .navegador {
+  transition: font-size 0.3s ease;
+  font-size: 18px;
+}
+.navegador:hover {
+  text-decoration: underline white;
+  font-size: 20px;
+  color: aqua; 
+}*/
+
+.sesion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+/*------------------------  ----------------------------*/
+
 .stock {
   size: 50%;
 }
@@ -41,15 +67,7 @@ header {
   width: 50%;
   min-width: 200px;
 }
-.navegador {
-  transition: font-size 0.3s ease;
-  font-size: 18px;
-}
-.navegador:hover {
-  text-decoration: underline white;
-  font-size: 20px;
-  color: aqua;
-}
+
 .caja {
   display: flex;
   flex-direction: column;
@@ -96,11 +114,28 @@ header {
   justify-content: center;
   height: 200px;
 }
+/*----------------------------- FOOTER -----------------------------------*/
+.footer {
+  height: 100px;
+  background-color: black;
+  color: white;
+  width: 100%;
+}
 @media only screen and (min-width: 768px) {
   .contenedor_detail {
     flex-direction: row;
   }
   .header {
-    padding: 50px;
+    height: 200px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .sesion {
+    align-items: baseline;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .header {
+    height: 100px;
   }
 }
