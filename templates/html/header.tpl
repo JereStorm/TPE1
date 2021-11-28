@@ -14,13 +14,13 @@
 </head>
 
 <body>
-<header class="p-3 text-white bg-dark">
+<header class="p-3 text-white bg-dark ">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="Home" class="me-5 titulo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+      <div class="header">
+        <a href="Home" class="titulo ">
           TPE Tomi-Jere
         </a>
-        <ul class="nav col-12 col-lg-auto me-lg-auto ms-5 justify-content-center mb-md-0 ">
+        <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center mb-md-0 ">
           <li><a href="Home" class="nav-link px-2 text-white  navegador">Home</a></li>
           {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL<=USER}
             <!-- SE VERIFICA QUE EL USUARIO ESTE LOGEADO PARA VER EL MENU AVANZADO -->
@@ -43,7 +43,7 @@
         <div class="text-end">
           {if isset($smarty.session.USER_ID)}
           <!-- $_SESSION['USER_ID'] -->
-          <div class="d-flex align-items-baseline flex-wrap ">
+          <div class="sesion">
             <h6 data_id="{$smarty.session.USER_ID}" id="user">({$smarty.session.USER_EMAIL})</h6>
             <a href="Logout" class="btn btn-outline-light me-2 ms-2">Cerrar Sesion</a>
           </div>

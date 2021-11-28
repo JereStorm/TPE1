@@ -20,7 +20,7 @@
     </div>
     <input name="imagen_original" type="hidden" value="{$image}">
 {if $image != IMAGE_DEFAULT}
-    <div class="imagen_item">
+    <div class="imagen">
         <img src="{$image}" alt="" class="img-fluid">
     </div>
 {/if}
