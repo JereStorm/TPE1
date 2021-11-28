@@ -15,4 +15,5 @@
         <button type="submit" class="btn btn-primary mt-2">Editar</button>
         <a href="Home/{$URL}" class="btn alert-info ms-5 mt-2">Volver</a>
     </form>
+    
 </div>

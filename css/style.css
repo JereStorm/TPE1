@@ -76,3 +76,8 @@ header {
   justify-content: center;
   height: 120px;
 }
+.imagen_item {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+}

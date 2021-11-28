@@ -48,6 +48,9 @@
             <button type="{$type}" class="btn {$class_type} mr-5">Comprar</button>
         {/if}
             <a href="Home" class="btn alert-info mr-5 ms-5 btn-outline-info volver" >Volver</a> 
+            {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL == ADMIN}
+            <a class="btn btn-outline-info btn-js ms-5"  href="HomeEdit/Producto/{$producto->id}">Editar</a>
+            {/if}
         </div>
     
     </form>
