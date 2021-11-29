@@ -15,7 +15,7 @@
 {* FORMULARIO *}
 
 {include file="html/header.tpl"}
-<div class="d-flex align-items-center mt-5 contenedor_detail" id="coments">
+<div class="d-flex align-items-center mt-5 contenedor_detail gap-5 p-5 bg-white" id="coments">
     <form action="Buy/{$producto->id}" method="POST" class="w-50 ">
         
         
@@ -25,7 +25,7 @@
         </h5>
         <div class="d-flex justify-content-center mt-3 mb-3">
             <div class="w-50">
-                <img src="{$producto->img_path}" class="w-75">
+                <img src="{$producto->img_path}" class="imagen">
             </div>
         </div>
         <ul>

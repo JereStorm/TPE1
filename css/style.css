@@ -1,5 +1,10 @@
 /*------------------------ HEADER ----------------------------*/
+body {
+  background-image: url(../fondo.jpg);
+  background-position: center;
 
+  background-size: 100%;
+}
 header {
   display: flex;
   align-items: center;
@@ -56,7 +61,7 @@ header {
 }
 .card {
   width: 100%;
-  min-height: 100px;
+  min-height: 125px;
 }
 .card_caja {
   display: flex;

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<header class="p-3 text-white bg-dark ">
+<header class="p-3 text-white ">
     <div class="container">
       <div class="header">
         <a href="Home" class="titulo ">
