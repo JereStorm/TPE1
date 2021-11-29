@@ -1,5 +1,5 @@
 
-<table class="table table-success table-hover mt-5">
+<table class="tabla table mt-5">
       <thead>
         <tr class="text-center">
             <th>#</th>

@@ -3,12 +3,13 @@ body {
   background-image: url(../fondo.jpg);
   background-position: center;
 
-  background-size: 100%;
+  background-size: contain;
 }
 header {
   display: flex;
   align-items: center;
 }
+
 .header {
   height: 300px;
   display: flex;
@@ -96,6 +97,12 @@ header {
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
+}
+.tabla {
+  color: white;
+}
+tr:hover {
+  color: cyan;
 }
 /*----------------------- IMAGENES ----------------------------------------*/
 .img_home {

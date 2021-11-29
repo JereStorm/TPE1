@@ -1,5 +1,6 @@
 </div>
-<footer class="py-3 my-4">
+<br>
+<footer class="py-3 text-end">
   <ul class="nav col-12 gap-3 col-lg-auto me-lg-auto justify-content-center mb-md-0 ">
     <li><a href="Home" class="btn btn-outline-light px-2">Home</a></li>
     {if isset($smarty.session.USER_ID) && $smarty.session.USER_ROL<=USER} <!-- SE VERIFICA QUE EL USUARIO ESTE LOGEADO

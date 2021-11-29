@@ -15,8 +15,8 @@
 {* FORMULARIO *}
 
 {include file="html/header.tpl"}
-<div class="d-flex align-items-center mt-5 contenedor_detail gap-5 p-5 bg-white" id="coments">
-    <form action="Buy/{$producto->id}" method="POST" class="w-50 ">
+<div class="d-flex align-items-center mt-5 contenedor_detail  gap-5 p-5" id="coments">
+    <form action="Buy/{$producto->id}" method="POST" class="w-50 bg-white p-3">
         
         
 

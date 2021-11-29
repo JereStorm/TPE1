@@ -1,5 +1,5 @@
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
+<div class="row row-cols-1 row-cols-sm-2 justify-content-center row-cols-md-3 g-3 mt-5">
     {foreach from=$productos item=item key=key name=name}
         <div class="col">
             <div class="card shadow-sm mb-5">
